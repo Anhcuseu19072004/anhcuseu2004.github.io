@@ -1,0 +1,222 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+    
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 63%;
+}
+    
+.myapp {
+    height: 99vh;
+}
+/* mobile responsive */  
+
+
+.home_form {
+    background-color: #2B6ABC;
+}
+
+/* form right  */
+.form_right  {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form_right_content {
+    padding: 80px 20px;
+    background-color: #0C53A6;
+    border-radius: 20px;
+}
+    
+.form_right_content_header {
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+    
+.form_right_content_header_heading {
+    color: #ccc;
+}
+    
+.form_right_content_header_link {
+    color: #ccc;
+}
+    
+.form_right_content_form {
+    display: flex;
+    flex-direction: column;
+}
+    
+    
+    
+.content_form_contain_input {
+    background-color: #fff;
+    overflow: hidden;
+    padding: 10px 1px;
+    border-radius: 5px;
+}
+    
+.form_input {
+    border: none;
+}
+    
+.form_input:focus {
+    outline: none;
+}
+    
+.form_input_label {
+    font-size: 1.8rem;
+    display: block;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+    
+#label_pasword {
+   margin-top: 20px;
+}
+    
+.form_right_content_btn {
+    margin: 20px auto -20px;
+    color: #fff;
+    background-color: #2BAC27;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
+/* pc responsive */
+@media (min-width: 1113px) {
+    .home_form {
+        background: none;
+    }
+    .form_left_content {
+        background-color: #fafcfe;
+        cursor: default;
+    }
+        
+        
+    .form_left_content_header {
+        background-image: linear-gradient(45deg, rgba(8, 89, 198, 0.8), rgba( 12, 113, 224, 0.8)), url("https://static.ladipage.net/60483b9d9064d900205accc6/ef94b9-20210323080723.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        padding-top: 20px;
+    }
+        
+    .form_left_content_header_label {
+        text-align: center;
+        font-size: 4rem;
+        margin-left: 20px;
+    }
+        
+    .form_left_content_header_slogun {
+        display: block;
+        text-align: center;
+        font-size: 1.8rem;
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+        
+        /* form right  */
+        
+    .form_right_content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        padding: 40px;
+        background: none;
+    }
+        
+    .form_right_content_header {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+        cursor: default;
+    }
+        
+    .form_right_content_header_heading {
+        font-size: 3rem;
+        font-weight: 900;
+        margin-bottom: 10px;
+        color: #202020;
+    }
+        
+    .form_right_content_header_link {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 50px;
+        color: #303030;
+    }
+        
+    .form_right_content_form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        padding-left: 100px;
+    }
+        
+        
+        
+    .content_form_contain_input {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        min-width: 320px;
+        height: 55px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+        
+    .form_input {
+        height: 100%;
+        width: 300px;
+        border: none;
+        border-radius: 3px;
+        padding: 20px 5px;
+    }
+        
+    .form_input:focus {
+        outline: none;
+    }
+        
+    .form_input_label {
+        display: block;
+        font-size: 1.6rem;
+    }
+        
+    #label_pasword {
+        margin-top: 10px;
+    }
+        
+        
+    .content_form_contain_input i {
+        font-size: 1.4rem;
+        margin-left: -10px;
+    }
+        
+    .form_right_content_btn {
+        color: #ccc;
+        margin-top: 20px;
+        margin: 20px 0 0 0;
+        border: 1px solid rgba(0,0,0,0);
+        border-radius: 10px;
+        background-color: #397ef6;
+        width: 80%;
+        height: 37px;
+        cursor: pointer;
+        padding: 0;
+    }
+}
+
+
+
+
