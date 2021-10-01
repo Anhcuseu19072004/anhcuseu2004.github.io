@@ -11,6 +11,6 @@ B1 : tải xampp
       
 B2 : vào thư mục chứa dự án "web_django3_env/Scripts/" mở cmd tại thư mục này rồi chạy lệnh activate.bat
   * Lưu ý là không được tắt cửa sổ cmd sau khi chạy file activate.bat và dùng của sổ đó để di chuyển đến thư mục như Hướng dẫn ở B3
-  * 
 B3 : di chuyển đến thư mục "forum_student" bên trong có file "manage.py" 
-B4 : lúc này server đã được bật màn hình console xẽ thông báo url truy cập url để vào dự án
+B4 : sau khi di chuyển đến thư mục forum_student (bên trong thư mục forum_studient luôn). chạy lệnh python manage.py runserver
+- lúc này server dã được chạy web đã lên truy cập vào web theo HOST server trả về
