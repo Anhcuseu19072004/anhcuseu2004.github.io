@@ -1,0 +1,137 @@
+{% extends "home/base_layout.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-7">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%} {{post.title}} {%endblock%}</title>
+</head>
+<body>
+    <!-- extends from -->  
+
+
+{% block content %}
+<div class="post_detail_layout">
+    <div class="post_detail_layout_container grid">
+        <div class="post_detail_layout_container_content row">
+            <div class="detail_layout_container_content_item col lg-3 md-2 sm-12 xs-12">
+                <!-- detail post info auth -->
+                <div class="post_detail_content_info">
+                    <span class="post_detail_content_info_auth">
+                        <i>
+                            {{post.user_of_post}}
+                        </i>
+                        
+                    </span>
+                    <div class="post_detail_content_info_reaction">
+                        <div class="post_detail_content_info_reaction_view">
+                            <i class="far fa-eye"></i>
+                            200
+                        </div>
+                        <div class="post_detail_content_info_reaction_comment">
+                            <i class="far fa-comment"></i>
+                            78
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- main content -->
+            <div class="detail_layout_container_content_item col lg-6 md-2 sm-12 xs-12">
+                <div id = "{{post.pk}}" class="post_detail_content_container">
+                    <div class="post_detail_content_title">
+                        <span class="post_detail_content_title_text">
+                            {{post.title}}
+                        </span>
+                    </div>
+                    {{post.content | safe}}
+                </div>
+            </div>
+            <!-- box comment -->
+            <div class="detail_layout_container_content_item col lg-3 md-2 sm-12 xs-12">
+                <div class="post_detail_content_box-comment">
+                    <ul class="post_detail_content_box-comment_list">
+                        {% for comments in list_cmt%}
+                        <li class="content_box-comment_list_item">
+                            <div class="comment_list_item_box">
+                                <div class="comment_list_item_box_auth">
+                                    <img src="https://i.pinimg.com/564x/6e/cc/81/6ecc81137e04155243449a4e231dc771.jpg" alt="" class="comment_list_item_box_auth_img">
+                                    <span class="comment_list_item_box_auth_name">{{comments.responders}}</span>
+                                </div>
+                                <div class="comment_list_item_box_text">
+                                    {{comments.content}}
+                                </div>
+                                <div class="comment_list_item_box_time">
+                                    {{comments.reply_time}}
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="post_detail_content_form-cmt">
+                        <div class="post_detail_content_form-cmt_box-input">
+                            <textarea name="content_cmt" id="textarea_cmt" cols="30" rows="5" class="form-cmt_box-input_content"></textarea>
+                            <button onclick="submitCmt()" class="form-cmt_box-input_submit">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+
+{% block overlay %}
+<div class="overlay grid">
+    <div class="overlay_container row">
+        <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+            <div class="overlay_container_tabs_user">
+                <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                <span class="overlay_container_tabs_user_name">
+                    {{user.account_name}}
+                </span>
+            </div>
+
+            <div class="overlay_container_tabs_options">
+                <ul class="overlay_container_tabs_options_list">
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="http://127.0.0.1:8000/" class="overlay_container_tabs_options_list_item_link">
+                            Về Trang Chủ
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Bài Viết Của Tôi
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Câu Hỏi Của Tôi
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Chỉnh Sửa Thông Tin
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Đăng Xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div onclick="hidenUserBarForm()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'home/js/post_detail.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>

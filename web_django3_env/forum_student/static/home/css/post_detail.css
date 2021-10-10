@@ -1,0 +1,190 @@
+@media (min-width: 1200px) {
+    /* pc - content info */
+    .post_detail_content_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 80px;
+    }
+
+    /* pc - content info */
+    .post_detail_content_info_auth {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: #1a1a1a;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    /* pc - content info */
+    .post_detail_content_info_auth::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: -10%;
+        right: -10%;
+        height: 2px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    /* pc - content info */
+    .post_detail_content_info_reaction {
+        width: 120px;
+    }
+
+    /* pc - content info */
+    .post_detail_content_info_reaction_view {
+        font-size: 1.4rem;
+        color: #575757;
+        margin-bottom: 6px;
+    }
+
+    .post_detail_content_info_reaction_view i {
+        margin-right: 8px;
+    }
+
+    /* pc - content info */
+    .post_detail_content_info_reaction_comment {
+        font-size: 1.4rem;
+        color: #575757;
+    }
+
+    /* pc - content info */
+    .post_detail_content_info_reaction_comment i {
+        margin-right: 8px;
+    }
+    /* pc - content container */
+    .post_detail_content_container {
+        height: 88vh;
+        overflow-y: auto;
+    }
+
+    /* pc - content container title */
+    .post_detail_content_title {
+        font-size: 3.6rem;
+        font-weight: 900;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    /* pc - content container title */
+    .post_detail_content_title::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #ffe4c4;
+    }
+
+    /* pc - content box comment */
+    .post_detail_content_box-comment {
+        padding: 12px 0 12px 8px;
+        height: 88vh;
+    }
+
+    /* pc - content box comment */
+    .post_detail_content_box-comment_list {
+        list-style: none;
+        height: 80%;
+        overflow-y: auto;
+    }
+
+    /* pc - content box comment */
+    .content_box-comment_list_item {
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    /* pc - content box comment */
+    .comment_list_item_box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* pc - content box comment */
+    .comment_list_item_box_auth {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+
+    }
+
+    /* pc - content box comment */
+    .comment_list_item_box_auth_img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    /* pc - content box comment */
+    .comment_list_item_box_auth_name {
+        max-width: 250px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 1.4rem;
+        color: #1a1a1a;
+    }
+
+    /* pc - content box comment */
+    .comment_list_item_box_text {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #1a1a1a;
+    }
+
+    /* pc - content box comment */
+    .comment_list_item_box_time {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #1a1a1a;
+        margin-top: 6px;
+    }
+
+
+    /* pc - comment form */
+    .post_detail_content_form-cmt {
+        border-top: 1px solid #ffe4c4;
+        padding-top: 12px;
+    }
+    /* pc - comment form */
+    .post_detail_content_form-cmt_box-input {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    /* pc - comment form textarea*/
+    .form-cmt_box-input_content {
+        border-radius: 16px;
+        outline: none;
+        padding: 6px;
+    }
+
+     /* pc - comment form */
+     .form-cmt_box-input_content:focus-within {
+        border: 1px solid #f05123 !important;
+    }
+
+    /* pc - comment form submit */
+    .form-cmt_box-input_submit {
+        border: none;
+        margin-left: 12px;
+        padding: 4px 12px;
+        border-radius: 4px;
+        background-color: #f58844;
+        color: #fff;
+    }
+
+    /* pc - comment form submit */
+    .form-cmt_box-input_submit:hover {
+        filter: brightness(90%);
+        cursor: pointer;
+    }
+}

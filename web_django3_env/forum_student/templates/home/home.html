@@ -1,0 +1,428 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'images/logo.ico'%}">
+
+    <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+    <link rel="stylesheet" href="{%static 'home/css/grid2.css'%}">
+    <link rel="stylesheet" href="{% static 'home/css/main.css'%}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'home/font/icon/css/all.css' %}">
+    <script type="text/javascript" src="{% static 'home/ckeditor/ckeditor.js' %}"></script>
+    <title>Trang Chủ</title>
+</head>
+<body>
+    <div class="myapp">
+        <div class="home">
+            <!-- 
+                ///////////////////////////////////////
+                ////////////// NAV BAR ////////////////
+                ///////////////////////////////////////
+             -->
+            <div class="navbar grid">
+                <!-- start code navbar -->
+                <div class="navbar_content row">
+                    <!-- navbar logo -->
+                    <div class="navbar_content_item col lg-4 md-4 sm-0 xs-0">
+                        <div class="navbar_content_item_logo">
+                            <span class="navbar_content_item_logo_heading">LuongSon</span>
+                            <span class="navbar_content_item_logo_slogun">Học - Học Nữa , Học Mãi</span>
+                        </div>
+                    </div>
+                    <!-- navbar menu mobile and tablet -->
+                    <div class="navbar_content_item col lg-0 md-0 sm-3 xs-6">
+                        <div class="navbar_content_item_icon">
+                            <i class="fas fa-bars" onclick="showNavbarTabsMobile()"></i>
+                        </div>
+                    </div>
+                    <!-- navbar search -->
+                    <div class="navbar_content_item col lg-4 md-4 sm-6 xs-0">
+                        <div class="navbar_content_item_search">
+                            <form action="" class="navbar_content_item_search_box">
+                                <input type="text" class="navbar_content_item_search_box_field" name = 'search' placeholder="nhập để tìm kiếm">
+                                <button class="navbar_content_item_search_box_btn">Tìm Kiếm</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- navbar user -->
+                    <div class="navbar_content_item col lg-4 md-4 sm-3 xs-0">
+                        <div class="navbar_content_item_user">
+                            <div class="navbar_content_item_user_notice">
+                                <div class="navbar_content_item_user_notice_icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                            </div>
+                            {% if info_user.user_img == ""%}
+                            <div class="navbar_content_item_user_avatar" onclick="showUserList()">
+                                <ul class="navbar_content_item_user_avatar_list">
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="post-form/">Tạo Bài Viết</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Đặt Câu Hỏi</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Bài Viết Của Tôi</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Câu hỏi Của Tôi</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Đăng Xuât</a></li>
+                                </ul>
+                            </div>
+                            {%endif%}
+
+                            {% if info_user.user_img != ""%}
+                            <div class="navbar_content_item_user_avatar" onclick="showUserList()">
+                                <ul class="navbar_content_item_user_avatar_list">
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="post-form/">Tạo Bài Viết</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Đặt Câu Hỏi</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Bài Viết Của Tôi</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Câu hỏi Của Tôi</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Đăng Xuât</a></li>
+                                </ul>
+                            </div>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <!-- navbar search mobile and tablet -->
+                    <div class="navbar_content_item col lg-0 md-0 sm-0 xs-6">
+                        <div class="navbar_content_item_search">
+                            <div class="navbar_content_item_search_icon" onfocusout = "hidenSearchForm()">
+                                <i class="fas fa-search"  onclick="showSearchForm()"></i>
+                                <form action="" class="navbar_content_item_search_icon_form">
+                                    <input type="text" class="navbar_content_item_search_icon_form_field">
+                                    <button class="navbar_content_item_search_icon_form_btn"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="navbar_content_item_search_notive">
+                                <div class="navbar_content_item_search_notive_icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 
+                ///////////////////////////////////////
+                ////////////// CONTAINER //////////////
+                ///////////////////////////////////////
+             -->
+            <div class="container grid">
+                <div class="container_content row">
+                    <!-- 
+                        //////////////SIDE BAR////////////
+                        //////////////////////////////////
+                     -->
+                    <div class="container_content_item col lg-1 md-1 sm-0 xs-0">
+                        <div class="container_content_item__sidebar_tab">
+                            <ul class="sidebar_tab_list">
+                                <li class="sidebar_tab_list_item">
+                                    <button class="sidebar_tab_list_item_btn selected btn" onclick="changeScreenDisplay(this, 'home')">
+                                        Home
+                                        <i class="fas fa-home"></i>
+                                    </button>
+                                </li>
+                                <li class="sidebar_tab_list_item">
+                                    <button class="sidebar_tab_list_item_btn btn" onclick="changeScreenDisplay(this, 'posts')">
+                                        Bài Viết
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </li>
+                                <li class="sidebar_tab_list_item">
+                                    <button class="sidebar_tab_list_item_btn btn" onclick="changeScreenDisplay(this, 'questions')">
+                                        Câu Hỏi
+                                        <i class="fas fa-question"></i>
+                                    </button>
+                                </li>
+                                <li class="sidebar_tab_list_item">
+                                    <button class="sidebar_tab_list_item_btn btn" onclick="changeScreenDisplay(this, 'home')">
+                                        Quizi
+                                        <i class="fas fa-award"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 
+                        //////SIDE BAR CONTENT////
+                        //////////////////////////
+                     -->
+                    <div class="container_content_item col lg-11 md-11 sm-12 xs-12">
+                        <!-- 
+                            /////////// HOME ////////////
+                         -->
+                        <div id="home" class="container_content_item_sidebar_content">
+                            <div class="sidebar_content_home grid">
+                                <div class="sidebar_content_home_heading">
+                                    <h3>Bài Viết Nổi Bật</h3>
+                                </div>
+                                <div class="sidebar_content_home_populor-post row">
+                                    <!-- <div class="sidebar_content_home_populor-post_item col lg-3 md-3 sm-4 xs-12">
+                                        <a href="#" class="home_populor-post_item_link">
+                                            <div class="home_populor-post_item_link_img" style="background-image: url('https://i.pinimg.com/736x/82/22/01/82220183bd2237b3025465b6962ef08a.jpg');"></div>
+                                            <h4 class="home_populor-post_item_link_heading">
+                                                Ngất ngây với cosplay D.Va cực dễ thương được thực hiện bởi hot girl Yurisa
+                                            </h4>
+                                            <div class="home_populor-post_item_link_box-auth">
+                                                <span class="home_populor-post_item_link_box-auth_name">
+                                                    <img src="https://i.pinimg.com/736x/82/22/01/82220183bd2237b3025465b6962ef08a.jpg" alt="" class="home_populor-post_item_link_box-auth_name_img">
+                                                    Lê Trung Kiên
+                                                </span>
+                                                <span class="home_populor-post_item_link_box-auth_time-post">21/9/2021</span>
+                                            </div>
+                                        </a>
+                                    </div> -->
+
+                                    {%for i in list_post%}
+                                        <div class="sidebar_content_home_populor-post_item col lg-4 md-4 sm-6 xs-12">
+                                            <a href="/view-more/{{i.pk}}" class="home_populor-post_item_link">
+                                                <div class="home_populor-post_item_link_img" style="background-image: url('{{i.post_img}}');"></div>
+                                                <h4 class="home_populor-post_item_link_heading">
+                                                    {{i.title}}
+                                                </h4>
+                                                <div class="home_populor-post_item_link_box-auth">
+                                                    <span class="home_populor-post_item_link_box-auth_name">
+                                                        {% if i.user_of_post.user_img == ""%}
+                                                        <img src="{%static 'images/userdefault.png'%}" alt="" class="home_populor-post_item_link_box-auth_name_img">
+                                                        {%endif%}
+
+                                                        {% if i.user_of_post.user_img != ""%}
+                                                        <img src="{{i.user_of_post.user_img}}" alt="" class="home_populor-post_item_link_box-auth_name_img">
+                                                        {%endif%}
+                                                        
+                                                        <span class="home_populor-post_item_link_box-auth_name_user">
+                                                            {{i.user_of_post}}
+                                                        </span>
+                                                        
+                                                    </span>
+                                                    <span class="home_populor-post_item_link_box-auth_time-post">
+                                                        {{i.post_time}}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 
+                            //////// POSTS //////////
+                         -->
+                        <div id="posts" class="container_content_item_sidebar_content">
+                            <div class="sidebar_content_post grid">
+                                <!-- categori -->
+                                <div class="content_post_categori grid">
+                                    <form action="#" class="content_post_categori_chooselist row">
+                                        <div class="categori_chooselist_box col lg-6 md-6 sm-6 xs-12">
+                                            <label for="subject" class="categori_chooselist_label">Lĩnh Vực</label>
+                                            <select name="subject" id="select_subject" class="categori_chooselist_select">
+                                                <option value="all">Tất Cả</option>
+                                                <option value="math">Toán Học</option>
+                                                <option value="it">Tin Học</option>
+                                                <option value="physics">Vật Lý</option>
+                                                <option value="chemistry">Hóa Học</option>
+                                                <option value="geography">Địa</option>
+                                                <option value="literature">Văn Học</option>
+                                                <option value="civic">Công Dân</option>
+                                                <option value="physical">Giáo Dục Thể Chất</option>
+                                            </select>
+                                        </div>
+                                        <div class="categori_chooselist_box col lg-6 md-6 sm-6 xs-12">
+                                            <label for="time" class="categori_chooselist_label">Thời Gian</label>
+                                            <select name="time" id="select_time" class="categori_chooselist_select">
+                                                <option value="just_new">Mới Nhất</option>
+                                                <option value="populor">Nhiều Người Quan Tâm</option>
+                                            </select>
+                                        </div>
+                                        <button class="categori_chooselist_btn">Lọc</button>
+                                    </form>
+                                </div>
+                                <!-- list post -->
+                                <div class="content_post_layout grid">
+                                    <div class="content_post_layout_list row">
+                                        <!-- <div class="content_post_layout_list_item col lg-3 md-4 sm-6 xs-12">
+                                            <a href="#" class="content_post_layout_list_item_link">
+                                                <div class="content_post_layout_list_item_link_img" ></div>
+                                                <h3 class="content_post_layout_list_item_link_heading">
+                                                    Dàn nhân vật nữ cực xinh trong quyến tư lượng
+                                                    Dàn nhân vật nữ cực xinh trong quyến tư lượng
+                                                    Dàn nhân vật nữ cực xinh trong quyến tư lượng
+                                                    Dàn nhân vật nữ cực xinh trong quyến tư lượng
+                                                </h3>
+                                                <div class="content_post_layout_list_item_link_auth">
+                                                    <img src="https://i.pinimg.com/564x/0c/c6/c1/0cc6c1de36c10b2ae3ef5e8c74bff388.jpg" alt="" class="content_post_layout_list_item_link_auth_avatar">
+                                                    <span class="content_post_layout_list_item_link_auth_name">Phụng Miên</span>
+                                                    <span class="content_post_layout_list_item_link_auth_time">26/9/2021</span>
+                                                    <div class="content_post_layout_list_item_link_auth_actions">
+                                                        <i class="fas fa-thumbtack"></i>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div> -->
+                                        
+                                        {% for post in list_post%}
+                                        <div class="content_post_layout_list_item col lg-4 md-4 sm-6 xs-12">
+                                            <a href="/view-more/{{post.pk}}" class="content_post_layout_list_item_link">
+                                                <div class="content_post_layout_list_item_link_img" style="background-image: url({{post.post_img}});"></div>
+                                                <h3 class="content_post_layout_list_item_link_heading">
+                                                    {{post.title}}
+                                                </h3>
+                                                <div class="content_post_layout_list_item_link_auth">
+
+                                                    {% if post.user_of_post.user_img == "" %}
+                                                    <img src="{%static 'images/userdefault.png'%}" alt="" class="content_post_layout_list_item_link_auth_avatar">
+                                                    {% endif %}
+
+                                                    {% if post.user_of_post.user_img != "" %}
+                                                    <img src="{{post.user_of_post.user_img}}" alt="" class="content_post_layout_list_item_link_auth_avatar">
+                                                    {% endif %}
+
+                                                    <span class="content_post_layout_list_item_link_auth_name">
+                                                        {{post.user_of_post}}
+                                                    </span>
+                                                    <span class="content_post_layout_list_item_link_auth_time">
+                                                        {{post.post_time}}
+                                                    </span>
+                                                    <div class="content_post_layout_list_item_link_auth_actions">
+                                                        <i class="fas fa-thumbtack"></i>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        {%endfor%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 
+                            /////// QUESTIONS ///////
+                         -->
+                        <div id="questions" class="container_content_item_sidebar_content">
+                            <div class="sidebar_content_question grid">
+                                <div class="sidebar_content_question_listquestions row">
+                                    <!-- <div class="sidebar_content_question_listquestions_item col lg-6 md-12 sm-12 xs-12">
+                                        <a href="#" class="sidebar_content_question_listquestions_item_link">
+                                            <div class="question_listquestions_item_link_content">
+                                                <span class="question_listquestions_item_link_content_text">
+                                                    mình mới học python đến phần import module package mình không hiểu mọi người giúp mình với ạ
+                                                </span>
+                                                <div class="question_listquestions_item_link_content_auth">
+                                                    <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="question_listquestions_item_link_content_auth_avatar">
+                                                    <span class="question_listquestions_item_link_content_auth_name">Vân Chi</span>
+                                                    <span class="question_listquestions_item_link_content_auth_time">2021/9/27</span>
+                                                    <div class="question_listquestions_item_link_content_auth_actions">
+                                                        <i class="fas fa-thumbtack"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div> -->
+                                    {%for question in list_question%}
+                                    <div class="sidebar_content_question_listquestions_item col lg-6 md-12 sm-12 xs-12">
+                                        <a href="#" class="sidebar_content_question_listquestions_item_link">
+                                            <div class="question_listquestions_item_link_content">
+                                                <span class="question_listquestions_item_link_content_text">
+                                                    {{question.question_content}}
+                                                </span>
+                                                <div class="question_listquestions_item_link_content_auth">
+                                                    {% if question.user_of_question.user_img == "" %}
+                                                    <img src="{%static 'images/userdefault.png'%}" alt="" class="question_listquestions_item_link_content_auth_avatar">
+                                                    {% endif %}
+                                                    {% if question.user_of_question.user_img != "" %}
+                                                    <img src="{{question.user_of_question.user_img}}" alt="" class="question_listquestions_item_link_content_auth_avatar">
+                                                    {% endif %}
+                                                    
+                                                    <span class="question_listquestions_item_link_content_auth_name">
+                                                        {{question.user_of_question}}
+                                                    </span>
+                                                    <span class="question_listquestions_item_link_content_auth_time">
+                                                        {{question.question_time}}
+                                                    </span>
+                                                    <div class="question_listquestions_item_link_content_auth_actions">
+                                                        <i class="fas fa-thumbtack"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- box actions mobile -->
+            <div class="home_box-actions">
+                <ul class="home_box-actions_list">
+                    <li class="home_box-actions_list_item">
+                        <a href="http://127.0.0.1:8000/post-form/">Tạo bài viết</a>
+                    </li>
+                    <li class="home_box-actions_list_item">
+                        <a href="#">Tạo tạo câu hỏi</a>
+                    </li>
+                    <li class="home_box-actions_list_item">
+                        <a href="#">câu hỏi của tôi</a>
+                    </li>
+                    <li class="home_box-actions_list_item">
+                        <a href="#">bài viết của tôi</a>
+                    </li>
+                </ul>
+                <div onclick="showListBoxActions()" class="home_box-actions_icon">
+                    <i class="fas fa-angle-up "></i>
+                </div>
+                
+            </div>
+        </div>
+        <!-- overlay -->
+        <div class="navbar_response">
+            <div class="menu_mobile grid">
+                <div class="menu_mobile_content row">
+                    <div class="menu-overlay col lg-0 md-0 sm-12 xs-12">
+                        <div class="menu-overlay_layout grid">
+                            <div class="overlay_layout_tabs row">
+                                <div class="overlay_layout_tabs_item overlay_layout_tabs_item_sidebar-tabs col sm-8 xs-10">
+                                    <div class="overlay_layout_tabs_item_user">
+                                        {%if info_user.user_img == ""%}
+                                        <img src="{%static 'images/userdefault.png'%}" alt="" class="overlay_layout_tabs_item_user_avatar">
+                                        {%endif%}
+
+                                        {%if info_user.user_img != ""%}
+                                        <img src="{{info_user.user_img}}" alt="" class="overlay_layout_tabs_item_user_avatar">
+                                        {%endif%}
+                                        <span class="overlay_layout_tabs_item_user_name">{{info_user.account_name}}</span>
+                                    </div>
+                                    <div class="overlay_layout_tabs_item_options">
+                                        <ul class="overlay_layout_tabs_item_options_list">
+                                            <li class="overlay_layout_tabs_item_options_list_item selected" onclick="changeScreenDisplay(this, 'home')">
+                                                <button class="overlay_layout_tabs_item_options_list_item_btn btn">Trang Chủ</button>
+                                            </li>
+                                            <li class="overlay_layout_tabs_item_options_list_item" onclick="changeScreenDisplay(this, 'posts')">
+                                                <button class="overlay_layout_tabs_item_options_list_item_btn btn">Bài Viết</button>
+                                            </li>
+                                            <li class="overlay_layout_tabs_item_options_list_item" onclick="changeScreenDisplay(this, 'questions')">
+                                                <button class="overlay_layout_tabs_item_options_list_item_btn btn">Câu Hỏi</button>
+                                            </li>
+                                            <li class="overlay_layout_tabs_item_options_list_item" onclick="changeScreenDisplay(this, 'home')">
+                                                <button class="overlay_layout_tabs_item_options_list_item_btn btn">Quizi</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div style="height: 100%;" class="overlay_layout_tabs_item col sm-4 xs-2" onclick="hideNavbarTabsMobile()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+    <script src="{%static 'home/js/main.js'%}"></script>
+</body>
+</html>

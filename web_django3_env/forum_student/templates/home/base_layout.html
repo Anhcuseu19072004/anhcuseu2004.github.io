@@ -1,0 +1,95 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {%endblock%}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'images/logo.ico'%}">
+
+    <!-- COMMON STATIC -->
+    <link rel="stylesheet" href="{% static 'home/css/grid2.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/post_form.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/common.css'%}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'home/font/icon/css/all.css' %}">
+
+    <!-- POST DETAIL CSS -->
+    <link rel="stylesheet" href="{% static 'home/css/post_detail.css'%}">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="app-post-form_nav row">
+        <!-- navbar pc and big tablet - logo and previous button -->
+        <div class="app-post-form_nav_item app-post-form_nav_item_navbar-pc col lg-6 md-6 sm-0 xs-0">
+            <div class="form_nav_item_navbar-pc_logo">
+                <a href="http://127.0.0.1:8000/" class="form_nav_item_navbar-pc_logo_heading">
+                    LuongSon
+                </a>
+                <div onclick="javascrip:window.history.back();" class="form_nav_item_navbar-pc_logo_previous">
+                    <i class="fas fa-angle-left"></i>
+                    QUAY LẠI
+                </div>
+            </div>
+        </div>
+        <!-- navbar mobile - icon and button open overlay -->
+        <div class="app-post-form_nav_item app-post-form_nav_item_navbar-mobile col lg-0 md-0 sm-6 xs-6">
+            <div class="form_nav_item_navbar-mobile_btn">
+                <i onclick="showUserBarForm()" class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <!-- navbar all help and actions -->
+        <div class="app-post-form_nav_item app-post-form_nav_item_actions lg-3 md-3 sm-6 xs-6">
+            <div class="app-post-form_nav_item_actions_options">
+                <div class="app-post-form_nav_item_actions_options_notice">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="app-post-form_nav_item_actions_options_help">
+                    <a href="#" class="app-post-form_nav_item_actions_options_help_link">
+                        Trợ Giúp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- navbar pc and big tablet - user -->
+        <div class="app-post-form_nav_item app-post-form_nav_item_user col lg-3 md-3 sm-0 xs-0">
+            <div class="app-post-form_nav_item_user_box">
+                <img onclick="showUserBar()" width="50px" src="https://i.pinimg.com/564x/6e/cc/81/6ecc81137e04155243449a4e231dc771.jpg" alt="" class="form_nav_item_user_box_avatar">
+                <ul class="form_nav_item_user_box_list">
+                    <li class="form_nav_item_user_box_list_item">
+                        <a href="#" class="form_nav_item_user_box_list_item_link">Bài Viết Của Tôi</a>
+                    </li>
+                    <li class="form_nav_item_user_box_list_item">
+                        <a href="#" class="form_nav_item_user_box_list_item_link">Câu Hỏi Của Tôi</a>
+                    </li>
+                    <li class="form_nav_item_user_box_list_item">
+                        <a href="#" class="form_nav_item_user_box_list_item_link">Chỉnh Sửa Thông Tin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="base_layout_content">
+        {% block content %} {%endblock%}
+    </div>
+
+
+
+
+    
+    {% block overlay%}
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
+</body>
+</html>

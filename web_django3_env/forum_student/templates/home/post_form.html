@@ -1,0 +1,214 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{%static 'images/logo.ico'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'home/css/grid2.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/post_form.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/common.css'%}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src='https://cdn.tiny.cloud/1/o6hbru5ewe3benh783jzgrk2trdoxufjs26zsb7ef3dhaoyr/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+    </script>
+    <link rel="stylesheet" href="{% static 'home/font/icon/css/all.css' %}">
+    <title>Tạo Bài Viết</title>
+</head>
+<body>
+    <div class="myapp">
+        <div class="app-post-form grid">
+            <!-- navbar -->
+            <nav class="app-post-form_nav row">
+                <!-- navbar pc and big tablet - logo and previous button -->
+                <div class="app-post-form_nav_item app-post-form_nav_item_navbar-pc col lg-6 md-6 sm-0 xs-0">
+                    <div class="form_nav_item_navbar-pc_logo">
+                        <a href="http://127.0.0.1:8000/" class="form_nav_item_navbar-pc_logo_heading">
+                            LuongSon
+                        </a>
+                        <div onclick="javascrip:window.history.back();" class="form_nav_item_navbar-pc_logo_previous">
+                            <i class="fas fa-angle-left"></i>
+                            QUAY LẠI
+                        </div>
+                    </div>
+                </div>
+                <!-- navbar mobile - icon and button open overlay -->
+                <div class="app-post-form_nav_item app-post-form_nav_item_navbar-mobile col lg-0 md-0 sm-6 xs-6">
+                    <div class="form_nav_item_navbar-mobile_btn">
+                        <i onclick="showUserBarForm()" class="fas fa-bars"></i>
+                    </div>
+                </div>
+
+                <!-- navbar all help and actions -->
+                <div class="app-post-form_nav_item app-post-form_nav_item_actions lg-3 md-3 sm-6 xs-6">
+                    <div class="app-post-form_nav_item_actions_options">
+                        <div class="app-post-form_nav_item_actions_options_notice">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="app-post-form_nav_item_actions_options_help">
+                            <a href="#" class="app-post-form_nav_item_actions_options_help_link">
+                                Trợ Giúp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- navbar pc and big tablet - user -->
+                <div class="app-post-form_nav_item app-post-form_nav_item_user col lg-3 md-3 sm-0 xs-0">
+                    <div class="app-post-form_nav_item_user_box">
+                        <img onclick="showUserBar()" width="50px" src="https://i.pinimg.com/564x/6e/cc/81/6ecc81137e04155243449a4e231dc771.jpg" alt="" class="form_nav_item_user_box_avatar">
+                        <ul class="form_nav_item_user_box_list">
+                            <li class="form_nav_item_user_box_list_item">
+                                <a href="#" class="form_nav_item_user_box_list_item_link">Bài Viết Của Tôi</a>
+                            </li>
+                            <li class="form_nav_item_user_box_list_item">
+                                <a href="#" class="form_nav_item_user_box_list_item_link">Câu Hỏi Của Tôi</a>
+                            </li>
+                            <li class="form_nav_item_user_box_list_item">
+                                <a href="#" class="form_nav_item_user_box_list_item_link">Chỉnh Sửa Thông Tin</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- post form -->
+            <div class="app-post-form_form row">
+                <div class="app-post-form_form_field app-post-form_form_field-header col lg-12 md-12 sm-12 xs-12">
+                    <input name="title" id="title" type="text" class="form_form_field_title" placeholder="Tiêu Đề (bắt buộc)">
+                </div>
+
+                <div class="app-post-form_form_field app-post-form_form_field-file col lg-12 md-12 sm-12 xs-12">
+                    <label for="file" class="form_form_field-file_label">
+                        chọn ảnh đại diện (bắt buộc) :
+                    </label>
+                    <input class="form_form_field-file_img" name="file" id="file" type="file" accept="image/*" capture>
+                </div>
+                
+                <div class="app-post-form_form_field app-post-form_form_field-text-content col lg-12 md-12 sm-12 xs-12">
+                    <textarea name="textarea" id="textarea" class="app-post-form_form_field_content">
+                        viết bài ở đây
+                    </textarea>
+                    <div class="app-post-form_form_field_actions">
+                        <!-- allow submit:  able -->
+                        <button id="submit" class="form_form_field_actions_submit">
+                            <span class="form_form_field_actions_submit_message">
+                                Xuất Bản
+                            </span>
+                            <i style="display: none;" class="fas fa-spinner fa-spin"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- overlay mobile -->
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        Lê Trung Kiên
+                    </span>
+                </div>
+
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="http://127.0.0.1:8000/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Bài Viết Của Tôi
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Câu Hỏi Của Tôi
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Chỉnh Sửa Thông Tin
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenUserBarForm()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    <script src="{% static 'home/js/common.js'%}"></script>
+    <script src="{%static 'home/js/post_form.js'%}"></script>
+    <!-- init text edited -->
+    <script>
+        tinymce.init({
+        selector: 'textarea',
+        plugins: 'image code a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+        toolbar: 'undo redo | link image | code |a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mobile: {
+            menubar: true
+        },
+        image_title: true,
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        file_picker_callback: function (cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            /*
+                Note: In modern browsers input[type="file"] is functional without
+                even adding it to the DOM, but that might not be the case in some older
+                or quirky browsers like IE, so you might want to add it to the DOM
+                just in case, and visually hide it. And do not forget do remove it
+                once you do not need it anymore.
+            */
+
+            input.onchange = function () {
+            var file = this.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function () {
+            /*
+                Note: Now we need to register the blob in TinyMCEs image blob
+                registry. In the next release this part hopefully won't be
+                necessary, as we are looking to handle it internally.
+            */
+            var id = 'blobid' + (new Date()).getTime();
+            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+            var base64 = reader.result.split(',')[1];
+            var blobInfo = blobCache.create(id, file, base64);
+            blobCache.add(blobInfo);
+
+            /* call the callback and populate the Title field with the file name */
+            cb(blobInfo.blobUri(), { title: file.name });
+            };
+            reader.readAsDataURL(file);
+    };
+
+    input.click();
+  },
+
+       });
+      </script>
+</body>
+</html>

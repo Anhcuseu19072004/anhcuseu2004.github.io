@@ -1,0 +1,56 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'form/css/login.css' %}">
+    <link rel="stylesheet" href="{%static 'form/css/grid2.css'%}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'form/font/icon/css/all.css' %}">
+    <title>Đăng Ký Tài Khoản</title>
+</head>
+<body>
+    <div class="myapp">
+        <div class="login_app grid">
+            <div class="login_app_form row">
+                <div class="login_app_form_login col xs-12 sm-12 md-12 lg-12">
+                    <div class="login_app_background">
+                        <div class="login_app_background_content">
+                            <h1 class="app_background_content_heading">
+                                Đăng Nhập Vào LuongSon
+                            </h1>
+                            <form action="login" class="app_background_content_form" method="POST">
+                                {% csrf_token %}
+                                <label for="nickname" class="app_background_content_form_label">Tài Khoản</label>
+                                <div class="app_background_content_form_box_input">
+                                    <input onfocus="removeMessage()" type="email" class="box_input_field" name = 'nickname'>
+                                    <i class="box_input_icon_account fas fa-user-alt"></i>
+                                </div>
+                                <span class="app_background_content_form_message"></span>
+                                <label for="password" class="app_background_content_form_label">Mật Khẩu</label>
+                                <div class="app_background_content_form_box_input">
+                                    <input type="password" class="box_input_field pass" name = 'password'>
+                                    <i onclick="showPassword()" class="box_input_icon_pass fas fa-eye"></i>
+                                </div>
+                                <button class="app_background_content_form_btn">Đăng Nhập</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'form/js/login.js'%}"></script>
+    <script>
+        showMessage({{message}})
+    </script>
+    <!-- show message call funtion showMessage(messageContent) -->
+</body>
+</html>

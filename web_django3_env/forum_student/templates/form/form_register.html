@@ -1,0 +1,75 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'form/css/register.css' %}">
+    <link rel="stylesheet" href="{%static 'form/css/grid.css'%}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'form/font/icon/css/all.css' %}">
+    <title>Đăng Ký Tài Khoản</title>
+</head>
+<body>
+    <div class="myapp grid wide">
+        <div class="home_form row">
+            <div class="form_left col l-6 m-0 c-0">
+                <div class="form_left_content">
+                    <div class="form_left_content_header">
+                        <h1 class="form_left_content_header_label">
+                            LuongSon
+                        </h1>
+                        <span class="form_left_content_header_slogun">
+                            Cùng tham gia diễn đàn học tập số 1 việt nam <br> & <br> phát triển bản thân nhé
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form_right col l-6 m-12 c-12">
+                <div class="form_right_content">
+                    <div class="form_right_content_header">
+                        <h1 class="form_right_content_header_heading">
+                            Đăng Ký Tài Khoản
+                        </h1>
+                        <h3 class="form_right_content_header_link">
+                            Bạn Đã Có Tài Khoản?
+                            <a href="http://127.0.0.1:8000/login" class="form_right_content_header_link_click">Đăng Nhập</a>
+                        </h3>
+                    </div>
+                    <form action="create-user" class="form_right_content_form" method="POST">
+                        {% csrf_token %}
+                        <label class="form_input_label" for="account">Tài Khoản</label>
+                        <div class="content_form_contain_input">
+                            <input class="form_input form_right_content_form_account" type="email" name = 'account'>
+                        </div>
+                        <label id = 'label_pasword' class="form_input_label" for="password">Mật Khẩu</label>
+                        <div class="content_form_contain_input">
+                            <input class="form_input form_right_content_form_password" type="password" name = 'password' placeholder="ít nhất 8 ký tự">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <button type="submit" class="form_right_content_btn">đăng ký</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if acc_exist == 3 %}
+    <script>
+        function myFunction() {
+            alert('tai khoan da ton tai')
+        }
+
+        myFunction()
+    </script>
+
+    {%endif%}
+</body>
+</html>
