@@ -38,7 +38,7 @@
                 </div>
             </div>
             <!-- main content -->
-            <div class="detail_layout_container_content_item col lg-6 md-2 sm-12 xs-12">
+            <div class="detail_layout_container_content_item col lg-6 md-10 sm-12 xs-12">
                 <div id = "{{post.pk}}" class="post_detail_content_container">
                     <div class="post_detail_content_title">
                         <span class="post_detail_content_title_text">
@@ -49,8 +49,11 @@
                 </div>
             </div>
             <!-- box comment -->
-            <div class="detail_layout_container_content_item col lg-3 md-2 sm-12 xs-12">
+            <div class="detail_layout_container_content_item col lg-3 md-12 sm-12 xs-12">
                 <div class="post_detail_content_box-comment">
+                    <h3 class="post_detail_content_box-comment_heading">
+                        Thảo Luận
+                    </h3>
                     <ul class="post_detail_content_box-comment_list">
                         {% for comments in list_cmt%}
                         <li class="content_box-comment_list_item">
@@ -124,7 +127,7 @@
                 </ul>
             </div>
         </div>
-        <div onclick="hidenUserBarForm()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
     </div>
 </div>
 {% endblock %}

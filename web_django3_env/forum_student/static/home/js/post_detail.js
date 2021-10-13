@@ -74,3 +74,13 @@ function submitCmt() {
         }
     })
 }
+
+function showTabs() {
+    let elmTabs = document.querySelector('.overlay')
+    elmTabs.style.display = 'block'
+}
+
+function hidenTabs() {
+    let elmTabs = document.querySelector('.overlay')
+    elmTabs.style.display = 'none'
+}
