@@ -20,11 +20,11 @@ from form import url as form_url
 from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.conf import settings
-import tinymce
+# import tinymce
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(home_url)),
-    path('tinymce/', include('tinymce.urls')),
+    # path('tinymce/', include('tinymce.urls')),
     path('', include(form_url)),
 ]
 

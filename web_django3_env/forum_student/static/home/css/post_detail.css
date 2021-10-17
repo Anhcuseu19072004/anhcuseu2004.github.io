@@ -362,11 +362,13 @@
 
     /* lt - content container title */
     .post_detail_content_title {
+        width: 679px;
         font-size: 3.6rem;
         font-weight: 900;
         color: #1a1a1a;
         margin-bottom: 20px;
         position: relative;
+        overflow: auto;
     }
 
     /* lt - content container title */
@@ -555,11 +557,13 @@
 
     /* pc - content container title */
     .post_detail_content_title {
+        width: 679px;
         font-size: 3.6rem;
         font-weight: 900;
         color: #1a1a1a;
         margin-bottom: 20px;
         position: relative;
+        overflow: auto;
     }
 
     /* pc - content container title */

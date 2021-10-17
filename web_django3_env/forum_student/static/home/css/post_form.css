@@ -344,6 +344,7 @@
         border-radius: 4px;
         animation: show linear 0.3s;
         z-index: 1;
+        background-color: var(--navbar-color);
     }
 
     /* lt nav - user */

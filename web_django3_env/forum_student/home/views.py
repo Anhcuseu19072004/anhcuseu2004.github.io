@@ -14,16 +14,6 @@ from home.luongson import saveImg
 
 
 """ FODER MEDIA CHỨA ẢNH"""
-def post_form(request):
-    user_info = request.COOKIES.get('user', None)
-    if user_info == None:
-        return redirect('http://127.0.0.1:8000/')
-    else:
-        user = User.objects.get(account_name = user_info)
-        data = {
-            'user' : user
-        }
-    return render(request, 'home/post_form.html', data)
 
 @csrf_exempt
 def addPost(request):
@@ -65,7 +55,7 @@ def home_page(request):
         print(request.COOKIES['user'])
         user_cookie = request.COOKIES['user']
     info_user     = User.objects.get(account_name = user_cookie) 
-    list_post     = Post.objects.all()
+    list_post     = Post.objects.all().order_by('-post_views')
     list_question = Question.objects.all()
 
     return render(request, 'home/home.html',{
@@ -117,10 +107,39 @@ def get_detail_post(request, id):
         return redirect('register')
     user = User.objects.get(account_name = user_info)
     post = Post.objects.get(pk = id)
+    post.post_views += 1
+    post.save()
     list_cmt = Comment.objects.filter(post_id = id).order_by('-reply_time')
+    count_cmt = len(list_cmt)
     data = {
         'post' : post,
         'user' : user,
-        'list_cmt' : list_cmt
+        'list_cmt' : list_cmt,
+        'count_cmt' : count_cmt
     }
     return render(request, 'home/post_detail.html',data)
+
+# view post form
+def post_form(request):
+    user_info = request.COOKIES.get('user', None)
+    if user_info == None:
+        return redirect('http://127.0.0.1:8000/')
+    else:
+        user = User.objects.get(account_name = user_info)
+        data = {
+            'user' : user
+        }
+    return render(request, 'home/post_form.html', data)
+
+# views post form
+
+def question_form(request):
+    user_info = request.COOKIES.get('user', None)
+    if user_info is None:
+        return redirect('register')
+    user = User.objects.get(pk = user_info)
+    data = {
+        'user' : user
+    }
+
+    return render(request, 'home/question_form.html', data)

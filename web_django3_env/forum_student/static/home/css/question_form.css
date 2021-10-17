@@ -1,0 +1,47 @@
+@media (min-width: 1200px) {
+    /* pc - layout */
+    .question_form_layout {
+        padding-top: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    /* pc - fied title and type */
+    .box-form_heading {
+        height: 80px;
+        font-size: 1.8rem;
+        margin-bottom: 24px;
+    }
+
+    /* pc - title field */
+    .box-form_heading_title {
+        width: 80%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 4px 8px;
+        color: #616161;
+        font-size: 3rem;
+        margin-bottom: 12px;
+    }
+
+    /* pc - title field */
+    .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* pc - box submit */
+    .box-form_content_submit {
+        position: fixed;
+        bottom: 5%;
+        right: 2%;
+    }
+
+    /* pc - box submit */
+    .box-form_content_submit_btn {
+        padding: 8px 40px;
+        background-color: #f58844;
+        color: #fff;
+        border: none;
+        font-size: 1.6rem;
+    }
+    
+}

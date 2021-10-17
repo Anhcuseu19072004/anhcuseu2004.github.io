@@ -8,11 +8,13 @@ class Post(models.Model):
     content      = HTMLField() # model contein HTML
     post_time    = models.DateField(auto_now = True)
     post_img     = models.TextField()
-
+    post_views   = models.IntegerField(default = 0)
     def __str__(self):
         return self.title
 class Question(models.Model):
-    question_content   = models.TextField()
+    question_title     = models.CharField(max_length = 300)
+    question_content   = HTMLField()
+    question_img       = models.TextField()
     question_time      = models.DateField(auto_now = True)
     user_of_question   = models.ForeignKey(User, on_delete = models.CASCADE)
     def __str__(self):

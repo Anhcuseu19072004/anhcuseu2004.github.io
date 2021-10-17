@@ -8,7 +8,8 @@ import re
 
 
 # GLOBAL VARIABLE LuongSon
-LS_VERSION = ('v1.0.2','10/4/2021')
+LS_LAST_UPDATE      = ('v1.0.2', '4/10/2021')
+LS_CURRENT_VERSION  = ('v1.0.8','17/10/2021')
 
 def id_generator(size=12, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
