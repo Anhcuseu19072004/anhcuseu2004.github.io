@@ -1,3 +1,227 @@
+@media (max-width: 373px) {
+    /* small phone - layout */
+    .question_form_layout {
+        padding-top: 4px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    /* small phone - fied title and type */
+    .box-form_heading {
+        height: 80px;
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+    }
+
+    /* small phone - title field */
+    .box-form_heading_title {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 4px 8px;
+        color: #616161;
+        font-size: 2.4rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* small phone - title field */
+    .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* small phone - fied type */
+    .box-form_heading_type {
+        width: 200px;
+    }
+
+    /* small phone - box submit */
+    .box-form_content_submit {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+
+    /* small phone - box submit */
+    .box-form_content_submit_btn {
+        padding: 8px 40px;
+        background-color: #f58844;
+        color: #fff;
+        border: none;
+        font-size: 1.6rem;
+    }
+    
+}
+
+@media (min-width: 374px) {
+    /* medium phone - layout */
+    .question_form_layout {
+        padding-top: 8px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    /* medium phone - fied title and type */
+    .box-form_heading {
+        height: 80px;
+        font-size: 1.6rem;
+        margin-bottom: 24px;
+    }
+
+    /* medium phone - title field */
+    .box-form_heading_title {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 4px 8px;
+        color: #616161;
+        font-size: 3rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* medium phone - title field */
+    .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* small phone - fied type */
+    .box-form_heading_type {
+        width: 200px;
+    }
+
+    /* medium phone - box submit */
+    .box-form_content_submit {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+
+    /* medium phone - box submit */
+    .box-form_content_submit_btn {
+        padding: 8px 40px;
+        background-color: #f58844;
+        color: #fff;
+        border: none;
+        font-size: 1.6rem;
+    }
+    
+}
+
+
+@media (min-width: 768px) {
+    /* mt - layout */
+    .question_form_layout {
+        padding-top: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    /* mt - fied title and type */
+    .box-form_heading {
+        height: 80px;
+        font-size: 1.8rem;
+        margin-bottom: 24px;
+    }
+
+    /* mt - title field */
+    .box-form_heading_title {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 4px 8px;
+        color: #616161;
+        font-size: 3rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* mt - title field */
+    .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* small phone - fied type */
+    .box-form_heading_type {
+        width: 200px;
+    }
+
+    /* mt - box submit */
+    .box-form_content_submit {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+
+    /* mt - box submit */
+    .box-form_content_submit_btn {
+        padding: 8px 40px;
+        background-color: #f58844;
+        color: #fff;
+        border: none;
+        font-size: 1.6rem;
+    }
+    
+}
+@media (min-width: 992px) {
+    /* lt - layout */
+    .question_form_layout {
+        padding-top: 12px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    /* lt - fied title and type */
+    .box-form_heading {
+        height: 80px;
+        font-size: 1.8rem;
+        margin-bottom: 24px;
+    }
+
+    /* lt - title field */
+    .box-form_heading_title {
+        display: block;
+        width: 80%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 4px 8px;
+        color: #616161;
+        font-size: 3rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* lt - title field */
+    .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* small phone - fied type */
+    .box-form_heading_type {
+        width: 200px;
+    }
+    /* lt - box submit */
+    .box-form_content_submit {
+        position: fixed;
+        bottom: 5%;
+        right: 2%;
+    }
+
+    /* lt - box submit */
+    .box-form_content_submit_btn {
+        padding: 8px 40px;
+        background-color: #f58844;
+        color: #fff;
+        border: none;
+        font-size: 1.6rem;
+    }
+    
+
+}
+
 @media (min-width: 1200px) {
     /* pc - layout */
     .question_form_layout {
@@ -11,16 +235,19 @@
         font-size: 1.8rem;
         margin-bottom: 24px;
     }
-
+    
     /* pc - title field */
     .box-form_heading_title {
+        display: block;
         width: 80%;
         outline: none;
         border: 1px solid #757575;
-        padding: 4px 8px;
+        padding: 12px 16px;
         color: #616161;
         font-size: 3rem;
         margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
     }
 
     /* pc - title field */
@@ -28,6 +255,10 @@
         border: 1px solid #f05123;
     }
 
+    /* small phone - fied type */
+    .box-form_heading_type {
+        width: 200px;
+    }
     /* pc - box submit */
     .box-form_content_submit {
         position: fixed;

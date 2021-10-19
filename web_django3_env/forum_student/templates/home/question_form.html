@@ -20,14 +20,11 @@
 {% block content %}
 <div class="question_form_layout grid">
     <div class="question_form_layout_container row">
-        <div class="box-form col lg-12 md-3 sm-12 xs-12">
+        <div class="box-form col lg-12 md-12 sm-12 xs-12">
             <div class="box-form_heading">
-                <div class="box-form_heading_title" contenteditable="true">
-                    Tiêu Đề
-                </div>
-                
+                <input type='text' class="box-form_heading_title" placeholder = "Tiêu đề">                
                 <label for="type" class="box-form_heading_label">Lĩnh Vực</label>
-                <select name="type" id="box_type">
+                <select name="type" class="box-form_heading_type">
                     <option value="all">Tất Cả</option>
                     <option value="math">Toán</option>
                     <option value="chemmistry">Hóa Học</option>
@@ -38,13 +35,13 @@
             </div>
         </div>
 
-        <div class="box-form col lg-12 md-6 sm-12 xs-12">
+        <div class="box-form col lg-12 md-12 sm-12 xs-12">
             <div class="box-form_content">
                 <textarea name="textarea" id="textarea" cols="30" rows="10" class="box-form_content_text">
                     điền thắc mắc của bạn tại đây 
                 </textarea>
                 <div class="box-form_content_submit">
-                    <button class="box-form_content_submit_btn">Xong</button>
+                    <button class="box-form_content_submit_btn" onclick = 'submit()'>Xong</button>
                 </div>
             </div>
         </div>

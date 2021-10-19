@@ -14,29 +14,7 @@ from home.luongson import saveImg
 
 
 """ FODER MEDIA CHỨA ẢNH"""
-
-@csrf_exempt
-def addPost(request):
-    if request.method == 'POST':
-        try:
-
-            body = json.loads(request.body)
-            my_content = body['content_']
-            my_title = body['title_']
-            my_img   = body['file_']
-            name_img = body['name_file_']
-            name_img = name_img.replace(' ', "-")
-            my_img   = saveImg(my_img, name_img).replace('\\', "/")
-            user_info = request.COOKIES.get('user', None)
-            user = User.objects.get(account_name = user_info)
-
-            new_post = Post(user_of_post = user, title = my_title, content = my_content, post_img = my_img)
-            new_post.save()
-
-            return JsonResponse({"message": 'thành công', 'status': 'OK'}, safe = False)
-        except Exception as e:
-            return JsonResponse({'message': str(e), 'status': 'BAD'})
-        
+    
 
 def getPost(request):
     if request.COOKIES.get('user', None) == None:
@@ -143,3 +121,54 @@ def question_form(request):
     }
 
     return render(request, 'home/question_form.html', data)
+
+# ======     API    ======
+@csrf_exempt
+def addPost(request):
+    if request.method == 'POST':
+        try:
+
+            body = json.loads(request.body)
+            my_content = body['content_']
+            my_title = body['title_']
+            my_img   = body['file_']
+            name_img = body['name_file_']
+            name_img = name_img.replace(' ', "-")
+            my_img   = saveImg(my_img, name_img).replace('\\', "/")
+            user_info = request.COOKIES.get('user', None)
+            user = User.objects.get(account_name = user_info)
+
+            new_post = Post(user_of_post = user, title = my_title, content = my_content, post_img = my_img)
+            new_post.save()
+
+            return JsonResponse({"message": 'thành công', 'status': 'OK'}, safe = False)
+        except Exception as e:
+            return JsonResponse({'message': str(e), 'status': 'BAD'})
+
+@csrf_exempt
+def add_question(request):
+    if request.method == "POST":
+        try:
+
+            body       = json.loads(request.body)
+            my_title   = body['title']
+            my_content = body['content'] 
+
+            user_info  = request.COOKIES.get('user', None)
+
+            if user_info is None:
+                return JsonResponse({
+                    'message' : 'user is not define',
+                    'status'  : 'BAD'
+                })
+            user = User.objects.get(pk = user_info)
+            new_question = Question(question_title = my_title, question_content = my_content, user_of_question = user)
+            new_question.save()
+
+            return JsonResponse({
+                'message' : 'succecfully',
+                'status'  : 'OK'
+            })
+        except Exception as e:
+            print(e, ' hehe')
+    
