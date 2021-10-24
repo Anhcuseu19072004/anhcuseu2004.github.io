@@ -150,25 +150,41 @@ def add_question(request):
     if request.method == "POST":
         try:
 
-            body       = json.loads(request.body)
-            my_title   = body['title']
-            my_content = body['content'] 
+            body           = json.loads(request.body)
+            my_title       = body['title']
+            my_content     = body['content']
+            my_discription = body['discription']
+            my_tag         = body['tag'] 
 
             user_info  = request.COOKIES.get('user', None)
-
             if user_info is None:
                 return JsonResponse({
                     'message' : 'user is not define',
                     'status'  : 'BAD'
                 })
+            
             user = User.objects.get(pk = user_info)
-            new_question = Question(question_title = my_title, question_content = my_content, user_of_question = user)
+
+            if my_tag != 'none':
+                post     = Post.objects.get(pk = int(my_tag))
+                my_title = "Câu hỏi của {} về bài viết : \" {} \"".format(user, post)
+                new_question = Question(question_title = my_title, question_discription = my_discription, question_content = my_content, post_of_question = my_tag, user_of_question = user)
+                new_question.save()
+                return JsonResponse({
+                    'message' : 'successfuly',
+                    'status'  : 'OK'
+                })
+            new_question = Question(question_title = my_title, question_discription = my_discription, question_content = my_content, post_of_question = my_tag, user_of_question = user)
             new_question.save()
 
+            print(new_question)
             return JsonResponse({
-                'message' : 'succecfully',
+                'message' : '{}'.format(new_question),
                 'status'  : 'OK'
             })
         except Exception as e:
-            print(e, ' hehe')
+            return JsonResponse({
+                    'message' : '{}'.format(e),
+                    'status'  : 'BAD'
+                })
     

@@ -18,22 +18,25 @@ async function postData(data, url) {
 }
 
 function submit() {
-    let elmTitle   = document.querySelector('.box-form_heading_title')
-    let myContent  = tinymce.get("textarea").getContent();
-    let elmSubject = document.querySelector('.box-form_heading_type')
-    let elmUser    = document.querySelector('.overlay_container_tabs_user_name')
-    if (elmTitle.innerHTML != "") {
+    let elmTitle       = document.querySelector('.box-form_heading_title')
+    let myContent      = tinymce.get("textarea").getContent();
+    let elmSubject     = document.querySelector('.box-form_heading_type')
+    let elmUser        = document.querySelector('.overlay_container_tabs_user_name')
+    let elmDiscription = document.querySelector('.box-form_heading_discription')
+    if (elmTitle.value != "") {
         data = {
-            content : myContent,
-            title   : elmTitle.innerHTML,
-            type    : elmSubject.value
+            content     : myContent,
+            title       : elmTitle.value,
+            type        : elmSubject.value,
+            discription : elmDiscription.value,
+            tag         : 'none'
         }
 
         postData(data, "http://127.0.0.1:8000/add-question/")
         .then(function(response) {
             console.log(response) 
             let elmBtn = document.querySelector('.box-form_content_submit_btn')
-            elmBtn.innerHTML = 'Thành Công'
+            elmBtn.innerHTML = response['message']
             return response
         })
     }
@@ -43,16 +46,19 @@ function submit() {
         let titleHaveBeenEdited = 'Câu hỏi của ' + elmUser.textContent.trim() + ' về ' + `${elmSubject.value}`
 
         data = {
-            content : myContent,
-            title   : titleHaveBeenEdited,
-            type    : elmSubject.value
+            content     : myContent,
+            title       : titleHaveBeenEdited,
+            type        : elmSubject.value,
+            discription : elmDiscription.innerHTML,
+            tag         : 'none'
         }
 
+        console.log(data)
         postData(data, "http://127.0.0.1:8000/add-question/")
         .then(function(response) {
             console.log(response) 
             let elmBtn = document.querySelector('.box-form_content_submit_btn')
-            elmBtn.innerHTML = 'Thành Công'
+            elmBtn.innerHTML = response['message']
 
             return response
         })

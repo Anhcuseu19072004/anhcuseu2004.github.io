@@ -38,3 +38,5 @@ if defined _OLD_VIRTUAL_PATH goto ENDIFVPATH2
 :ENDIFVPATH2
 
 set "PATH=%VIRTUAL_ENV%\Scripts;%PATH%"
+
+if %1 == 1 (luongson.bat 1) else (luongson.bat 0)

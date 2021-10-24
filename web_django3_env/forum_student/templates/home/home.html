@@ -290,6 +290,11 @@
                                                         <i class="fas fa-thumbtack"></i>
                                                     </div>
                                                 </div>
+                                                <div class="content_post_layout_list_item_link_view-discuss">
+                                                    <a href="#" class="item_link_view-discuss_link">
+                                                        xem các thảo luận về bài viết này
+                                                    </a>
+                                                </div>
                                             </a>
                                         </div>
                                         {%endfor%}
@@ -303,52 +308,91 @@
                         <div id="questions" class="container_content_item_sidebar_content">
                             <div class="sidebar_content_question grid">
                                 <div class="sidebar_content_question_listquestions row">
+
+                                    <!-- base item -->
                                     <!-- <div class="sidebar_content_question_listquestions_item col lg-6 md-12 sm-12 xs-12">
                                         <a href="#" class="sidebar_content_question_listquestions_item_link">
-                                            <div class="question_listquestions_item_link_content">
-                                                <span class="question_listquestions_item_link_content_text">
-                                                    mình mới học python đến phần import module package mình không hiểu mọi người giúp mình với ạ
-                                                </span>
-                                                <div class="question_listquestions_item_link_content_auth">
-                                                    <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="question_listquestions_item_link_content_auth_avatar">
-                                                    <span class="question_listquestions_item_link_content_auth_name">Vân Chi</span>
-                                                    <span class="question_listquestions_item_link_content_auth_time">2021/9/27</span>
-                                                    <div class="question_listquestions_item_link_content_auth_actions">
-                                                        <i class="fas fa-thumbtack"></i>
+                                            <div class="question_listquestions_item_link_title">
+                                                <p class="question_listquestions_item_link_title_text">
+                                                    Ai thấy giao diện mới của web anh Sơn hiện đại tối giản dơ tay nào?!
+                                                    Ai thấy giao diện mới của web anh Sơn hiện đại tối giản dơ tay nào?!
+                                                    Ai thấy giao diện mới của web anh Sơn hiện đại tối giản dơ tay nào?!
+                                                    Ai thấy giao diện mới của web anh Sơn hiện đại tối giản dơ tay nào?!
+                                                </p>
+                                            </div>
+
+                                            <div class="question_listquestions_item_link_mid">
+                                                <div class="question_listquestions_item_link_mid_auth">
+                                                    <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="question_listquestions_item_link_mid_auth_avatar">
+                                                    <span class="question_listquestions_item_link_mid_auth_name">Le Trung Kien</span>
+                                                </div>
+
+                                                <div class="question_listquestions_item_link_mid_info">
+                                                    <div class="question_listquestions_item_link_mid_info_time">
+                                                        <span class="question_listquestions_item_link_mid_info_time_text">
+                                                            21/10/2021
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="question_listquestions_item_link_mid_info_views">
+                                                        <i class="fas fa-comment"></i>
+                                                        100
                                                     </div>
                                                 </div>
+                                                
+                                            </div>
+
+                                            <div class="question_listquestions_item_link_discription">
+                                                <p class="question_listquestions_item_link_discription_text">
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                    Ai thấy giao diện mới của web anh Sơn vừa hiện đại vừa tối giản dơ tay
+                                                </p>
                                             </div>
                                         </a>
                                     </div> -->
-                                    {%for question in list_question%}
-                                    <div class="sidebar_content_question_listquestions_item col lg-6 md-12 sm-12 xs-12">
+                                    {% for question in list_question %}
+                                    <div class="sidebar_content_question_listquestions_item col lg-12 md-12 sm-12 xs-12">
                                         <a href="#" class="sidebar_content_question_listquestions_item_link">
-                                            <div class="question_listquestions_item_link_content">
-                                                <span class="question_listquestions_item_link_content_text">
+                                            <div class="question_listquestions_item_link_title">
+                                                <p class="question_listquestions_item_link_title_text">
                                                     {{question.question_title}}
-                                                </span>
-                                                <div class="question_listquestions_item_link_content_auth">
-                                                    {% if question.user_of_question.user_img == "" %}
-                                                    <img src="{%static 'images/userdefault.png'%}" alt="" class="question_listquestions_item_link_content_auth_avatar">
-                                                    {% endif %}
-                                                    {% if question.user_of_question.user_img != "" %}
-                                                    <img src="{{question.user_of_question.user_img}}" alt="" class="question_listquestions_item_link_content_auth_avatar">
-                                                    {% endif %}
-                                                    
-                                                    <span class="question_listquestions_item_link_content_auth_name">
-                                                        {{question.user_of_question}}
-                                                    </span>
-                                                    <span class="question_listquestions_item_link_content_auth_time">
-                                                        {{question.question_time}}
-                                                    </span>
-                                                    <div class="question_listquestions_item_link_content_auth_actions">
-                                                        <i class="fas fa-thumbtack"></i>
+                                                </p>
+                                            </div>
+
+                                            <div class="question_listquestions_item_link_mid">
+                                                <div class="question_listquestions_item_link_mid_auth">
+                                                    <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="question_listquestions_item_link_mid_auth_avatar">
+                                                    <span class="question_listquestions_item_link_mid_auth_name">{{question.user_of_question}}</span>
+                                                </div>
+
+                                                <div class="question_listquestions_item_link_mid_info">
+                                                    <div class="question_listquestions_item_link_mid_info_time">
+                                                        <span class="question_listquestions_item_link_mid_info_time_text">
+                                                            {{question.question_time}}
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="question_listquestions_item_link_mid_info_views">
+                                                        <i class="fas fa-comment"></i>
+                                                        100
                                                     </div>
                                                 </div>
+                                                
+                                            </div>
+
+                                            <div class="question_listquestions_item_link_discription">
+                                                <p class="question_listquestions_item_link_discription_text">
+                                                    {{question.question_discription}}
+                                                </p>
                                             </div>
                                         </a>
                                     </div>
-                                    {%endfor%}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>

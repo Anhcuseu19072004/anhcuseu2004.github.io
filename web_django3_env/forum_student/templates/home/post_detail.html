@@ -77,6 +77,10 @@
                         {% endfor %}
                     </ul>
                     <div class="post_detail_content_form-cmt">
+                        <div class="post_detail_content_form-cmt_check-box">
+                            <input type="checkbox" name="check_allow"  class="form-cmt_check-box_input">
+                            <label for="check_allow" class="form-cmt_check-box_label">Tạo câu hỏi với comment này</label>
+                        </div>
                         <div class="post_detail_content_form-cmt_box-input">
                             <textarea name="content_cmt" id="textarea_cmt" cols="30" rows="5" class="form-cmt_box-input_content"></textarea>
                             <button onclick="submitCmt()" class="form-cmt_box-input_submit">Gửi</button>

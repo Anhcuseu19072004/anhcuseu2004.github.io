@@ -9,7 +9,7 @@
     .box-form_heading {
         height: 80px;
         font-size: 1.6rem;
-        margin-bottom: 24px;
+        margin-bottom: 60px;
     }
 
     /* small phone - title field */
@@ -28,6 +28,25 @@
 
     /* small phone - title field */
     .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* small phone - discripttion field */
+    .box-form_heading_discription {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 12px 16px;
+        color: #616161;
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* small phone - title field */
+    .box-form_heading_discription:focus-within {
         border: 1px solid #f05123;
     }
 
@@ -65,7 +84,7 @@
     .box-form_heading {
         height: 80px;
         font-size: 1.6rem;
-        margin-bottom: 24px;
+        margin-bottom: 80px;
     }
 
     /* medium phone - title field */
@@ -84,6 +103,25 @@
 
     /* medium phone - title field */
     .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* medium phone - discripttion field */
+    .box-form_heading_discription {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 12px 16px;
+        color: #616161;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* medium phone - title field */
+    .box-form_heading_discription:focus-within {
         border: 1px solid #f05123;
     }
 
@@ -122,7 +160,7 @@
     .box-form_heading {
         height: 80px;
         font-size: 1.8rem;
-        margin-bottom: 24px;
+        margin-bottom: 100px;
     }
 
     /* mt - title field */
@@ -141,6 +179,25 @@
 
     /* mt - title field */
     .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* mt - discripttion field */
+    .box-form_heading_discription {
+        display: block;
+        width: 100%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 12px 16px;
+        color: #616161;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* mt - title field */
+    .box-form_heading_discription:focus-within {
         border: 1px solid #f05123;
     }
 
@@ -177,7 +234,7 @@
     .box-form_heading {
         height: 80px;
         font-size: 1.8rem;
-        margin-bottom: 24px;
+        margin-bottom: 100px;
     }
 
     /* lt - title field */
@@ -196,6 +253,25 @@
 
     /* lt - title field */
     .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* lt - discripttion field */
+    .box-form_heading_discription {
+        display: block;
+        width: 80%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 12px 16px;
+        color: #616161;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* lt - title field */
+    .box-form_heading_discription:focus-within {
         border: 1px solid #f05123;
     }
 
@@ -233,7 +309,7 @@
     .box-form_heading {
         height: 80px;
         font-size: 1.8rem;
-        margin-bottom: 24px;
+        margin-bottom: 80px;
     }
     
     /* pc - title field */
@@ -252,6 +328,25 @@
 
     /* pc - title field */
     .box-form_heading_title:focus-within {
+        border: 1px solid #f05123;
+    }
+
+    /* pc - discripttion field */
+    .box-form_heading_discription {
+        display: block;
+        width: 80%;
+        outline: none;
+        border: 1px solid #757575;
+        padding: 12px 16px;
+        color: #616161;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        max-height: 47px;
+        overflow-y:auto;
+    }
+
+    /* pc - title field */
+    .box-form_heading_discription:focus-within {
         border: 1px solid #f05123;
     }
 

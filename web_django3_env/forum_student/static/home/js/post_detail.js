@@ -22,56 +22,128 @@ async function postData(data, url) {
 // ========= form comment in post detail
 function submitCmt() {
     let elmContentCmt = document.getElementById('textarea_cmt')
-    let idPost = document.querySelector('.post_detail_content_container')
-    const data_ = {
-        contentCmt : elmContentCmt.value,
-        id : idPost.id
-    }
-    postData(data_, url = 'http://127.0.0.1:8000/create-cmt/')
-    .then(function(response) {
-        console.log(response)
-        if (response['status'] == 1) {
-            let elmListCmt = document.querySelector('.post_detail_content_box-comment_list')
-            let elmContentCmt = document.getElementById('textarea_cmt')
+    let idPost        = document.querySelector('.post_detail_content_container')
+    let elmCheckBox   = document.querySelector('.form-cmt_check-box_input')
 
-            let newNodeCmt = document.createElement('li') // node item
-            newNodeCmt.classList.add('content_box-comment_list_item')
+    if (elmCheckBox.checked) {
+        const dataForCmt = {
+            contentCmt : elmContentCmt.value,
+            id : idPost.id
+        }
+        
+        const dataForQuestion = {
+            title       : `LuongSon - grourp IT`,
+            content     : elmContentCmt.value,
+            discription : elmContentCmt.value,
+            tag         : idPost.id,
+            type        : 'all'
+        }
 
-            let newNodeBox = document.createElement('div') // node container
-            newNodeBox.classList.add('comment_list_item_box')
+        postData(dataForQuestion, url = "http://127.0.0.1:8000/add-question/")
+            .then(function(response) {
+                console.log(`Question status ${response['message']}`)
+            })
+        postData(dataForCmt, url = 'http://127.0.0.1:8000/create-cmt/')
+            .then(function(response) {
+                console.log(response)
+                if (response['status'] == 1) {
+                    let elmListCmt = document.querySelector('.post_detail_content_box-comment_list')
+                    let elmContentCmt = document.getElementById('textarea_cmt')
 
-            let newNodeBoxAuth = document.createElement('div') // node box auther
-            newNodeBoxAuth.classList.add('comment_list_item_box_auth')
+                    let newNodeCmt = document.createElement('li') // node item
+                    newNodeCmt.classList.add('content_box-comment_list_item')
 
-            let newNodeImg = document.createElement('img') // node img in box auth
-            newNodeImg.src = 'https://i.pinimg.com/564x/6e/cc/81/6ecc81137e04155243449a4e231dc771.jpg'
-            newNodeImg.classList.add('comment_list_item_box_auth_img')
+                    let newNodeBox = document.createElement('div') // node container
+                    newNodeBox.classList.add('comment_list_item_box')
 
-            let newNodeName = document.createElement('span') // node name auth in box auth
-            newNodeName.classList.add('comment_list_item_box_auth_name')
-            newNodeName.innerHTML = 'Bạn'
+                    let newNodeBoxAuth = document.createElement('div') // node box auther
+                    newNodeBoxAuth.classList.add('comment_list_item_box_auth')
 
-            // insert node img and node text into box auther
-            newNodeBoxAuth.appendChild(newNodeImg)
-            newNodeBoxAuth.appendChild(newNodeName)
+                    let newNodeImg = document.createElement('img') // node img in box auth
+                    newNodeImg.src = 'https://i.pinimg.com/564x/6e/cc/81/6ecc81137e04155243449a4e231dc771.jpg'
+                    newNodeImg.classList.add('comment_list_item_box_auth_img')
 
-            let newNodeContentOfCmt = document.createElement('div') // node content cmt in tag li
-            newNodeContentOfCmt.classList.add('comment_list_item_box_text')
-            newNodeContentOfCmt.innerHTML = elmContentCmt.value
+                    let newNodeName = document.createElement('span') // node name auth in box auth
+                    newNodeName.classList.add('comment_list_item_box_auth_name')
+                    newNodeName.innerHTML = 'Bạn'
 
-            let newNodeTime = document.createElement('div') // node time in tag li
-            newNodeTime.classList.add('comment_list_item_box_time')
-            newNodeTime.innerHTML = "Vừa Xong"
+                    // insert node img and node text into box auther
+                    newNodeBoxAuth.appendChild(newNodeImg)
+                    newNodeBoxAuth.appendChild(newNodeName)
 
-            newNodeBox.appendChild(newNodeBoxAuth)
-            newNodeBox.appendChild(newNodeContentOfCmt)
-            newNodeBox.appendChild(newNodeTime)
+                    let newNodeContentOfCmt = document.createElement('div') // node content cmt in tag li
+                    newNodeContentOfCmt.classList.add('comment_list_item_box_text')
+                    newNodeContentOfCmt.innerHTML = elmContentCmt.value
 
-            newNodeCmt.appendChild(newNodeBox)
-            elmListCmt.appendChild(newNodeCmt)
-            elmContentCmt.value = ""
+                    let newNodeTime = document.createElement('div') // node time in tag li
+                    newNodeTime.classList.add('comment_list_item_box_time')
+                    newNodeTime.innerHTML = "Vừa Xong"
+
+                    newNodeBox.appendChild(newNodeBoxAuth)
+                    newNodeBox.appendChild(newNodeContentOfCmt)
+                    newNodeBox.appendChild(newNodeTime)
+
+                    newNodeCmt.appendChild(newNodeBox)
+                    elmListCmt.appendChild(newNodeCmt)
+                    elmContentCmt.value = ""
             
         }
     })
+    }
+
+
+    else {
+        const data_ = {
+            contentCmt : elmContentCmt.value,
+            id : idPost.id
+        }
+        postData(data_, url = 'http://127.0.0.1:8000/create-cmt/')
+        .then(function(response) {
+            console.log(response)
+            if (response['status'] == 1) {
+                let elmListCmt = document.querySelector('.post_detail_content_box-comment_list')
+                let elmContentCmt = document.getElementById('textarea_cmt')
+    
+                let newNodeCmt = document.createElement('li') // node item
+                newNodeCmt.classList.add('content_box-comment_list_item')
+    
+                let newNodeBox = document.createElement('div') // node container
+                newNodeBox.classList.add('comment_list_item_box')
+    
+                let newNodeBoxAuth = document.createElement('div') // node box auther
+                newNodeBoxAuth.classList.add('comment_list_item_box_auth')
+    
+                let newNodeImg = document.createElement('img') // node img in box auth
+                newNodeImg.src = 'https://i.pinimg.com/564x/6e/cc/81/6ecc81137e04155243449a4e231dc771.jpg'
+                newNodeImg.classList.add('comment_list_item_box_auth_img')
+    
+                let newNodeName = document.createElement('span') // node name auth in box auth
+                newNodeName.classList.add('comment_list_item_box_auth_name')
+                newNodeName.innerHTML = 'Bạn'
+    
+                // insert node img and node text into box auther
+                newNodeBoxAuth.appendChild(newNodeImg)
+                newNodeBoxAuth.appendChild(newNodeName)
+    
+                let newNodeContentOfCmt = document.createElement('div') // node content cmt in tag li
+                newNodeContentOfCmt.classList.add('comment_list_item_box_text')
+                newNodeContentOfCmt.innerHTML = elmContentCmt.value
+    
+                let newNodeTime = document.createElement('div') // node time in tag li
+                newNodeTime.classList.add('comment_list_item_box_time')
+                newNodeTime.innerHTML = "Vừa Xong"
+    
+                newNodeBox.appendChild(newNodeBoxAuth)
+                newNodeBox.appendChild(newNodeContentOfCmt)
+                newNodeBox.appendChild(newNodeTime)
+    
+                newNodeCmt.appendChild(newNodeBox)
+                elmListCmt.appendChild(newNodeCmt)
+                elmContentCmt.value = ""
+                
+            }
+        })
+
+    }
 }
 

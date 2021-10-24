@@ -11,13 +11,17 @@ class Post(models.Model):
     post_views   = models.IntegerField(default = 0)
     def __str__(self):
         return self.title
+
 class Question(models.Model):
-    question_title     = models.CharField(max_length = 300)
-    question_content   = HTMLField()
-    question_time      = models.DateField(auto_now = True)
-    user_of_question   = models.ForeignKey(User, on_delete = models.CASCADE)
+    question_title       = models.CharField(max_length = 500)
+    question_discription = models.CharField(max_length = 1000)
+    question_content     = HTMLField()
+    question_time        = models.DateField(auto_now = True)
+    user_of_question     = models.ForeignKey(User, on_delete = models.CASCADE)
+    post_of_question     = models.CharField( max_length = 20, default = "none")
     def __str__(self):
-        return self.question_content
+        return self.question_title
+
 class Comment(models.Model):
     post_id      = models.ForeignKey(Post, on_delete = models.CASCADE)
     content      = models.TextField()
