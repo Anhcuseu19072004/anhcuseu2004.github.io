@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.db import connection
-from home.models import Post, Question, Comment
+from home.models import Post, Question, Comment, Answer
 from form.models import User
 from django.shortcuts import render, redirect
 import json
@@ -16,16 +16,19 @@ from home.luongson import saveImg
 """ FODER MEDIA CHỨA ẢNH"""
     
 
-def getPost(request):
-    if request.COOKIES.get('user', None) == None:
-        return redirect('register')
-    if request.method == 'GET':
-        all_pro = Post.objects.all()
-        data = serializers.serialize('json', all_pro, fields=('title','content', 'post_time'))
-        return JsonResponse(data, safe = False)
-    elif request.method == 'PUT':
-        return HttpResponse('con cac')
+# def getPost(request):
+#     if request.COOKIES.get('user', None) == None:
+#         return redirect('register')
+#     if request.method == 'GET':
+#         all_pro = Post.objects.all()
+#         data = serializers.serialize('json', all_pro, fields=('title','content', 'post_time'))
+#         return JsonResponse(data, safe = False)
+#     elif request.method == 'PUT':
+#         return HttpResponse('page is not foud')
 
+
+
+# view page home
 def home_page(request):
     if request.COOKIES.get('user', None) == None:
         return redirect('register')
@@ -42,40 +45,6 @@ def home_page(request):
         'info_user'     : info_user
     })
 
-@csrf_exempt
-def search_post(request):
-    search_key = request.POST['key']
-    myPost = Post.objects.all()
-    my_result = []
-    for i in myPost:
-        if search_key in str(i.title).lower():
-            my_result.append(i)
-    data = serializers.serialize('json', my_result, fields=('user_of_post', 'title','content', 'post_time', 'post_img'))
-
-    del search_key
-    del myPost
-    del my_result
-    return JsonResponse(data, safe = False)
-
-
-@csrf_exempt
-def create_comment(request):
-    user_info = request.COOKIES.get('user', None)
-    if user_info is None:
-        return JsonResponse({
-            'statsus': 0,
-            'message': 'user is not define'
-            })
-    body = json.loads(request.body)
-    user = User.objects.get(pk = user_info)
-    post = Post.objects.get(pk = body['id'])
-    new_cmt = Comment(post_id = post, content = body['contentCmt'], responders = user)
-    new_cmt.save()
-
-    return JsonResponse({
-        'status' : 1,
-        'message': 'succecfully'
-    })
 
 
 # view post detail
@@ -109,8 +78,7 @@ def post_form(request):
         }
     return render(request, 'home/post_form.html', data)
 
-# views post form
-
+# views question form
 def question_form(request):
     user_info = request.COOKIES.get('user', None)
     if user_info is None:
@@ -121,6 +89,37 @@ def question_form(request):
     }
 
     return render(request, 'home/question_form.html', data)
+
+
+# view question detail
+def question_detail(request, id):
+    user_info = request.COOKIES.get('user', None)
+
+    if user_info is None:
+        return redirect('register')
+    
+    user     = User.objects.get(pk = user_info)
+    question = Question.objects.get(pk = id)
+    answer   = Answer.objects.filter(question = question.pk)
+    if question.post_of_question == 'none':
+        data = {
+            'user'     : user,
+            'question' : question,
+            'check'    : 0,
+            'answer'   : answer
+        }
+
+        return render(request, 'home/question_detail.html', data)
+    post     = Post.objects.get(pk = int(question.post_of_question))
+    data = {
+        'user'     : user,
+        'question' : question,
+        'post'     : post,
+        'check'    : 1,
+        'answer'   : answer
+    }
+    return render(request, 'home/question_detail.html', data)
+
 
 # ======     API    ======
 @csrf_exempt
@@ -187,4 +186,77 @@ def add_question(request):
                     'message' : '{}'.format(e),
                     'status'  : 'BAD'
                 })
+
+@csrf_exempt
+def search_post(request):
+    search_key = request.POST['key']
+    myPost = Post.objects.all()
+    my_result = []
+    for i in myPost:
+        if search_key in str(i.title).lower():
+            my_result.append(i)
+    data = serializers.serialize('json', my_result, fields=('user_of_post', 'title','content', 'post_time', 'post_img'))
+
+    del search_key
+    del myPost
+    del my_result
+    return JsonResponse(data, safe = False)   
+
+@csrf_exempt
+def create_comment(request):
+    user_info = request.COOKIES.get('user', None)
+    if user_info is None:
+        return JsonResponse({
+            'statsus': 0,
+            'message': 'user is not define'
+            })
+    body = json.loads(request.body)
+    user = User.objects.get(pk = user_info)
+    post = Post.objects.get(pk = body['id'])
+    new_cmt = Comment(post_id = post, content = body['contentCmt'], responders = user)
+    new_cmt.save()
+
+    return JsonResponse({
+        'status' : 1,
+        'message': 'succecfully'
+    })
+@csrf_exempt
+def create_answer(request):
+    user_info = request.COOKIES.get('user', None)
+
+    if user_info is None:
+        return JsonResponse({
+            'status'  : 'BAD',
+            'message' : "user is not define"
+        })
     
+    user     = User.objects.get(pk = user_info)
+    body     = json.loads(request.body)
+    question = Question.objects.get(pk = int(body['id'])) 
+    content_answer = body['content']
+
+    new_answer = Answer(user = user, question = question, content = content_answer)
+    new_answer.save()
+
+    return JsonResponse({
+        'status'  : "OK",
+        'message' : "successfuly"
+    })
+
+@csrf_exempt
+def delete_answer(request):
+    try:
+        body        = json.loads(request.body)
+        id_answer   = body['id']
+        answer      = Answer.objects.get(pk = int(id_answer))
+        answer.delete()
+
+        return JsonResponse({
+            'status'  : 'OK',
+            'message' : 'successfuly'
+        })
+    except Exception as e:
+        return JsonResponse({
+            'status'  : 'BAD',
+            'message' : '{}'.format(e)
+        })

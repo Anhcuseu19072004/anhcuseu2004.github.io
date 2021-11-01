@@ -1,0 +1,265 @@
+{% extends "home/base_layout.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Chi Teets {% endblock %}</title>
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'home/css/question_detail.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="question-detail grid">
+        <div class="detail_layout row">
+            <!-- QUESTION -->
+            <div class="detail_layout_item col lg-12 md-12 sm-12 xs-12">
+                <div id_question = "{{question.pk}}" class="detail_layout_item_content">
+                    <div class="detail_layout_item_content_heading">
+                        {% if check %}
+                        <div class="item_content_heading_tag">
+                            <a href="http://127.0.0.1:8000/view-more/{{post.pk}}" class="item_content_heading_tag_link">
+                                <i class="fas fa-bookmark"></i>
+                                xem bài viết đã liên kết
+                            </a>
+                        </div>
+                        {% endif %}
+
+                        <div class="item_content_heading_title">
+                            <p class="item_content_heading_title_text">
+                                {{question.question_title}}
+                            </p>
+                        </div>
+
+                        <div class="item_content_heading_info">
+                            <div class="item_content_heading_info_auth">
+                                <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="item_content_heading_info_auth_avatar">
+                                <span class="item_content_heading_info_auth_name">{{question.user_of_question}}</span>
+                            </div>
+
+                            <div class="item_content_heading_info_time">
+                                <span>{{question.question_time}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail_layout_item_content_main">
+                        {{question.question_content}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANSWER -->
+            <div class="detail_layout_item col lg-12 md-12 sm-12 xs-12">
+                <div class="detail_layout_item_box-answer">
+                    <!-- HEADING ANSWER -->
+                    <div class="detail_layout_item_box-answer_heading">
+                        <h3>Câu Trả Lời</h3>
+                    </div>
+
+                    <!-- LIST ANSWER -->
+                    <div class="detail_layout_item_box-answer_list">
+                        <!--<div class="detail_layout_item_box-answer_list_item">
+                            <div class="answer_list_item_info">
+                                <div class="answer_list_item_info_auth">
+                                    <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="answer_list_item_info_auth_avatar">
+                                    <span class="answer_list_item_info_auth_name">LuongSon Base</span>
+                                </div>
+
+                                <div class="answer_list_item_info_time">
+                                   LuongSon Base
+                                </div>
+                                <div class="answer_list_item_info_actions">
+                                    <i onclick="showActions(this)" class="fas fa-ellipsis-h undisplay">
+                                        <ul class="answer_list_item_info_actions_list">
+                                            
+                                            <li onclick = "removeAnswer(this)"  title = "remove" class="answer_list_item_info_actions_list_item">
+                                                <i class="far fa-trash-alt"></i>
+                                            </li>
+                                            
+                                            <li class="answer_list_item_info_actions_list_item">
+                                                LuongSon
+                                            </li>
+                                            
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <div class="answer_list_item_content">
+                                {{i.content | safe}}
+                            </div>
+                        </div>-->
+                        {% for i in answer%}
+                        <div class="detail_layout_item_box-answer_list_item">
+                            <div class="answer_list_item_info">
+                                <div class="answer_list_item_info_auth">
+                                    <img src="https://i.pinimg.com/564x/59/de/a6/59dea6cfaf9f0162654b3e6d88aa2b00.jpg" alt="" class="answer_list_item_info_auth_avatar">
+                                    <span class="answer_list_item_info_auth_name">{{i.user}}</span>
+                                </div>
+
+                                <div class="answer_list_item_info_time">
+                                    {{i.time}}
+                                </div>
+
+                                <div class="answer_list_item_info_actions">
+                                    <i onclick="showActions(this)" class="fas fa-ellipsis-h undisplay">
+                                        <ul class="answer_list_item_info_actions_list">
+                                            {% if i.user.pk == user.pk %}
+                                            <li onclick = "removeAnswer(this)" id_answer = "{{i.pk}}" title = "remove" class="answer_list_item_info_actions_list_item">
+                                                <i class="far fa-trash-alt"></i>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if i.user.pk != user.pk %}
+                                            <li class="answer_list_item_info_actions_list_item">
+                                                LuongSon
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <div class="answer_list_item_content">
+                                {{i.content | safe}}
+                            </div>
+                        </div>
+                        {% endfor%}
+                    </div>
+
+                    <!-- FORM ANSWER -->
+                    <div class="detail_layout_item_box-answer_form undisplay">
+                        <button onclick="displayForm()" class="detail_layout_item_box-answer_form_btn">Trả Lời</button>
+                        <div class="detail_layout_item_box-answer_form_input">
+                            <div class="box-answer_form_input_fields">
+                                <textarea name="textarea" id="textarea" class="box-answer_form_input_fields_text">
+                                    Viết câu trả lời ở đây
+                                </textarea>
+                            </div>
+
+                            <button onclick = "submit()" class="box-answer_form_input_fields_submit">
+                                Gửi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block overlay %}
+    <div class="overlay grid">
+    <div class="overlay_container row">
+        <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+            <div class="overlay_container_tabs_user">
+                <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                <span class="overlay_container_tabs_user_name">
+                    {{user.account_name}}
+                </span>
+            </div>
+
+            <div class="overlay_container_tabs_options">
+                <ul class="overlay_container_tabs_options_list">
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="http://127.0.0.1:8000/" class="overlay_container_tabs_options_list_item_link">
+                            Về Trang Chủ
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Bài Viết Của Tôi
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Câu Hỏi Của Tôi
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Chỉnh Sửa Thông Tin
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Đăng Xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+    </div>
+    </div>
+    {% endblock %}
+
+    {% block js%}
+    <script src="{% static 'home/js/base_navbar.js' %}"></script>
+    <script src="{% static 'home/js/question_detail.js' %}"></script>
+    <script src='https://cdn.tiny.cloud/1/o6hbru5ewe3benh783jzgrk2trdoxufjs26zsb7ef3dhaoyr/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+    </script>
+
+    <!-- init tinyMCE -->
+    <script>
+    tinymce.init({
+    selector: 'textarea',
+    plugins: 'charmap image code a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+    toolbar: 'undo redo | link image | code |a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+    toolbar_mode: 'floating',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mobile: {
+        menubar: true
+    },
+    image_title: true,
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    file_picker_callback: function (cb, value, meta) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+
+        /*
+            Note: In modern browsers input[type="file"] is functional without
+            even adding it to the DOM, but that might not be the case in some older
+            or quirky browsers like IE, so you might want to add it to the DOM
+            just in case, and visually hide it. And do not forget do remove it
+            once you do not need it anymore.
+        */
+
+        input.onchange = function () {
+        var file = this.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function () {
+        /*
+            Note: Now we need to register the blob in TinyMCEs image blob
+            registry. In the next release this part hopefully won't be
+            necessary, as we are looking to handle it internally.
+        */
+        var id = 'blobid' + (new Date()).getTime();
+        var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+        var base64 = reader.result.split(',')[1];
+        var blobInfo = blobCache.create(id, file, base64);
+        blobCache.add(blobInfo);
+
+        /* call the callback and populate the Title field with the file name */
+        cb(blobInfo.blobUri(), { title: file.name });
+        };
+        reader.readAsDataURL(file);
+};
+
+input.click();
+},
+
+   });
+    </script>
+    {% endblock %}
+
+</body>
+</html>

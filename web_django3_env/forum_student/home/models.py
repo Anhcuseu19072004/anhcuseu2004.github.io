@@ -12,6 +12,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class Comment(models.Model):
+    post_id      = models.ForeignKey(Post, on_delete = models.CASCADE)
+    content      = models.TextField()
+    reply_time   = models.DateTimeField(auto_now = True)
+    responders   = models.ForeignKey(User, on_delete = models.CASCADE)
+    def __str__(self):
+        return self.content
+
 class Question(models.Model):
     question_title       = models.CharField(max_length = 500)
     question_discription = models.CharField(max_length = 1000)
@@ -22,11 +30,14 @@ class Question(models.Model):
     def __str__(self):
         return self.question_title
 
-class Comment(models.Model):
-    post_id      = models.ForeignKey(Post, on_delete = models.CASCADE)
-    content      = models.TextField()
-    reply_time   = models.DateTimeField(auto_now = True)
-    responders   = models.ForeignKey(User, on_delete = models.CASCADE)
+class Answer(models.Model):
+    user     = models.ForeignKey(User, on_delete = models.CASCADE)
+    question = models.ForeignKey(Question, on_delete = models.CASCADE)
+    content  = HTMLField()
+    time     = models.DateTimeField(auto_now = True)
+
     def __str__(self):
-        return self.content
+        return self.user.pk
+
+
 

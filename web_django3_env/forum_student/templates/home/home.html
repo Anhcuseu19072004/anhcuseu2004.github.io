@@ -357,7 +357,7 @@
                                     </div> -->
                                     {% for question in list_question %}
                                     <div class="sidebar_content_question_listquestions_item col lg-12 md-12 sm-12 xs-12">
-                                        <a href="#" class="sidebar_content_question_listquestions_item_link">
+                                        <a id_question = "{{question.pk}}" href="http://127.0.0.1:8000/view-question/{{question.pk}}" class="sidebar_content_question_listquestions_item_link">
                                             <div class="question_listquestions_item_link_title">
                                                 <p class="question_listquestions_item_link_title_text">
                                                     {{question.question_title}}
