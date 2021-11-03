@@ -1,0 +1,104 @@
+/* ==== PC ==== */
+@media (min-width: 1200px) {
+    /* pc layout */
+    .edit_layout {
+        padding: 12px 24px;
+        max-width: 70%;
+    }
+
+    /* pc header */
+    .edit_layout_header {
+        text-align: start;
+        margin-bottom: 16px;
+    }
+
+    /* pc header */
+    .edit_layout_header_label {
+        font-size: 3rem;
+        color: #888;
+        font-weight: 500;
+    }
+
+    /* pc header */
+    .edit_layout_header_title,
+    .edit_layout_header_discription {
+        padding: 4px 12px;
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        outline: none;
+        border: 6px double #f05123;
+        margin-bottom: 12px;
+    }
+
+    /* pc header */
+    .edit_layout_header_title:hover,
+    .edit_layout_header_discription:hover {
+        border: 6px double #67e0b2;
+    }
+
+    /* pc header avatar */
+    .edit_layout_header_thumbnail {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /* pc header avatar */
+    .edit_layout_header_thumbnail_label {
+        font-size: 3rem;
+        color: #888;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
+    /* pc header avatar */
+    .edit_layout_header_thumbnail_img {
+        width: 420px;
+        height: 210px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 6px;
+    }
+
+    /* pc content */
+    .edit_layout_content {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    /* pc content */
+    .edit_layout_content_text-edit,
+    .tox.tox-tinymce {
+        flex: 1;
+    }
+
+    /* pc content */
+    .edit_layout_content_actions {
+        margin-left: 4px;
+    }
+
+    /* pc content */
+    .edit_layout_content_actions_submit {
+        padding: 4px 12px;
+        font-size: 1.4rem;
+        font-weight: 400;
+        background-color: #f05123;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        min-width: 127px;
+        height: 27px;;
+    }
+
+    /* pc content */
+    .edit_layout_content_actions_submit:hover {
+        filter: brightness(90%)
+    }
+
+    /* pc content */
+    .unwait i {
+        display: none
+    }
+
+}

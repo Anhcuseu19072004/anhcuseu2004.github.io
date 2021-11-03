@@ -1,0 +1,754 @@
+/* ==== MEDIUM PHONE DASHBOARD ==== */
+@media (max-width: 767px) {
+    /* m phone layout */
+    .dashboard_layout {
+        padding: 8px 18px;
+        max-width: 100%;
+    }
+
+    /* m phone layout */
+    .dashboard_layout_posts {
+        margin-bottom: 18px;
+    }
+
+    /* m phone post header */
+    .dashboard_layout_posts_header {
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+    }
+
+    /* m phone post list */
+    .dashboard_layout_posts_list {
+        list-style: none;
+    }
+
+    /* m phone post list item*/
+    .dashboard_layout_posts_list_item {
+        padding: 8px 4px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+        
+    }
+
+    /* m phone post list item*/
+    .dashboard_layout_posts_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* m phone post list item*/
+    .dashboard_layout_posts_list_item_content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* m phone post list item*/
+    .posts_list_item_content_title {
+        flex: 1;
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* m phone post list item*/
+    .posts_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 4px;
+    }
+
+    /* m phone post list item*/
+    .posts_list_item_content_actions_delete, 
+    .posts_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 2px 4px;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+    
+    /* m phone post list item*/
+    .posts_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* m phone post list item*/
+    .posts_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* m phone post list item*/
+    .posts_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* m phone post list item*/
+    .posts_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+
+    /* m phone question header */
+    .dashboard_layout_questions_header {
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-bottom: 6px;
+    }
+
+    /* m phone question list */
+    .dashboard_layout_questions_list {
+        list-style: none;
+    }
+
+    /* m phone question list item */
+    .dashboard_layout_questions_list_item {
+        padding: 8px 4px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+    }
+
+    /* m phone question list item*/
+    .dashboard_layout_questions_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* m phone question list item*/
+    .dashboard_layout_questions_list_item_content {
+        display: flex;
+        align-items: center;
+    }
+
+    /* m phone question list item*/
+    .questions_list_item_content_title {
+        flex: 1;
+        font-size: 1.2rem;
+        color: #1a1a1a;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* m phone question list item*/
+    .questions_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 4px;
+    }
+
+    /* m phone question list item*/
+    .questions_list_item_content_actions_delete,
+    .questions_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 2px 4px;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    
+    /* m phone question list item*/
+    .questions_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* m phone question list item*/
+    .questions_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* m phone question list item*/
+    .questions_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* m phone question list item*/
+    .questions_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+}
+
+/* ==== MT DASHBOARD ==== */
+@media (min-width: 768px) {
+    /* mt layout */
+    .dashboard_layout {
+        padding: 8px 18px;
+        max-width: 100%;
+    }
+
+    /* mt layout */
+    .dashboard_layout_posts {
+        margin-bottom: 18px;
+    }
+
+    /* mt post header */
+    .dashboard_layout_posts_header {
+        font-size: 2.2rem;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+    }
+
+    /* mt post list */
+    .dashboard_layout_posts_list {
+        list-style: none;
+    }
+
+    /* mt post list item*/
+    .dashboard_layout_posts_list_item {
+        padding: 8px 16px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+        
+    }
+
+    /* mt post list item*/
+    .dashboard_layout_posts_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* mt post list item*/
+    .dashboard_layout_posts_list_item_content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* mt post list item*/
+    .posts_list_item_content_title {
+        flex: 1;
+        font-size: 1.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* mt post list item*/
+    .posts_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 12px;
+    }
+
+    /* mt post list item*/
+    .posts_list_item_content_actions_delete, 
+    .posts_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 4px 12px;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+    
+    /* mt post list item*/
+    .posts_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* mt post list item*/
+    .posts_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* mt post list item*/
+    .posts_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* mt post list item*/
+    .posts_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+
+    /* mt question header */
+    .dashboard_layout_questions_header {
+        font-size: 2.2rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-bottom: 6px;
+    }
+
+    /* mt question list */
+    .dashboard_layout_questions_list {
+        list-style: none;
+    }
+
+    /* mt question list item */
+    .dashboard_layout_questions_list_item {
+        padding: 8px 16px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+    }
+
+    /* mt question list item*/
+    .dashboard_layout_questions_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* mt question list item*/
+    .dashboard_layout_questions_list_item_content {
+        display: flex;
+        align-items: center;
+    }
+
+    /* mt question list item*/
+    .questions_list_item_content_title {
+        flex: 1;
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* mt question list item*/
+    .questions_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 12px;
+    }
+
+    /* mt question list item*/
+    .questions_list_item_content_actions_delete,
+    .questions_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 4px 12px;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+
+    
+    /* mt question list item*/
+    .questions_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* mt question list item*/
+    .questions_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* mt question list item*/
+    .questions_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* mt question list item*/
+    .questions_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+}
+
+/* ==== LT DASHBOARD ==== */
+@media (min-width: 992px) {
+    /* lt layout */
+    .dashboard_layout {
+        padding: 8px 18px;
+        max-width: 90%;
+    }
+
+    /* lt layout */
+    .dashboard_layout_posts {
+        margin-bottom: 18px;
+    }
+
+    /* lt post header */
+    .dashboard_layout_posts_header {
+        font-size: 2.2rem;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+    }
+
+    /* lt post list */
+    .dashboard_layout_posts_list {
+        list-style: none;
+    }
+
+    /* lt post list item*/
+    .dashboard_layout_posts_list_item {
+        padding: 8px 16px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+        
+    }
+
+    /* lt post list item*/
+    .dashboard_layout_posts_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* lt post list item*/
+    .dashboard_layout_posts_list_item_content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* lt post list item*/
+    .posts_list_item_content_title {
+        flex: 1;
+        font-size: 1.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* lt post list item*/
+    .posts_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 12px;
+    }
+
+    /* lt post list item*/
+    .posts_list_item_content_actions_delete, 
+    .posts_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 4px 12px;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+    
+    /* lt post list item*/
+    .posts_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* lt post list item*/
+    .posts_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* lt post list item*/
+    .posts_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* lt post list item*/
+    .posts_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+
+    /* lt question header */
+    .dashboard_layout_questions_header {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-bottom: 6px;
+    }
+
+    /* lt question list */
+    .dashboard_layout_questions_list {
+        list-style: none;
+    }
+
+    /* lt question list item */
+    .dashboard_layout_questions_list_item {
+        padding: 8px 16px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+    }
+
+    /* lt question list item*/
+    .dashboard_layout_questions_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* lt question list item*/
+    .dashboard_layout_questions_list_item_content {
+        display: flex;
+        align-items: center;
+    }
+
+    /* lt question list item*/
+    .questions_list_item_content_title {
+        flex: 1;
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* lt question list item*/
+    .questions_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 12px;
+    }
+
+    /* lt question list item*/
+    .questions_list_item_content_actions_delete,
+    .questions_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 4px 12px;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    
+    /* lt question list item*/
+    .questions_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* lt question list item*/
+    .questions_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* lt question list item*/
+    .questions_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* lt question list item*/
+    .questions_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+}
+/* ==== PC DASHBOARD ====*/
+@media (min-width: 1200px) {
+    /* pc layout */
+    .dashboard_layout {
+        padding: 12px 24px;
+        max-width: 80%;
+    }
+
+    /* pc layout */
+    .dashboard_layout_posts {
+        margin-bottom: 24px;
+    }
+
+    /* pc post header */
+    .dashboard_layout_posts_header {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+    }
+
+    /* pc post list */
+    .dashboard_layout_posts_list {
+        list-style: none;
+    }
+
+    /* pc post list item*/
+    .dashboard_layout_posts_list_item {
+        padding: 8px 16px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+        
+    }
+
+    /* pc post list item*/
+    .dashboard_layout_posts_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* pc post list item*/
+    .dashboard_layout_posts_list_item_content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* pc post list item*/
+    .posts_list_item_content_title {
+        flex: 1;
+        font-size: 1.4rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* pc post list item*/
+    .posts_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 12px;
+    }
+
+    /* pc post list item*/
+    .posts_list_item_content_actions_delete, 
+    .posts_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 4px 12px;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    
+    /* pc post list item*/
+    .posts_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* pc post list item*/
+    .posts_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* pc post list item*/
+    .posts_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* pc post list item*/
+    .posts_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+
+    /* pc question header */
+    .dashboard_layout_questions_header {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-bottom: 6px;
+    }
+
+    /* pc question list */
+    .dashboard_layout_questions_list {
+        list-style: none;
+    }
+
+    /* pc question list item */
+    .dashboard_layout_questions_list_item {
+        padding: 8px 16px;
+        margin-bottom: 6px;
+        background-color: #faebd7;
+        color: #1a1a1a;
+        transition: transform linear 0.1s;
+    }
+
+    /* pc question list item*/
+    .dashboard_layout_questions_list_item:hover {
+        transform: translateX(6px);
+        border-left: 1px solid #f58844;
+    }
+
+    /* pc question list item*/
+    .dashboard_layout_questions_list_item_content {
+        display: flex;
+        align-items: center;
+    }
+
+    /* pc question list item*/
+    .questions_list_item_content_title {
+        flex: 1;
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* pc question list item*/
+    .questions_list_item_content_actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 2px 12px;
+    }
+
+    /* pc question list item*/
+    .questions_list_item_content_actions_delete,
+    .questions_list_item_content_actions_update {
+        text-decoration: none;
+        padding: 4px 12px;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    
+    /* pc question list item*/
+    .questions_list_item_content_actions_delete {
+        
+        border-radius: 3px;
+        background-color: #fa2e2e;
+        color: #bbff00;
+        margin-right: 4px;
+    }
+
+    /* pc question list item*/
+    .questions_list_item_content_actions_delete:hover {
+        filter: brightness(90%)
+    }
+
+    /* pc question list item*/
+    .questions_list_item_content_actions_update:hover {
+        filter: brightness(90%)
+    }
+
+    /* pc question list item*/
+    .questions_list_item_content_actions_update {
+        border-radius: 3px;
+        background-color: #48BF91;
+        color: #fff;
+    }
+}

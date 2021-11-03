@@ -7,7 +7,7 @@ from form.models import User
 from django.shortcuts import render, redirect
 import json
 from django.views.decorators.csrf import csrf_exempt
-from home.luongson import saveImg
+from home.luongson import saveImg, remove_file
 
 """TEST"""
 # Create your views here.
@@ -110,7 +110,17 @@ def question_detail(request, id):
         }
 
         return render(request, 'home/question_detail.html', data)
-    post     = Post.objects.get(pk = int(question.post_of_question))
+    post_exists = Post.objects.filter(pk = int(question.post_of_question)).count()
+    if post_exists == 0:
+        data = {
+            'user'     : user,
+            'question' : question,
+            'check'    : 0,
+            'answer'   : answer
+        }
+
+        return render(request, 'home/question_detail.html', data)
+    post = Post.objects.get(pk = int(question.post_of_question))
     data = {
         'user'     : user,
         'question' : question,
@@ -120,6 +130,45 @@ def question_detail(request, id):
     }
     return render(request, 'home/question_detail.html', data)
 
+# view dashboard
+def user_dashboard(request):
+    user_info = request.COOKIES.get('user', None)
+    if user_info is None:
+        return redirect('register')
+    
+    user      = User.objects.get(pk = user_info)
+    posts     = Post.objects.filter(user_of_post = user).order_by('-post_time')
+    questions = Question.objects.filter(user_of_question = user).order_by('-question_time')
+    data      = {
+        "user"      : user,
+        "posts"     : posts,
+        "questions" : questions
+    }
+    return render(request, 'home/user_dashboard.html', data)
+# view dashboard edit
+def user_dashboard_edit(request, type_object, id):
+    info_user  = request.COOKIES.get('user', None)
+    if info_user is None:
+        return redirect('register')
+    user = User.objects.get(pk = info_user)
+    if type_object == "post":
+        post = Post.objects.get(pk = id)
+        data = {
+            'object' : post,
+            'type'   : type_object,
+            'user'   : user
+        }
+        return render(request, 'home/user_dashboard_edit.html', data)
+
+    elif type_object == "question":
+        question = Question.objects.get(pk = id)
+        data = {
+            'object' : question,
+            'type'   : type_object,
+            'user'   : user
+        }
+        return render(request, 'home/user_dashboard_edit.html', data)
+
 
 # ======     API    ======
 @csrf_exempt
@@ -127,17 +176,17 @@ def addPost(request):
     if request.method == 'POST':
         try:
 
-            body = json.loads(request.body)
+            body       = json.loads(request.body)
             my_content = body['content_']
-            my_title = body['title_']
-            my_img   = body['file_']
-            name_img = body['name_file_']
-            name_img = name_img.replace(' ', "-")
-            my_img   = saveImg(my_img, name_img).replace('\\', "/")
-            user_info = request.COOKIES.get('user', None)
-            user = User.objects.get(account_name = user_info)
+            my_title   = body['title_']
+            my_img     = body['file_']
+            name_img   = body['name_file_']
+            name_img   = name_img.replace(' ', "-")
+            my_img     = saveImg(my_img, name_img).replace('\\', "/")
+            user_info  = request.COOKIES.get('user', None)
+            user       = User.objects.get(account_name = user_info)
 
-            new_post = Post(user_of_post = user, title = my_title, content = my_content, post_img = my_img)
+            new_post   = Post(user_of_post = user, title = my_title, content = my_content, post_img = my_img)
             new_post.save()
 
             return JsonResponse({"message": 'thành công', 'status': 'OK'}, safe = False)
@@ -260,3 +309,69 @@ def delete_answer(request):
             'status'  : 'BAD',
             'message' : '{}'.format(e)
         })
+
+@csrf_exempt
+def delete_record(request):
+    try:
+        if request.method == "DELETE":
+            body        = json.loads(request.body)
+            type_record = body['type'] 
+            pk_record   = body['id']
+
+            if type_record == "post":
+                post     = Post.objects.get(pk = pk_record)
+                post.delete()
+                return JsonResponse({
+                    'status'  : 'OK',
+                    'message' : 'delete successfuly record post: {}'.format(pk_record)
+                })
+            if type_record == "question":
+                question = Question.objects.get(pk = pk_record)
+                question.delete()
+                return JsonResponse({
+                    'status'  : 'OK',
+                    'message' : 'delete successfuly record question: {}'.format(pk_record)
+                })
+
+    except Exception as e: 
+        return JsonResponse({
+            'status'  : 'BAD',
+            'message' : '{}'.format(e)
+        })
+
+@csrf_exempt 
+def update_record(request):
+    body        = json.loads(request.body)
+    info_user   = body['user']
+    type_record = body['type']
+
+    if User.objects.filter(pk = info_user).exists():
+        if type_record == "post":
+            if Post.objects.filter(pk = int(body['id'])).exists():
+                post              = Post.objects.get(pk = int(body['id']))
+                current_file_name = post.post_img[8:]
+                new_content       = body['content']
+                new_title         = body['title']
+
+                # 11/3/2021
+                new_file          = body['file']
+                new_name_file     = body['name_file'].replace(' ', "-")
+                new_name_file     = saveImg(new_file, new_name_file).replace('\\', "/")
+                post.title        = new_title
+                post.content      = new_content
+                post.post_img     = new_name_file
+                post.save()
+                remove_file(current_file_name)
+                
+                return JsonResponse({
+                    'status'  : 'OK',
+                    'message' : 'successfuly',
+                    'more'    : '{}'.format(current_file_name),
+                    'id object' : '{}'.format(post.pk)
+                })
+
+            else:
+                return JsonResponse({
+                    "status"  : 'BAD',
+                    "message" : 'object is not exists'
+                })

@@ -1,0 +1,126 @@
+{% extends "home/base_layout.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{user.pk}} {% endblock %}</title>
+
+    {% block css %} 
+    <link rel="stylesheet" href="{% static 'home/css/user_dashboard.css' %}">
+    
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="dashboard">
+        <div class="dashboard_layout">
+            <!-- POST -->
+            <div class="dashboard_layout_posts">
+                <div class="dashboard_layout_posts_header">
+                    <h1 class="dashboard_layout_posts_header_heading">
+                        Bài Viết Gần đây
+                    </h1>
+                </div>
+                
+                <ul class="dashboard_layout_posts_list">
+                    {% for post in posts %}
+                    <li class="dashboard_layout_posts_list_item">
+                        <div class="dashboard_layout_posts_list_item_content">
+                            <h3 class="posts_list_item_content_title">
+                                {{post.title}}
+                            </h3>
+                            <div class="posts_list_item_content_actions">
+                                <div onclick = "deleteRecord(this, 'post')" id_post = "{{post.pk}}" class="posts_list_item_content_actions_delete">
+                                    Xóa
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                                
+                                <a href="http://127.0.0.1:8000/user-dashboard/edit/post/{{post.pk}}" class="posts_list_item_content_actions_update">
+                                    Chỉnh sửa
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>
+            <!-- QUESTION -->
+            <div class="dashboard_layout_questions">
+                <div class="dashboard_layout_questions_header">
+                    <h1 class="dashboard_layout_questions_header_headhing">
+                        Câu hỏi gần đây
+                    </h1>
+                </div>
+                <ul class="dashboard_layout_questions_list">
+                    {% for question in questions %}
+                    <li class="dashboard_layout_questions_list_item">
+                        <div class="dashboard_layout_questions_list_item_content">
+                            <h3 class="questions_list_item_content_title">{{question.question_discription}}</h3>
+                            <div class="questions_list_item_content_actions">
+                                <div id_question = "{{question.pk}}" onclick = "deleteRecord(this, 'question')" class="questions_list_item_content_actions_delete">
+                                    Xóa
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                                <a href="http://127.0.0.1:8000/user-dashboard/edit/question/{{question.pk}}" class="questions_list_item_content_actions_update">
+                                    Chỉnh sửa
+                                    <i class="far fa-edit"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block overlay %}  
+    <div class="overlay grid">
+        <div class="overlay_container row">
+        <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+            <div class="overlay_container_tabs_user">
+                <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                <span class="overlay_container_tabs_user_name">
+                    {{user.account_name}}
+                </span>
+            </div>
+
+            <div class="overlay_container_tabs_options">
+                <ul class="overlay_container_tabs_options_list">
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="http://127.0.0.1:8000/" class="overlay_container_tabs_options_list_item_link">
+                            Về Trang Chủ
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Chỉnh Sửa Thông Tin
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Đăng Xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static 'home/js/base_navbar.js' %}"></script>
+    <script src="{% static 'home/js/user_dashboard.js' %}"></script>
+    {% endblock %}
+    
+</body>
+</html>

@@ -52,5 +52,10 @@ def saveImg(imgCode64, nameFirst):
             f.write(imgdata)
             return MEDIA_URL + '/' + fileName +".png"
     
-        
+def remove_file(name):
+    if os.path.exists(MEDIA_ROOT + "/" + name):
+        os.remove(MEDIA_ROOT + "/" + name)
+        return 1
+    else:
+        return 0
 
