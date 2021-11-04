@@ -44,7 +44,7 @@
             <div class="edit_layout_header_thumbnail">
                 <label for="file" class="edit_layout_header_thumbnail_label">Ảnh đại diện</label>
                 <img src="{{object.post_img}}" alt="" class="edit_layout_header_thumbnail_img">
-                <input name = "file" type="file" id="file" accept="image/*" placeholder="Thay đổi">
+                <input onchange = "PreviewAvatar(this)" name = "file" type="file" id="file" accept=".png, .jpg" placeholder="Thay đổi">
             </div>
             {% endif %}
 

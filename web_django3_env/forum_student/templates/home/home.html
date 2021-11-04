@@ -357,7 +357,7 @@
                                     </div> -->
                                     {% for question in list_question %}
                                     <div class="sidebar_content_question_listquestions_item col lg-12 md-12 sm-12 xs-12">
-                                        <a id_question = "{{question.pk}}" href="http://127.0.0.1:8000/view-question/{{question.pk}}" class="sidebar_content_question_listquestions_item_link">
+                                        <a id_question = "{{question.pk}}" href="/view-question/{{question.pk}}" class="sidebar_content_question_listquestions_item_link">
                                             <div class="question_listquestions_item_link_title">
                                                 <p class="question_listquestions_item_link_title_text">
                                                     {{question.question_title}}
@@ -403,16 +403,16 @@
             <div class="home_box-actions">
                 <ul class="home_box-actions_list">
                     <li class="home_box-actions_list_item">
-                        <a href="post-form/">Tạo bài viết</a>
+                        <a href="/post-form/">Tạo bài viết</a>
                     </li>
                     <li class="home_box-actions_list_item">
-                        <a href="question-form/">Tạo tạo câu hỏi</a>
+                        <a href="/question-form/">Tạo tạo câu hỏi</a>
                     </li>
                     <li class="home_box-actions_list_item">
-                        <a href="http://127.0.0.1:8000/user-dashboard/">câu hỏi của tôi</a>
+                        <a href="/user-dashboard/">câu hỏi của tôi</a>
                     </li>
                     <li class="home_box-actions_list_item">
-                        <a href="http://127.0.0.1:8000/user-dashboard/">bài viết của tôi</a>
+                        <a href="/user-dashboard/">bài viết của tôi</a>
                     </li>
                 </ul>
                 <div onclick="showListBoxActions()" class="home_box-actions_icon">

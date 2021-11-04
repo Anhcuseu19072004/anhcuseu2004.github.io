@@ -1,4 +1,4 @@
-
+var changed = 0
 async function postData(data, url, mt) {
     
 
@@ -29,7 +29,7 @@ async function submit(type) {
     }
 
 
-    if (type == "post") {
+    if (type == "post" && changed == 1) {
         const fileUpload = document.querySelector("#file");
         const reader = new FileReader();
 
@@ -46,20 +46,52 @@ async function submit(type) {
                 content   : myContent,
                 file      : `${img}`,
                 name_file : fileUpload.files[0].name,
+                changed   : '1',
                 type      : type,
                 user      : infoUser,
                 id        : idObject
             }
             
-            postData(data = data, url = 'http://127.0.0.1:8000/modify-record/', mt = "PUT")
+            postData(data = data, url = '/modify-record/', mt = "PUT")
             .then(function(response) {
                 console.log(response)
                 if (response['status'] == 'OK') {
                     elmBtn.classList.add('unwait')
                     elmMessage.style.display = 'block'
+                    elmBtn.innerText = "xong"
+                    setTimeout(function() {
+                        window.location.replace("/user-dashboard/");
+                    }, 1000)
                 }
             })
         
+        })
+    }
+
+    else if (type == "post" && changed == 0) {
+
+        let elmTitle  = document.getElementById('title')
+        let myContent = tinymce.get("textarea").getContent();
+        let data      = {
+            title     : elmTitle.innerText,
+            content   : myContent,
+            changed   : '0',
+            type      : type,
+            user      : infoUser,
+            id        : idObject
+        }
+        
+        postData(data = data, url = '/modify-record/', mt = "PUT")
+        .then(function(response) {
+            console.log(response)
+            if (response['status'] == 'OK') {
+                elmBtn.classList.add('unwait')
+                elmMessage.style.display = 'block'
+                elmBtn.innerText = "xong"
+                setTimeout(function() {
+                    window.location.replace("/user-dashboard/");
+                }, 1000)
+            }
         })
     }
 
@@ -74,14 +106,30 @@ async function submit(type) {
             content     : myContent,
             type        : type,
             user        : infoUser,
-            id        : idObject
+            id          : idObject
         }
 
-        postData(data = data, url = 'http://127.0.0.1:8000/modify-record/', mt = "PUT")
+        postData(data = data, url = '/modify-record/', mt = "PUT")
             .then(function(response) {
                 console.log(response)
-
+                if (response['status'] == 'OK') {
+                    elmBtn.classList.add('unwait')
+                    elmMessage.style.display = 'block'
+                    elmBtn.innerText = "xong"
+                    setTimeout(function() {
+                        window.location.replace("/user-dashboard/");
+                    }, 1000)   
+                }
             })
     }
 
+}
+
+
+function PreviewAvatar(cls) {
+    let file   = cls.files[0]
+    let elmImg = document.querySelector('.edit_layout_header_thumbnail_img')
+    let url    = URL.createObjectURL(file)
+    elmImg.src = url
+    changed    = 1
 }

@@ -39,10 +39,10 @@
                         </h1>
                         <h3 class="form_right_content_header_link">
                             Bạn Đã Có Tài Khoản?
-                            <a href="http://127.0.0.1:8000/login" class="form_right_content_header_link_click">Đăng Nhập</a>
+                            <a href="{% url 'login' %}" class="form_right_content_header_link_click">Đăng Nhập</a>
                         </h3>
                     </div>
-                    <form action="create-user" class="form_right_content_form" method="POST">
+                    <form action="{% url 'create_user' %}" class="form_right_content_form" method="POST">
                         {% csrf_token %}
                         <label class="form_input_label" for="account">Tài Khoản</label>
                         <div class="content_form_contain_input">

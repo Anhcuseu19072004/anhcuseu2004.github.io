@@ -21,7 +21,7 @@ def create_user(request):
             })
         else:
             User.objects.create(account_name = account_, password = password)
-            script = "vui long doi<script>setTimeout(function() { window.location.replace('http://127.0.0.1:8000/login');}, 2)</script>"
+            script = "vui long doi<script>setTimeout(function() { window.location.replace('/login');}, 2)</script>"
             response = HttpResponse(script)
             response.set_cookie("user", str(account_))
 
@@ -38,10 +38,10 @@ def login_app(request):
         if User.objects.filter(account_name = account).exists():
             user = User.objects.get(account_name = account)
             if user.password == password:
-                script = "vui long doi<script>setTimeout(function() { window.location.replace('http://127.0.0.1:8000');}, 2)</script>"
+                script = "vui long doi<script>setTimeout(function() { let host = window.location.host; window.location.replace('/home/');}, 2)</script>"
                 response = HttpResponse(script)
                 response.set_cookie("user", str(user.account_name))
-                
+                print('da chay den day')
                 del script
                 del account
                 del password

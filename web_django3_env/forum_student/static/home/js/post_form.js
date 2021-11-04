@@ -83,13 +83,14 @@ function submit() {
             name_file_ : fileUpload.files[0].name
         }
 
-        postData(data, url = 'http://127.0.0.1:8000/addpost/')
+        postData(data, url = '/addpost/')
         .then(
             function(response) {
                 let elmMessage = document.querySelector('.form_form_field_actions_submit_message')
                 if (response['status'] == "BAD") {
                     elmMessage.innerHTML = 'hãy chắc chắn rằng bài viết của bạn là hợp lệ'
                 }
+                console.log(response['message'])
                 elmMessage.innerHTML = response['message']
             }
         )

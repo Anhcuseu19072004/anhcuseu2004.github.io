@@ -7,3 +7,5 @@ class User(models.Model):
     user_img     = models.TextField()
     def __str__(self):
         return self.account_name
+
+

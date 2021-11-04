@@ -26,7 +26,7 @@ function deleteRecord(cls, type = null) {
                 id   : postId,
                 type : type
             }
-            postData(data = data, url = "http://127.0.0.1:8000/delete-record/", "DELETE")
+            postData(data = data, url = "/delete-record/", "DELETE")
             .then(function(response) {
                 if (response['status'] == 'OK') {
                     location.reload();
@@ -45,7 +45,7 @@ function deleteRecord(cls, type = null) {
                 type : type
             }
 
-            postData(data = data, url = "http://127.0.0.1:8000/delete-record/", "DELETE")
+            postData(data = data, url = "/delete-record/", "DELETE")
             .then(function(response) {
                 if (response['status'] == 'OK') {
                     location.reload();

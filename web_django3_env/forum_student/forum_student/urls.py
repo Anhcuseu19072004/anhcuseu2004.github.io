@@ -23,6 +23,7 @@ from django.conf import settings
 # import tinymce
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', include(home_url)),
     path('', include(home_url)),
     # path('tinymce/', include('tinymce.urls')),
     path('', include(form_url)),

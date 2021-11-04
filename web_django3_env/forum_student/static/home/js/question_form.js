@@ -31,8 +31,9 @@ function submit() {
             discription : elmDiscription.value,
             tag         : 'none'
         }
-
-        postData(data, "http://127.0.0.1:8000/add-question/")
+        var host = window.location.host;
+        alert(`${host}/add-question/`)
+        postData(data, `/add-question/`)
         .then(function(response) {
             console.log(response) 
             let elmBtn = document.querySelector('.box-form_content_submit_btn')
@@ -54,7 +55,8 @@ function submit() {
         }
 
         console.log(data)
-        postData(data, "http://127.0.0.1:8000/add-question/")
+        var host = window.location.host;
+        postData(data, `/add-question/`)
         .then(function(response) {
             console.log(response) 
             let elmBtn = document.querySelector('.box-form_content_submit_btn')

@@ -33,7 +33,7 @@ function removeMessage() {
     myElement = document.querySelector('.app_background_content_form_message')
     myElement.innerHTML =''
 }
-
-fetch('http://127.0.0.1:8000/home/getPost/')
+let host = window.location.host;  
+fetch(`${host}/home/getPost/`)
   .then(response => response.json())
   .then(data => console.log(data));

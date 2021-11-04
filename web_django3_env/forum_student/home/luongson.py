@@ -5,6 +5,9 @@ import random
 import string
 import re
 
+from io import StringIO
+from PIL import Image
+
 
 
 # GLOBAL VARIABLE LuongSon
@@ -16,41 +19,42 @@ def id_generator(size=12, chars=string.ascii_uppercase + string.digits):
 
 def saveImg(imgCode64, nameFirst):
     # decode from base64 to img
-    imgdata = base64.b64decode(imgCode64[21:])
+    if imgCode64.startswith('data:image/jpeg;base64,'):
+        imgdata = base64.b64decode(imgCode64[23:])
+
+    else:
+        imgdata = base64.b64decode(imgCode64[21:])
     fileName = nameFirst
+    
+
     # check file is exists
     if (os.path.exists(MEDIA_ROOT+"/"+fileName)):
-        listTemp = [
-            '.png',
-            '.jpg',
-            '.JPEG ',
-            '.PSD',
-            '.svg'
-        ]
+        
 
+        print(fileName)
+        
 
-        for temp in listTemp:
-            fileName = fileName.replace(temp, "") #rename file
-
-        fileNameAble = fileName + "_" +id_generator()
+        fileNameAble = id_generator() + "_" + fileName
         # loop until file name is not match
         while fileName == fileNameAble:
             fileNameAble = id_generator()
 
         # save file into database
-        with open(MEDIA_ROOT + '/' + fileNameAble +".png", 'wb') as f:
+        with open(MEDIA_ROOT + '/' + fileNameAble, 'wb') as f:
             f.write(imgdata)
-            return MEDIA_URL + '/' + fileNameAble +".png"
+            return MEDIA_URL + '/' + fileNameAble
+        
     else:
-        listTemp = [
-            '.png',
-            '.jpg'
-        ]
-        for temp in listTemp:
-            fileName = fileName.replace(temp, "") #rename file
-        with open(MEDIA_ROOT + '/' + fileName +".png", 'wb') as f:
+        # listTemp = [
+        #     '.png',
+        #     '.jpg'
+        # ]
+        # for temp in listTemp:
+        #     fileName = fileName.replace(temp, "") #rename file
+        with open(MEDIA_ROOT + '/' + fileName, 'wb') as f:
             f.write(imgdata)
-            return MEDIA_URL + '/' + fileName +".png"
+            return MEDIA_URL + '/' + fileName
+        
     
 def remove_file(name):
     if os.path.exists(MEDIA_ROOT + "/" + name):

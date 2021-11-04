@@ -320,7 +320,9 @@ def delete_record(request):
 
             if type_record == "post":
                 post     = Post.objects.get(pk = pk_record)
+                url_img  = post.post_img[8:]
                 post.delete()
+                remove_file(url_img)
                 return JsonResponse({
                     'status'  : 'OK',
                     'message' : 'delete successfuly record post: {}'.format(pk_record)
@@ -352,7 +354,16 @@ def update_record(request):
                 current_file_name = post.post_img[8:]
                 new_content       = body['content']
                 new_title         = body['title']
-
+                if body['changed'] == "0":
+                    post.title        = new_title
+                    post.content      = new_content
+                    post.save()
+                
+                    return JsonResponse({
+                        'status'  : 'OK',
+                        'message' : 'successfuly',
+                        'id object' : '{}'.format(post.pk)
+                    })
                 # 11/3/2021
                 new_file          = body['file']
                 new_name_file     = body['name_file'].replace(' ', "-")
@@ -369,9 +380,30 @@ def update_record(request):
                     'more'    : '{}'.format(current_file_name),
                     'id object' : '{}'.format(post.pk)
                 })
-
             else:
                 return JsonResponse({
                     "status"  : 'BAD',
                     "message" : 'object is not exists'
+                })
+        
+        elif type_record == "question":
+            if Question.objects.filter(pk = int(body['id'])).exists():
+                question        = Question.objects.get(pk = int(body['id']))
+                new_title       = body['title']
+                new_discription = body['discription']
+                new_content     = body['content']
+
+                question.question_title       = new_title
+                question.question_discription = new_discription
+                question.question_content     = new_content
+                question.save()
+
+                return JsonResponse({
+                    'status'  : 'OK',
+                    'message' : 'update successfuly: question {}'.format(question.pk)
+                })
+            else:
+                return JsonResponse({
+                    'status'  : 'BAD',
+                    'message' : 'question is not exists'
                 })
