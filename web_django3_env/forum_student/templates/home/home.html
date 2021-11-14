@@ -46,8 +46,8 @@
                     <!-- navbar search -->
                     <div class="navbar_content_item col lg-4 md-4 sm-6 xs-0">
                         <div class="navbar_content_item_search">
-                            <form action="" class="navbar_content_item_search_box">
-                                <input type="text" class="navbar_content_item_search_box_field" name = 'search' placeholder="nhập để tìm kiếm">
+                            <form method="GET" action="{% url 'search' %}" class="navbar_content_item_search_box">
+                                <input type="text" class="navbar_content_item_search_box_field" name = 'keyword' placeholder="nhập để tìm kiếm">
                                 <button class="navbar_content_item_search_box_btn">Tìm Kiếm</button>
                             </form>
                         </div>
@@ -67,7 +67,7 @@
                                     <li class="navbar_content_item_user_avatar_list_item"><a href="question-form/">Đặt Câu Hỏi</a></li>
                                     <li class="navbar_content_item_user_avatar_list_item"><a href="user-dashboard/">Bài Viết Của Tôi</a></li>
                                     <li class="navbar_content_item_user_avatar_list_item"><a href="#">Câu hỏi Của Tôi</a></li>
-                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Đăng Xuât</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="javascript:logOut()">Đăng Xuât</a></li>
                                 </ul>
                             </div>
                             {%endif%}
@@ -79,7 +79,7 @@
                                     <li class="navbar_content_item_user_avatar_list_item"><a href="question-form/">Đặt Câu Hỏi</a></li>
                                     <li class="navbar_content_item_user_avatar_list_item"><a href="user-dashboard/">Bài Viết Của Tôi</a></li>
                                     <li class="navbar_content_item_user_avatar_list_item"><a href="#">Câu hỏi Của Tôi</a></li>
-                                    <li class="navbar_content_item_user_avatar_list_item"><a href="#">Đăng Xuât</a></li>
+                                    <li class="navbar_content_item_user_avatar_list_item"><a href="javascript:logOut()">Đăng Xuât</a></li>
                                 </ul>
                             </div>
                             {%endif%}
@@ -90,8 +90,8 @@
                         <div class="navbar_content_item_search">
                             <div class="navbar_content_item_search_icon" onfocusout = "hidenSearchForm()">
                                 <i class="fas fa-search"  onclick="showSearchForm()"></i>
-                                <form action="" class="navbar_content_item_search_icon_form">
-                                    <input type="text" class="navbar_content_item_search_icon_form_field">
+                                <form method="GET" action="{% url 'search' %}" class="navbar_content_item_search_icon_form">
+                                    <input name = "keyword" type="text" class="navbar_content_item_search_icon_form_field">
                                     <button class="navbar_content_item_search_icon_form_btn"><i class="fas fa-search"></i></button>
                                 </form>
                             </div>
@@ -468,5 +468,6 @@
             
     </div>
     <script src="{%static 'home/js/main.js'%}"></script>
+    <script src="{% static 'home/js/log_out.js' %}"></script>
 </body>
 </html>

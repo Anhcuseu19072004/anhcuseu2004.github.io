@@ -1,0 +1,100 @@
+/* ==== PC ==== */
+@media (min-width: 1200px) {
+    /* pc layout */
+    .search_layout {
+        padding: 0 24px 12px;
+    }
+
+    /* pc heading */
+    .search_layout_heading {
+        text-align: center;
+        padding: 12px 0 0;
+        margin-bottom: 6px;
+    }
+
+    /* pc heading */
+    .search_layout_heading_keyword {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #1a1a1a;
+    }
+
+    /* pc result list */
+    .search_layout_list-result {
+        list-style: none;
+    }
+
+    /* pc result list item */
+    .search_layout_list-result_item {
+        margin-bottom: 24px;
+    }
+
+    /* pc result list item */
+    .search_layout_list-result_item_link {
+        text-decoration: none;
+        font-size: 1.4rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        display: flex;
+    }
+
+    /* pc result list item header */
+    .search_layout_list-result_item_header {
+        flex: 1
+    }
+
+    /* pc result list item header */
+    .list-result_item_header_img {
+        padding-top: 56%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px;
+    }
+
+    
+    /* pc result list item info */
+    .search_layout_list-result_item_info {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        margin-left: 16px;
+    }
+
+    /* pc result list item info title */
+    .list-result_item_info_title {
+        font-size: 1.8rem;
+        margin-bottom: 22px;
+    }
+
+    /* pc result list item info react */
+    .list-result_item_info_react {
+        display: flex;
+        align-items: center;
+    }
+
+    /* pc result list item info react */
+    .list-result_item_info_react_views {
+        font-size: 1.6rem;
+        margin-right: 12px;
+    }
+
+    .list-result_item_info_auth {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+    }
+    /* pc result list item info auth */
+    .list-result_item_info_auth_avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 6px;
+    }
+
+    .list-result_item_info_auth_name {
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,128 @@
+{% extends 'home/base_layout.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Kết quả cho: {{key_word}} {% endblock %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'home/css/search.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="search_layout">
+        <div class="search_layout_heading">
+            <h1 class="search_layout_heading_keyword">KẾT QUẢ CHO: " {{key_word}} "</h1>
+        </div>
+        <ul class="search_layout_list-result">
+            <!-- <li class="search_layout_list-result_item">
+                <a href="#" class="search_layout_list-result_item_link">
+                    <div class="search_layout_list-result_item_header">
+                        <div class="list-result_item_header_img" style = "background-image: url('https://i.pinimg.com/564x/ff/b5/a8/ffb5a878ee4cd9980fea6de5feac1cf6.jpg');"></div>
+                    </div>
+                    <div class="search_layout_list-result_item_info">
+                        <p class="list-result_item_info_title">
+                            toan basic toan basic
+                            toan basic toan basic
+                            toan basic toan basic
+                            toan basic toan basic
+                        </p>
+                        <div class="list-result_item_info_react">
+                            <div class="list-result_item_info_react_views">
+                                120 
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="list-result_item_info_react_time">13/11/2021</div>
+                        </div>
+                        <div class="list-result_item_info_auth">
+                            <img src="https://i.pinimg.com/564x/fc/d1/3d/fcd13d1f1b1e298ba79250d1ce221c86.jpg" alt="" class="list-result_item_info_auth_avatar">
+                            <span class="list-result_item_info_auth_name">Le trung kien</span>
+                        </div>
+                    </div>
+                </a>
+            </li> -->
+            {% for post in list_post %}
+            <li class="search_layout_list-result_item">
+                <a href="/view-more/{{post.pk}}" class="search_layout_list-result_item_link">
+                    <div class="search_layout_list-result_item_header">
+                        <div class="list-result_item_header_img" style = "background-image: url('{{post.post_img}}');"></div>
+                    </div>
+                    <div class="search_layout_list-result_item_info">
+                        <p class="list-result_item_info_title">
+                            {{post.title}}
+                        </p>
+                        <div class="list-result_item_info_react">
+                            <div class="list-result_item_info_react_views">
+                                {{post.post_views}}
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="list-result_item_info_react_time">{{post.post_time}}</div>
+                        </div>
+                        <div class="list-result_item_info_auth">
+                            <img src="https://i.pinimg.com/564x/fc/d1/3d/fcd13d1f1b1e298ba79250d1ce221c86.jpg" alt="" class="list-result_item_info_auth_avatar">
+                            <span class="list-result_item_info_auth_name">{{post.user_of_post.pk}}</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}
+    
+    {% block overlay %}
+    <!-- overlay -->
+    <div class="overlay grid">
+        <div class="overlay_container row">
+        <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+            <div class="overlay_container_tabs_user">
+                <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                <span class="overlay_container_tabs_user_name">
+                    {{user.account_name}}
+                </span>
+            </div>
+
+            <div class="overlay_container_tabs_options">
+                <ul class="overlay_container_tabs_options_list">
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="/" class="overlay_container_tabs_options_list_item_link">
+                            Về Trang Chủ
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                            Bài Viết Của Tôi
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                            Câu Hỏi Của Tôi
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Chỉnh Sửa Thông Tin
+                        </a>
+                    </li>
+                    <li class="overlay_container_tabs_options_list_item">
+                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            Đăng Xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+    </div>
+    {% endblock %}
+   
+    {% block js %}
+     <!-- link js -->
+    <script src="{% static 'home/js/search.js' %}"></script>
+    <script src="{% static 'home/js/base_navbar.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

@@ -11,7 +11,8 @@ urlpatterns = [
     path('user-dashboard/edit/<str:type_object>/<int:id>', v_home.user_dashboard_edit, name = 'user-dashboard-edit'),
 
     # API
-    path('search/', v_home.search_post, name = 'search'),
+    # path('search/', v_home.search_post, name = 'search'),
+    path('search/', v_home.search, name = 'search'),
     path('addpost/', v_home.addPost, name = 'addpost'),
     path('create-cmt/', v_home.create_comment, name = 'create_comment'),
     path('add-question/', v_home.add_question, name = 'add_question'),

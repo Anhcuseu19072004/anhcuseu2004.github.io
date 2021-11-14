@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 import json
 from django.views.decorators.csrf import csrf_exempt
 from home.luongson import saveImg, remove_file
+from django.contrib.postgres.search import SearchVector
 
 """TEST"""
 # Create your views here.
@@ -169,7 +170,26 @@ def user_dashboard_edit(request, type_object, id):
         }
         return render(request, 'home/user_dashboard_edit.html', data)
 
+# view search
+def search(request):
+    info_user  = request.COOKIES.get('user', None)
+    user_check = User.objects.filter(pk = info_user).exists()
+    if user_check is False:
+        return redirect('register')
+    user = User.objects.get(pk = info_user)
 
+    key_word      = str(request.GET['keyword'])
+    
+    list_post     = Post.objects.filter(title__icontains = key_word).order_by('-post_time')[:20]
+    list_question = Question.objects.filter(question_title__icontains = key_word).order_by('-question_time')[:20]
+    data  = {
+        'user'          : user,
+        'list_post'     : list_post,
+        'list_question' : list_question,
+        'key_word'      : key_word,
+    }
+    return render(request, 'home/search.html', data)
+    
 # ======     API    ======
 @csrf_exempt
 def addPost(request):
@@ -235,21 +255,6 @@ def add_question(request):
                     'message' : '{}'.format(e),
                     'status'  : 'BAD'
                 })
-
-@csrf_exempt
-def search_post(request):
-    search_key = request.POST['key']
-    myPost = Post.objects.all()
-    my_result = []
-    for i in myPost:
-        if search_key in str(i.title).lower():
-            my_result.append(i)
-    data = serializers.serialize('json', my_result, fields=('user_of_post', 'title','content', 'post_time', 'post_img'))
-
-    del search_key
-    del myPost
-    del my_result
-    return JsonResponse(data, safe = False)   
 
 @csrf_exempt
 def create_comment(request):
