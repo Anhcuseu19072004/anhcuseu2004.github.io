@@ -1,9 +1,9 @@
 function showMessage(messageContent) {
-    if (messageContent == 1) {
+    if (messageContent == '1') {
         messageContent = 'sai mật khẩu'
     }
 
-    else if (messageContent == 2){
+    else if (messageContent == '2'){
         messageContent = 'tài khoản không tồn tại'
     }
     if (messageContent == undefined) {
@@ -33,7 +33,3 @@ function removeMessage() {
     myElement = document.querySelector('.app_background_content_form_message')
     myElement.innerHTML =''
 }
-let host = window.location.host;  
-fetch(`${host}/home/getPost/`)
-  .then(response => response.json())
-  .then(data => console.log(data));

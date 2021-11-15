@@ -39,11 +39,11 @@ function submitCmt() {
             type        : 'all'
         }
 
-        postData(dataForQuestion, url = "http://127.0.0.1:8000/add-question/")
+        postData(dataForQuestion, url = "/add-question/")
             .then(function(response) {
                 console.log(`Question status ${response['message']}`)
             })
-        postData(dataForCmt, url = 'http://127.0.0.1:8000/create-cmt/')
+        postData(dataForCmt, url = '/create-cmt/')
             .then(function(response) {
                 console.log(response)
                 if (response['status'] == 1) {
@@ -97,7 +97,7 @@ function submitCmt() {
             contentCmt : elmContentCmt.value,
             id : idPost.id
         }
-        postData(data_, url = 'http://127.0.0.1:8000/create-cmt/')
+        postData(data_, url = '/create-cmt/')
         .then(function(response) {
             console.log(response)
             if (response['status'] == 1) {

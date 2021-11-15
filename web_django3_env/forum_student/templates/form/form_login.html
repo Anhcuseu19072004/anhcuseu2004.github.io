@@ -25,7 +25,12 @@
                         <div class="login_app_background_content">
                             <h1 class="app_background_content_heading">
                                 Đăng Nhập Vào LuongSon
+                                <br>
+                                <a href="/register" class="app_background_content_heading_link">
+                                    đăng ký
+                                </a>
                             </h1>
+                            
                             <form action="/login" class="app_background_content_form" method="POST">
                                 {% csrf_token %}
                                 <label for="nickname" class="app_background_content_form_label">Tài Khoản</label>
@@ -49,7 +54,7 @@
     </div>
     <script src="{% static 'form/js/login.js'%}"></script>
     <script>
-        showMessage({{message}})
+        showMessage("{{message}}")
     </script>
     <!-- show message call funtion showMessage(messageContent) -->
 </body>

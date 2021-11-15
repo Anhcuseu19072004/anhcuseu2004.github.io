@@ -247,7 +247,7 @@ def add_question(request):
 
             print(new_question)
             return JsonResponse({
-                'message' : '{}'.format(new_question),
+                'message' : '{}'.format('Thành Công'),
                 'status'  : 'OK'
             })
         except Exception as e:

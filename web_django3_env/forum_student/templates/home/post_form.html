@@ -30,7 +30,7 @@
                 <!-- navbar pc and big tablet - logo and previous button -->
                 <div class="app-post-form_nav_item app-post-form_nav_item_navbar-pc col lg-6 md-6 sm-0 xs-0">
                     <div class="form_nav_item_navbar-pc_logo">
-                        <a href="http://127.0.0.1:8000/" class="form_nav_item_navbar-pc_logo_heading">
+                        <a href="/" class="form_nav_item_navbar-pc_logo_heading">
                             LuongSon
                         </a>
                         <div onclick="javascrip:window.history.back();" class="form_nav_item_navbar-pc_logo_previous">
@@ -128,12 +128,12 @@
                             </a>
                         </li>
                         <li class="overlay_container_tabs_options_list_item">
-                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
                                 Bài Viết Của Tôi
                             </a>
                         </li>
                         <li class="overlay_container_tabs_options_list_item">
-                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
                                 Câu Hỏi Của Tôi
                             </a>
                         </li>
@@ -143,7 +143,7 @@
                             </a>
                         </li>
                         <li class="overlay_container_tabs_options_list_item">
-                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                            <a href="javascript: logOut()" class="overlay_container_tabs_options_list_item_link">
                                 Đăng Xuất
                             </a>
                         </li>
@@ -153,8 +153,9 @@
             <div onclick="hidenUserBarForm()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
         </div>
     </div>
-    <script src="{% static 'home/js/common.js'%}"></script>
-    <script src="{%static 'home/js/post_form.js'%}"></script>
+    <script src="{% static 'home/js/common.js' %}"></script>
+    <script src="{% static 'home/js/post_form.js'% }"></script>
+    <script src="{% static 'home/js/log_out.js' %}"></script>
     <!-- init text edited -->
     <script>
         tinymce.init({

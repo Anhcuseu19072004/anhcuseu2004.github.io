@@ -226,6 +226,12 @@
         font-size: 3rem;
         font-weight: 900;
         margin-bottom: 20px;
+        line-height: 1.8rem;
+    }
+
+    .app_background_content_heading_link {
+        font-size: 1.6rem;
+        color: #fff
     }
     
     .app_background_content_form {

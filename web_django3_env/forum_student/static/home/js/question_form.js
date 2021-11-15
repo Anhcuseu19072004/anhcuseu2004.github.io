@@ -31,13 +31,14 @@ function submit() {
             discription : elmDiscription.value,
             tag         : 'none'
         }
-        var host = window.location.host;
-        alert(`${host}/add-question/`)
         postData(data, `/add-question/`)
         .then(function(response) {
             console.log(response) 
             let elmBtn = document.querySelector('.box-form_content_submit_btn')
             elmBtn.innerHTML = response['message']
+            setTimeout(function () {
+                window.location.href = '/user-dashboard/'
+            }, 1000)
             return response
         })
     }
@@ -54,14 +55,14 @@ function submit() {
             tag         : 'none'
         }
 
-        console.log(data)
-        var host = window.location.host;
         postData(data, `/add-question/`)
         .then(function(response) {
             console.log(response) 
             let elmBtn = document.querySelector('.box-form_content_submit_btn')
             elmBtn.innerHTML = response['message']
-
+            setTimeout(function () {
+                window.location.href = '/user-dashboard/'
+            }, 1000)
             return response
         })
     }
