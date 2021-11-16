@@ -198,7 +198,7 @@
                                                         
                                                     </span>
                                                     <span class="home_populor-post_item_link_box-auth_time-post">
-                                                        {{i.post_time}}
+                                                        {{i.post_time | date:'Y-m-d'}}
                                                     </span>
                                                 </div>
                                             </a>
@@ -215,7 +215,7 @@
                             <div class="sidebar_content_post grid">
                                 <!-- categori -->
                                 <div class="content_post_categori grid">
-                                    <form action="#" class="content_post_categori_chooselist row">
+                                    <div class="content_post_categori_chooselist row">
                                         <div class="categori_chooselist_box col lg-6 md-6 sm-6 xs-12">
                                             <label for="subject" class="categori_chooselist_label">Lĩnh Vực</label>
                                             <select name="subject" id="select_subject" class="categori_chooselist_select">
@@ -237,12 +237,12 @@
                                                 <option value="populor">Nhiều Người Quan Tâm</option>
                                             </select>
                                         </div>
-                                        <button class="categori_chooselist_btn">Lọc</button>
-                                    </form>
+                                        <button onclick = "categori(this)" class="categori_chooselist_btn">Lọc</button>
+                                    </div>
                                 </div>
                                 <!-- list post -->
                                 <div class="content_post_layout grid">
-                                    <div class="content_post_layout_list row">
+                                    <div id = 'list_post' class="content_post_layout_list row">
                                         <!-- <div class="content_post_layout_list_item col lg-3 md-4 sm-6 xs-12">
                                             <a href="#" class="content_post_layout_list_item_link">
                                                 <div class="content_post_layout_list_item_link_img" ></div>
@@ -284,7 +284,7 @@
                                                         {{post.user_of_post}}
                                                     </span>
                                                     <span class="content_post_layout_list_item_link_auth_time">
-                                                        {{post.post_time}}
+                                                        {{post.post_time | date:'Y-m-d'}}
                                                     </span>
                                                     <div class="content_post_layout_list_item_link_auth_actions">
                                                         <i class="fas fa-thumbtack"></i>

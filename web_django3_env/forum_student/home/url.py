@@ -19,6 +19,8 @@ urlpatterns = [
     path('create-answer/', v_home.create_answer, name = 'create-answer'),
     path('delete-answer/', v_home.delete_answer, name = 'delete-answer'),
     path('delete-record/', v_home.delete_record, name = 'delete-record'),
+    path('categori/', v_home.post_categori, name = 'categori'),
+
 
     # special API
     path('modify-record/', v_home.update_record, name = 'modify-record')

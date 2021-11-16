@@ -52,7 +52,7 @@
                     </div>
                     <div class="search_layout_list-result_item_info">
                         <p class="list-result_item_info_title">
-                            {{post.title}}
+                            {{post.short_title}}
                         </p>
                         <div class="list-result_item_info_react">
                             <div class="list-result_item_info_react_views">
@@ -64,6 +64,32 @@
                         <div class="list-result_item_info_auth">
                             <img src="https://i.pinimg.com/564x/fc/d1/3d/fcd13d1f1b1e298ba79250d1ce221c86.jpg" alt="" class="list-result_item_info_auth_avatar">
                             <span class="list-result_item_info_auth_name">{{post.user_of_post.pk}}</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+
+            {% for question in list_question %}
+            <li class="search_layout_list-result_item">
+                <a href="/view-question/{{question.pk}}" class="search_layout_list-result_item_link">
+                    <div class="search_layout_list-result_item_header">
+                        <div class="list-result_item_header_img" style = "background-image: url({{question.question_img}});"></div>
+                    </div>
+                    <div class="search_layout_list-result_item_info">
+                        <p class="list-result_item_info_title">
+                            {{question.question_title}}
+                        </p>
+                        <div class="list-result_item_info_react">
+                            <div class="list-result_item_info_react_views">
+                                NAN
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="list-result_item_info_react_time">{{question.question_time}}</div>
+                        </div>
+                        <div class="list-result_item_info_auth">
+                            <img src="https://i.pinimg.com/564x/fc/d1/3d/fcd13d1f1b1e298ba79250d1ce221c86.jpg" alt="" class="list-result_item_info_auth_avatar">
+                            <span class="list-result_item_info_auth_name">{{question.user_of_question.pk}}</span>
                         </div>
                     </div>
                 </a>
@@ -108,7 +134,7 @@
                         </a>
                     </li>
                     <li class="overlay_container_tabs_options_list_item">
-                        <a href="#" class="overlay_container_tabs_options_list_item_link">
+                        <a href="javascript: logOut()" class="overlay_container_tabs_options_list_item_link">
                             Đăng Xuất
                         </a>
                     </li>
@@ -123,6 +149,7 @@
      <!-- link js -->
     <script src="{% static 'home/js/search.js' %}"></script>
     <script src="{% static 'home/js/base_navbar.js' %}"></script>
+    <script src="{% static 'home/js/log_out.js' %}"></script>
     {% endblock %}
 </body>
 </html>

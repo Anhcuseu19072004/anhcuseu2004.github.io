@@ -412,3 +412,59 @@ def update_record(request):
                     'status'  : 'BAD',
                     'message' : 'question is not exists'
                 })
+
+@csrf_exempt
+def post_categori(request):
+    info_user = request.COOKIES.get('user', None)
+    if info_user is None:
+        return JsonResponse({
+            'status'  : 'BAD',
+            'message' : 'user is not define'
+        })
+    check_user_exists = User.objects.filter(pk = info_user).exists()
+    if check_user_exists is False:
+        return JsonResponse({
+            'status'  : 'BAD',
+            'message' : 'user is not exists'
+        })
+
+    user         = User.objects.get(pk = info_user)
+    body         = json.loads(request.body)
+    type_subject = body['subject']
+    type_time    = body['time']
+    if type_time == 'just_new':
+        list_post    = list(Post.objects.filter(post_type = type_subject).order_by('-post_time')[:30])
+        if len(list_post) <=0:
+            return JsonResponse({
+            'status'    : 'OK',
+            'message'   : 'server running',
+            'list_post'      : 'None'
+            })
+
+        last_time    = list_post[-1].post_time
+        data = serializers.serialize('json', list_post)
+        return JsonResponse({
+            'status'    : 'OK',
+            'message'   : 'server running',
+            'list_post' : data,
+            'last_time' : last_time
+        })
+    list_post    = list(Post.objects.filter(post_type = type_subject).order_by('-post_views')[:30])
+    if len(list_post) <=0:
+        return JsonResponse({
+            'status'    : 'OK',
+            'message'   : 'server running',
+            'list_post'      : 'None'
+        })
+    last_time    = list_post[-1].post_time
+    data = serializers.serialize('json', list_post)
+    return JsonResponse({
+            'status'    : 'OK',
+            'message'   : 'server running',
+            'list_post' : data,
+            'last_time' : last_time
+        })
+
+
+
+

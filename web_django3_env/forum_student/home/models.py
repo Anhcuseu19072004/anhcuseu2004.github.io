@@ -9,6 +9,13 @@ class Post(models.Model):
     post_time    = models.DateField(auto_now = True)
     post_img     = models.TextField()
     post_views   = models.IntegerField(default = 0)
+    post_type    = models.CharField(max_length = 50, default = "all")
+    @property
+    def short_title(self):
+        if len(str(self.title)) <= 43:
+            return str(self.title)
+        return str(self.title)[:40] + '...'
+
     def __str__(self):
         return self.title
 
@@ -27,6 +34,7 @@ class Question(models.Model):
     question_time        = models.DateField(auto_now = True)
     user_of_question     = models.ForeignKey(User, on_delete = models.CASCADE)
     post_of_question     = models.CharField( max_length = 20, default = "none")
+    question_img         = models.CharField(max_length = 50, default = "/media/background_item.png")
     def __str__(self):
         return self.question_title
 
