@@ -7,18 +7,20 @@ class Exam(models.Model):
     maker_exam      = models.ForeignKey(User, on_delete = models.CASCADE)
     create_time     = models.DateField(auto_now = True)
     number_of_times = models.IntegerField(default = 0)
+    type_exam       = models.CharField(max_length = 50, default = 'all')
 
     def __str__(self):
         return self.title_exam
 
 class Question(models.Model):
-    title_question = models.CharField(max_length = 500)
-    answer_a       = models.CharField(max_length = 200)
-    answer_a       = models.CharField(max_length = 200)
-    answer_a       = models.CharField(max_length = 200)
-    answer_a       = models.CharField(max_length = 200)
-    correct_answer = models.CharField(max_length = 200)
-    create_time    = models.DateTimeField(auto_now = True)
+    question_of_exam = models.ForeignKey(Exam, on_delete = models.CASCADE)
+    title_question   = models.CharField(max_length = 500)
+    answer_a         = models.CharField(max_length = 200)
+    answer_b         = models.CharField(max_length = 200)
+    answer_c         = models.CharField(max_length = 200)
+    answer_d         = models.CharField(max_length = 200)
+    correct_answer   = models.CharField(max_length = 200)
+    create_time      = models.DateTimeField(auto_now = True)
     
     def __str__(self):
         return self.title_question
