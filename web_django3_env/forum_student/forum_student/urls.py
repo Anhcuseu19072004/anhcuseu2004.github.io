@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from home import url as home_url
-from form import url as form_url
+from home  import url as home_url
+from form  import url as form_url
+from quizi import url as quizi_url
+
 from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,6 +29,7 @@ urlpatterns = [
     path('', include(home_url)),
     # path('tinymce/', include('tinymce.urls')),
     path('', include(form_url)),
+    path('quizi/', include(quizi_url)),
 ]
 
 if settings.DEBUG:

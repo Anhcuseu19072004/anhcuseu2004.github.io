@@ -82,11 +82,17 @@
         flex-direction: column;
         font-size: 1.6rem;
         color: #1a1a1a;
+        margin-bottom: 30px
     }
 
     /* phone content - file */
     .form_form_field-file_label {
         margin-bottom: 6px;
+    }
+
+    /* phone content - type post */
+    .form_form_field_type {
+        margin-top: 16px;
     }
 
     /* phone content - textarea */
@@ -188,14 +194,17 @@
         color: var(--text-color-1);
     }
 
+
     /* mt content - file */
     .app-post-form_form_field-file {
-        margin-top: 6px;
+        margin-top: 28px;
         height: 40px;
         display: flex;
         align-items: center;
         font-size: 1.8rem;
+        margin-bottom: 40px;
     }
+
 
     /* mt content - file */
     .form_form_field-file_label {
@@ -641,6 +650,13 @@
         color: #1a1a1a;
         margin-right: 10px;
     } 
+
+    /* pc content - selection type post */
+    .form_form_field_type_label {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        margin-right: 10px;
+    }
 
     /* pc content - actions */
     .app-post-form_form_field_actions {

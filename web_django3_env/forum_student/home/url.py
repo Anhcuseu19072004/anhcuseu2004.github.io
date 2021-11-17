@@ -9,6 +9,7 @@ urlpatterns = [
     path('view-question/<int:id>', v_home.question_detail, name = 'view-question'),
     path('user-dashboard/', v_home.user_dashboard, name = 'user-dashboard'),
     path('user-dashboard/edit/<str:type_object>/<int:id>', v_home.user_dashboard_edit, name = 'user-dashboard-edit'),
+    path('view-discuss/<int:id>', v_home.view_discuss_post, name = 'view-discuss'),
 
     # API
     # path('search/', v_home.search_post, name = 'search'),

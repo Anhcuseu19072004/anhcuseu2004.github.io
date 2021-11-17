@@ -190,6 +190,24 @@ def search(request):
     }
     return render(request, 'home/search.html', data)
     
+# view discuss 
+def view_discuss_post(request, id):
+    info_user = request.COOKIES.get('user', None)
+    if info_user is None:
+        return redirect('register')
+    check_user_exists = User.objects.filter(pk = info_user).exists()
+    if check_user_exists is False:
+        return redirect('register')
+
+    user          = User.objects.get(pk = info_user)
+    list_discuss  = Question.objects.filter(post_of_question = id)
+    post          = Post.objects.get(pk = id)
+    data = {
+        'user'          : user,
+        'post'          : post,
+        'list_discuss'  : list_discuss
+    }
+    return render(request, 'home/view_discuss.html', data)
 # ======     API    ======
 @csrf_exempt
 def addPost(request):
@@ -197,6 +215,7 @@ def addPost(request):
         try:
 
             body       = json.loads(request.body)
+            my_type    = body['type_post']
             my_content = body['content_']
             my_title   = body['title_']
             my_img     = body['file_']
@@ -204,9 +223,10 @@ def addPost(request):
             name_img   = name_img.replace(' ', "-")
             my_img     = saveImg(my_img, name_img).replace('\\', "/")
             user_info  = request.COOKIES.get('user', None)
+
             user       = User.objects.get(account_name = user_info)
 
-            new_post   = Post(user_of_post = user, title = my_title, content = my_content, post_img = my_img)
+            new_post   = Post(user_of_post = user, title = my_title, content = my_content, post_img = my_img, post_type = my_type)
             new_post.save()
 
             return JsonResponse({"message": 'thành công', 'status': 'OK'}, safe = False)

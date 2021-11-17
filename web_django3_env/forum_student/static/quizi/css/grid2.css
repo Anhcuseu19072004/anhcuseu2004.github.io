@@ -1,0 +1,405 @@
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 764px) {
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .xs-1,
+    .xs-2,
+    .xs-3,
+    .xs-4,
+    .xs-5,
+    .xs-6,
+    .xs-7,
+    .xs-8,
+    .xs-9,
+    .xs-10,
+    .xs-11,
+    .xs-12 {
+        display: block;
+    }
+
+    .xs-0 {
+        display: none;
+    }
+    
+    .xs-1 {
+        flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+    
+    .xs-2 {
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+    
+    .xs-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+    .xs-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    
+    .xs-5 {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+    
+    .xs-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    .xs-7 {
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+    
+    .xs-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+    
+    .xs-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    
+    .xs-10 {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+    
+    .xs-11 {
+        flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+    
+    .xs-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+       
+    
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .sm-1,
+    .sm-2,
+    .sm-3,
+    .sm-4,
+    .sm-5,
+    .sm-6,
+    .sm-7,
+    .sm-8,
+    .sm-9,
+    .sm-10,
+    .sm-11,
+    .sm-12 {
+        display: block;
+    }
+
+    .sm-0 {
+        display: none;
+    }
+    
+    .sm-1 {
+        flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+    
+    .sm-2 {
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+    
+    .sm-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+    .sm-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    
+    .sm-5 {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+    
+    .sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    .sm-7 {
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+    
+    .sm-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+    
+    .sm-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    
+    .sm-10 {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+    
+    .sm-11 {
+        flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+    
+    .sm-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .md-1,
+    .md-2,
+    .md-3,
+    .md-4,
+    .md-5,
+    .md-6,
+    .md-7,
+    .md-8,
+    .md-9,
+    .md-10,
+    .md-11,
+    .md-12 {
+        display: block;
+    }
+
+    .md-0 {
+        display: none;
+    }
+    
+    .md-1 {
+        flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+    
+    .md-2 {
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+    
+    .md-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+    .md-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    
+    .md-5 {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+    
+    .md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    .md-7 {
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+    
+    .md-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+    
+    .md-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    
+    .md-10 {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+    
+    .md-11 {
+        flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+    
+    .md-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .grid {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .col {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .lg-0 {
+        display: none;
+    }
+
+    .lg-1,
+    .lg-2,
+    .lg-3,
+    .lg-4,
+    .lg-5,
+    .lg-6,
+    .lg-7,
+    .lg-8,
+    .lg-9,
+    .lg-10,
+    .lg-11,
+    .lg-12 {
+        display: block;
+    }
+    
+    .lg-1 {
+        flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+    
+    .lg-2 {
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+    
+    .lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+    .lg-4 {
+
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+    
+    .lg-5 {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+    
+    .lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    .lg-7 {
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+    
+    .lg-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+    
+    .lg-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    
+    .lg-10 {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+    
+    .lg-11 {
+        flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+    
+    .lg-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

@@ -72,15 +72,17 @@ function submit() {
     reader.readAsDataURL(files[0])
     reader.addEventListener('load', (event) => {
         const fileUpload = document.querySelector("#file");
-        const img = event.target.result;
-        let elmTitle = document.getElementById('title')
-        var myContent = tinymce.get("textarea").getContent();
+        const img        = event.target.result;
+        let elmTitle     = document.getElementById('title')
+        var myContent    = tinymce.get("textarea").getContent();
+        let elmTypePost  = document.getElementById('type_post')
         console.log(myContent)
         data = {
-            title_ : elmTitle.value,
-            content_ : myContent,
-            file_ : `${img}`, //base 64
-            name_file_ : fileUpload.files[0].name
+            title_     : elmTitle.value,
+            content_   : myContent,
+            file_      : `${img}`, //base 64
+            name_file_ : fileUpload.files[0].name,
+            type_post  : elmTypePost.value
         }
 
         postData(data, url = '/addpost/')

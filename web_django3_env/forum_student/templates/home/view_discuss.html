@@ -1,0 +1,414 @@
+{% extends "home/base_layout.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}các thảo luận về {{post.title}} {% endblock %}</title>
+    {% block css %}
+    <style>
+        /* ==== MP ==== */
+        @media (min-width: 375px) {
+            /* mp layout */
+            .discuss--layout {
+                padding: 12px 4px 12px;
+            }
+
+            /* mp list */
+            .discuss__list {
+                list-style: none;
+            }
+
+            /* mp item */
+            .discuss__list__item {
+                margin-bottom: 16px;
+            }
+
+            /* mp item */
+            .discuss__list__item__link {
+                text-decoration: none;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__background {
+                flex: 1;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding-top: 22%;
+                border-radius: 6px;
+                margin-right: 6px;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__header {
+                flex: 2;
+                height: 100%;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__header__title {
+                font-size: 1.4rem;
+                color: #1a1a1a;
+                font-weight: 500;
+                margin-bottom: 4px;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__header__auth {
+                display: flex;
+                align-items: center;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__header__auth_img {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid #111;
+                margin-right: 6px;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__header__auth_name {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 400;
+                margin-right: 6px;
+            }
+
+            /* mp item */
+            .discuss__list__item__link__header__auth_time {
+                font-size: 1.4rem;
+                color: #1a1a1a;
+                font-weight: 400;
+            }
+        }
+        /* ==== MT ==== */
+        @media (min-width: 768px) {
+            /* mt layout */
+            .discuss--layout {
+                padding: 12px 24px 12px;
+            }
+
+            /* mt list */
+            .discuss__list {
+                list-style: none;
+            }
+
+            /* mt item */
+            .discuss__list__item {
+                margin-bottom: 16px;
+            }
+
+            /* mt item */
+            .discuss__list__item__link {
+                text-decoration: none;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__background {
+                flex: 1;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding-top: 16%;
+                border-radius: 6px;
+                margin-right: 16px;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__header {
+                flex: 3;
+                height: 100%;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__header__title {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__header__auth {
+                display: flex;
+                align-items: center;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__header__auth_img {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid #111;
+                margin-right: 6px;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__header__auth_name {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 400;
+                margin-right: 6px;
+            }
+
+            /* mt item */
+            .discuss__list__item__link__header__auth_time {
+                font-size: 1.4rem;
+                color: #1a1a1a;
+                font-weight: 400;
+            }
+        }
+        /* ==== LT ==== */
+        @media (min-width: 992px) {
+            /* lt layout */
+            .discuss--layout {
+                padding: 12px 24px 12px;
+            }
+
+            /* lt list */
+            .discuss__list {
+                list-style: none;
+            }
+
+            /* lt item */
+            .discuss__list__item {
+                margin-bottom: 16px;
+            }
+
+            /* lt item */
+            .discuss__list__item__link {
+                text-decoration: none;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__background {
+                flex: 1;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding-top: 16%;
+                border-radius: 6px;
+                margin-right: 16px;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__header {
+                flex: 3;
+                height: 100%;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__header__title {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__header__auth {
+                display: flex;
+                align-items: center;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__header__auth_img {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid #111;
+                margin-right: 6px;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__header__auth_name {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 400;
+                margin-right: 6px;
+            }
+
+            /* lt item */
+            .discuss__list__item__link__header__auth_time {
+                font-size: 1.4rem;
+                color: #1a1a1a;
+                font-weight: 400;
+            }
+        }
+
+        /* ==== PC ==== */
+        @media (min-width: 1200px) {
+            /* pc layout */
+            .discuss--layout {
+                padding: 12px 24px 12px;
+            }
+
+            /* pc list */
+            .discuss__list {
+                list-style: none;
+            }
+
+            /* pc item */
+            .discuss__list__item {
+                margin-bottom: 16px;
+            }
+
+            /* pc item */
+            .discuss__list__item__link {
+                text-decoration: none;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__background {
+                flex: 1;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding-top: 16%;
+                border-radius: 6px;
+                margin-right: 16px;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__header {
+                flex: 3;
+                height: 100%;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__header__title {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__header__auth {
+                display: flex;
+                align-items: center;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__header__auth_img {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid #111;
+                margin-right: 6px;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__header__auth_name {
+                font-size: 1.6rem;
+                color: #1a1a1a;
+                font-weight: 400;
+                margin-right: 6px;
+            }
+
+            /* pc item */
+            .discuss__list__item__link__header__auth_time {
+                font-size: 1.4rem;
+                color: #1a1a1a;
+                font-weight: 400;
+            }
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    {% for discuss in list_discuss %}
+    <div class="discuss--layout">
+        <ul class="discuss__list">
+            <li class="discuss__list__item">
+                <a href="/view-question/{{discuss.pk}}" class="discuss__list__item__link">
+                    <div class="discuss__list__item__link__background" style = 'background-image: url({{discuss.question_img}});'>
+                    </div>
+                    <div class="discuss__list__item__link__header">
+                        <p class="discuss__list__item__link__header__title">
+                            {{discuss.question_discription}}
+                        </p>
+                        <div class="discuss__list__item__link__header__auth">
+                            <img src="{{discuss.question_img}}" alt="{{discuss.question_img}}" class="discuss__list__item__link__header__auth_img">
+                            <span class="discuss__list__item__link__header__auth_name">{{discuss.user_of_question.pk}}</span>
+                            <span class="discuss__list__item__link__header__auth_time">{{discuss.question_time}}</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+    {% endblock %}
+
+
+    {% block overlay %}
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        {{user.account_name}}
+                    </span>
+                </div>
+    
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Bài Viết Của Tôi
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Câu Hỏi Của Tôi
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Chỉnh Sửa Thông Tin
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="javascipt: logOut()" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static 'home/js/base_navbar.js' %}"></script>
+    <script src="{% static 'home/js/log_out.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
