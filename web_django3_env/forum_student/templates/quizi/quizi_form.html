@@ -6,44 +6,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {{user}} {% endblock %}</title>
-
+    <title>{% block title %} Thêm Chắc Nghiệm {% endblock %}</title>
     {% block css %}
-    <link rel="stylesheet" href="{% static 'quizi/css/quizi_dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'quizi/css/quizi_exam_form.css' %}">
     {% endblock %}
 </head>
 <body>
     {% block content %}
-    <div class="dashboard--layout">
-        <div class="dashboard--layout__content grid">
-            <div class="layout__content__header">
-                <h3 class="layout__content__header__heading">
-                    Chắc nghiệm đã tạo
-                </h3>
+    <div id_cookies = '{{user.pk}}' class="exam-form-layout">
+        <div class="exam-form-layout__form">
+            <div class="exam-form-layout__form__fields">
+                <div class="exam-form-layout__form__fields__heading">
+                    <label for="title_exam" class="exam-form-layout__form__fields__heading__label">Tiêu Đề</label>
+                    <input id = "title_exam" placeholder="abc" name ='title_exam' type="text" class="exam-form-layout__form__fields__heading__title">
+                </div>
+                <div class="exam-form-layout__form__fields__type">
+                    <label for="type_exam" class="exam-form-layout__form__fields__type__label">Thể Loại</label>
+                    <select name="type_exam" id="type_exam" class="exam-form-layout__form__fields__type__select">
+                        <option value="math">Toán</option>
+                        <option value="literature">Văn</option>
+                        <option value="chemical">Hóa học</option>
+                        <option value="geography">Địa Lý</option>
+                        <option value="physical">Vật Lý</option>
+                        <option value="history">Lịch Sử</option>
+                    </select>
+                </div>
             </div>
-            <div class="layout__content__list row">
-                {% for quizi in list_quizi %}
-                <div id="{{quizi.pk}}" class="layout__content__list__item col lg-12 md-12 sm-12 xs-12">
-                    <div class="layout__content__list__item__title">
-                        <a href="#" class="layout__content__list__item__title__link">
-                            {{quizi.title_exam}}
-                        </a>
-                    </div>
-                    <div class="layout__content__list__item__actions">
-                        <div onclick="deleteExam('{{quizi.pk}}')" class="layout__content__list__item__actions__btn layout__content__list__item__actions__btn--delete">
-                                Xóa
-                        </div>
-                        <a href="/quizi/home/quizi-dashboard/modify-exam/{{quizi.pk}}" class="layout__content__list__item__actions__btn layout__content__list__item__actions__btn--edit">
-                                Chỉnh Sửa
-                        </a>
-                    </div>
-                </div>
-                {% endfor %}
-                <div class="layout__content__list__item--add-exam col lg-12 md-12 sm-12 xs-12">
-                    <a href="quizi-form/" class="layout__content__list__item__link">
-                        Thêm Chắc Nghiệm
-                    </a>
-                </div>
+            <div class="exam-form-layout__form__fields__actions">
+                <span onclick="addExam()" class="exam-form-layout__form__fields__actions__submit">Tạo</span>
             </div>
         </div>
     </div>
@@ -88,11 +78,9 @@
         </div>
     </div>
     {% endblock %}
-
     {% block js %}
+    <script src="{% static 'quizi/js/quizi_exam_form.js' %}"></script>
     <script src="{% static 'quizi/js/base_navbar.js' %}"></script>
-    <script src="{% static 'quizi/js/log_out.js' %}"></script>
-    <script src="{% static 'quizi/js/quizi_dashboard.js' %}"></script>
     {% endblock %}
 </body>
 </html>

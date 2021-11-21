@@ -1,0 +1,116 @@
+{% extends 'quizi/base_layout_quizi.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{exam.title_exam}} {% endblock %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'quizi/css/quizi_modify_exam.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    {% csrf_token %}
+    <div class="modify-layout">
+        <div class="modify-layout__exam">
+            <div class="modify-layout__exam__fields modify-layout__exam__fields--title">
+                <label class="modify-layout__exam__fields__label" for="exam_title">Tiêu đề</label>
+                <div id="exam_title" name = "exam_title" contenteditable="True" onpaste="return false" class="modify-layout__exam__fields__text">{{exam.title_exam}}</div>
+            </div>
+            <div class="modify-layout__exam__fields modify-layout__exam__fields--select-type">
+                <label for="exam_type" class="modify-layout__exam__fields__label">Thể Loại</label>
+                <select name="exam_type" id="exam_type">
+                    <option value="{{exam.type_exam}}">{{exam.type_exam}}</option>
+                    <option value="math">Toán</option>
+                    <option value="literature">Văn</option>
+                    <option value="chemical">Hóa học</option>
+                    <option value="geography">Địa Lý</option>
+                    <option value="physical">Vật Lý</option>
+                    <option value="history">Lịch Sử</option>
+                </select>
+            </div>
+        </div>
+        <div class="modify-layout__heading">
+            <h1 class="modify-layout__heading__text">
+                Danh Sách Câu Hỏi
+            </h1>
+        </div>
+        <ol class="modify-layout__list-question">
+            {% for question in list_question %}
+            <li id = "{{question.pk}}" class="modify-layout__list-question__item">
+                <div class="modify-layout__list-question__item__content">
+                    <div class="modify-layout__list-question__item__content__heading">
+                        <span class="modify-layout__list-question__item__content__heading__text">{{question.title_question}}</span>
+                    </div>
+                    <div class="modify-layout__list-question__item__content__actions">
+                        <div onclick="deleteQuestion(this)" question_id = "{{question.pk}}" class="modify-layout__list-question__item__content__actions__btn modify-layout__list-question__item__content__actions__btn--delete">Xóa</div>
+                        <div class="modify-layout__list-question__item__content__actions__btn modify-layout__list-question__item__content__actions__btn--change">Chỉnh Sửa</div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+        <div class="modify-layout__actions">
+            <div id_exam = "{{exam.pk}}" onclick="goToSiteAddQuestion(this)" class="modify-layout__actions__btn">
+                Thêm Câu Hỏi
+            </div>
+        </div>
+        <div class="modify-layout__actions">
+            <div exam_id = "{{exam.pk}}" onclick="updateExam(this)" class="modify-layout__actions__btn">
+                Lưu Thay Đổi
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block overlay %}
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        {{user.account_name}}
+                    </span>
+                </div>
+    
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Quản Lý Bài Viết
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Chỉnh Sửa Thông Tin
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="javascipt: logOut()" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <!-- <script src="{% static 'quizi/js/quizi_exam_form.js' %}"></script> -->
+    <script src="{% static 'quizi/js/base_navbar.js' %}"></script>
+    <script src="{% static 'quizi/js/quizi_modify_exam.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

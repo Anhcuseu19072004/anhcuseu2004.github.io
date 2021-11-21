@@ -1,0 +1,367 @@
+.remove {
+    display: none;
+}
+/* ==== SP ==== */
+@media (max-width: 374px) {
+    /* sp layout */
+    .exam-form-layout {
+        padding: 12px 4px 12px;
+        width: 100%;
+    }
+
+    /* sp fields */
+    .exam-form-layout__form__fields {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 16px;
+    }
+
+    /* sp fields */
+    .exam-form-layout__form__fields__heading {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    /* sp fields */
+    .exam-form-layout__form__fields__heading__label,
+    .exam-form-layout__form__fields__type__label {
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-right: 6px;
+    }
+    /* sp fields */
+    .exam-form-layout__form__fields__heading__title {
+        padding: 4px 8px;
+        color: #1a1a1a;
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #5a5a5a;
+        outline: none;
+        flex: 1;
+    }
+
+    /* sp fields */
+    .exam-form-layout__form__fields__heading__title:focus-within {
+        border-bottom: 1px solid #ff5e00;
+    }
+
+    /* sp actions */
+    .exam-form-layout__form__fields__actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* sp actions */
+    .exam-form-layout__form__fields__actions__submit {
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: #48BF91;
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: block;
+        width: 120px
+    }
+
+    /* sp actions */
+    .exam-form-layout__form__fields__actions__submit:hover {
+        filter: brightness(90%)
+    }
+}
+
+/* ==== MP ==== */
+@media (min-width: 375px) {
+    /* mp layout */
+    .exam-form-layout {
+        padding: 12px 4px 12px;
+        width: 100%;
+    }
+
+    /* mp fields */
+    .exam-form-layout__form__fields {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 16px;
+    }
+
+    /* mp fields */
+    .exam-form-layout__form__fields__heading {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    /* mp fields */
+    .exam-form-layout__form__fields__heading__label,
+    .exam-form-layout__form__fields__type__label {
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-right: 6px;
+    }
+    /* mp fields */
+    .exam-form-layout__form__fields__heading__title {
+        padding: 4px 8px;
+        color: #1a1a1a;
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #5a5a5a;
+        outline: none;
+        flex: 1;
+    }
+
+    /* mp fields */
+    .exam-form-layout__form__fields__heading__title:focus-within {
+        border-bottom: 1px solid #ff5e00;
+    }
+
+    /* mp actions */
+    .exam-form-layout__form__fields__actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* mp actions */
+    .exam-form-layout__form__fields__actions__submit {
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: #48BF91;
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: block;
+        width: 120px
+    }
+
+    /* mp actions */
+    .exam-form-layout__form__fields__actions__submit:hover {
+        filter: brightness(90%)
+    }
+}
+
+/* ==== MT ==== */
+@media (min-width: 768px) {
+    /* mt layout */
+    .exam-form-layout {
+        padding: 12px 16px 12px;
+        width: 80%;
+    }
+
+    /* mt fields */
+    .exam-form-layout__form__fields {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 16px;
+        justify-content: space-between; 
+    }
+
+    /* mt fields */
+    .exam-form-layout__form__fields__heading {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    /* mt fields */
+    .exam-form-layout__form__fields__heading__label,
+    .exam-form-layout__form__fields__type__label {
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-right: 6px;
+    }
+    /* mt fields */
+    .exam-form-layout__form__fields__heading__title {
+        padding: 4px 8px;
+        color: #1a1a1a;
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #5a5a5a;
+        outline: none;
+        flex: 1;
+    }
+
+    /* mt fields */
+    .exam-form-layout__form__fields__heading__title:focus-within {
+        border-bottom: 1px solid #ff5e00;
+    }
+
+    /* mt actions */
+    .exam-form-layout__form__fields__actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* mt actions */
+    .exam-form-layout__form__fields__actions__submit {
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: #48BF91;
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: block;
+        width: 120px
+    }
+
+    /* mt actions */
+    .exam-form-layout__form__fields__actions__submit:hover {
+        filter: brightness(90%)
+    }
+}
+
+/* ==== LT ==== */
+@media (min-width: 992px) {
+    /* lt layout */
+    .exam-form-layout {
+        padding: 12px 16px 12px;
+        width: 80%;
+    }
+
+    /* lt fields */
+    .exam-form-layout__form__fields {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 16px;
+        justify-content: space-between; 
+    }
+
+    /* lt fields */
+    .exam-form-layout__form__fields__heading {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    /* lt fields */
+    .exam-form-layout__form__fields__heading__label,
+    .exam-form-layout__form__fields__type__label {
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-right: 6px;
+    }
+    /* lt fields */
+    .exam-form-layout__form__fields__heading__title {
+        padding: 4px 8px;
+        color: #1a1a1a;
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #5a5a5a;
+        outline: none;
+        flex: 1;
+    }
+
+    /* lt fields */
+    .exam-form-layout__form__fields__heading__title:focus-within {
+        border-bottom: 1px solid #ff5e00;
+    }
+
+    /* lt actions */
+    .exam-form-layout__form__fields__actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* lt actions */
+    .exam-form-layout__form__fields__actions__submit {
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: #48BF91;
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: block;
+        width: 120px
+    }
+
+    /* lt actions */
+    .exam-form-layout__form__fields__actions__submit:hover {
+        filter: brightness(90%)
+    }
+}
+
+/* === PC ==== */
+@media (min-width: 1200px) {
+    /* pc layout */
+    .exam-form-layout {
+        padding: 12px 24px 12px;
+        width: 70%;
+    }
+
+    /* pc fields */
+    .exam-form-layout__form__fields {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 16px;
+        justify-content: space-between; 
+    }
+
+    /* pc fields */
+    .exam-form-layout__form__fields__heading {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    /* pc fields */
+    .exam-form-layout__form__fields__heading__label,
+    .exam-form-layout__form__fields__type__label {
+        font-size: 1.6rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        margin-right: 6px;
+    }
+    /* pc fields */
+    .exam-form-layout__form__fields__heading__title {
+        padding: 4px 8px;
+        color: #1a1a1a;
+        font-size: 2rem;
+        border: none;
+        border-bottom: 1px solid #5a5a5a;
+        outline: none;
+        flex: 1;
+    }
+
+    /* pc fields */
+    .exam-form-layout__form__fields__heading__title:focus-within {
+        border-bottom: 1px solid #ff5e00;
+    }
+
+    /* pc actions */
+    .exam-form-layout__form__fields__actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* pc actions */
+    .exam-form-layout__form__fields__actions__submit {
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: #48BF91;
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: block;
+        width: 120px
+    }
+
+    /* pc actions */
+    .exam-form-layout__form__fields__actions__submit:hover {
+        filter: brightness(90%)
+    }
+}

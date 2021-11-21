@@ -1,0 +1,117 @@
+{% extends 'quizi/base_layout_quizi.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Thêm câu hỏi cho {{exam.title_exam}} {% endblock %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'quizi/css/quizi_form_question.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="question-form-layout">
+        <div class="question-form-layout__fields">
+            {% csrf_token %}
+            <div class="fields__parents">
+                <p class="fields__parents__text">Thêm câu hỏi cho "{{exam.title_exam}}"</p>
+            </div>
+
+            <div class="fields__answer fields__answer--title">
+                <label for="question_title" class="fields__answer__label fields__answer__label--title">Câu hỏi</label>
+                <div exam_id="{{exam.pk}}" id="question_title" name = 'question_title' contenteditable="True" onpaste="return false" class="fields__answer__inp">Đặt câu hỏi của bạn ở đây</div>
+            </div>
+
+            <div class="fields__answer">
+                <label for="answer_A" class="fields__answer__label">Đáp án A</label>
+                <input id="answer_A" name = 'answer_A' type="text" class="fields__answer__inp">
+            </div>
+
+            <div class="fields__answer">
+                <label for="answer_B" class="fields__answer__label">Đáp án B</label>
+                <input id="answer_B" name = 'answer_B' type="text" class="fields__answer__inp">
+            </div>
+
+            <div class="fields__answer">
+                <label for="answer_C" class="fields__answer__label">Đáp án C</label>
+                <input id="answer_C" name = 'answer_C' type="text" class="fields__answer__inp">
+            </div>
+
+            <div class="fields__answer">
+                <label for="answer_D" class="fields__answer__label">Đáp án D</label>
+                <input id="answer_D" name = 'answer_D' type="text" class="fields__answer__inp">
+            </div>
+
+            <div class="fields__answer fields__answer--select-answer-correct">
+                <label for="correct_answer" class="fields__answer__label">Lựa chọn đáp án đúng</label>
+                <select name="correct_answer" id="correct_answer">
+                    <option value="answer_A">Đáp án A</option>
+                    <option value="answer_B">Đáp án B</option>
+                    <option value="answer_C">Đáp án C</option>
+                    <option value="answer_D">Đáp án D</option>
+                </select>
+            </div>
+        </div>
+        <div class="question-form-layout__actions">
+            <div class="actions__item">
+                <div onclick="addQuestion('False')" class="actions__item__btn">
+                    Lưu và tiếp tục thêm
+                </div>
+            </div>
+            <div class="actions__item">
+                <div onclick="addQuestion('True')" class="actions__item__btn">
+                    Lưu và trở về
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block overlay %}
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        {{user.account_name}}
+                    </span>
+                </div>
+    
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Quản Lý Bài Viết
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Chỉnh Sửa Thông Tin
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="javascipt: logOut()" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block js %}
+    <script src="{% static 'quizi/js/quizi_form_question.js' %}"></script>
+    <script src="{% static 'quizi/js/base_navbar.js' %}"></script>
+    {% endblock %}
+</body>
+</html>
