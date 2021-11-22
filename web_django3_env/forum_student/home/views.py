@@ -154,6 +154,8 @@ def user_dashboard_edit(request, type_object, id):
     user = User.objects.get(pk = info_user)
     if type_object == "post":
         post = Post.objects.get(pk = id)
+        if post.user_of_post != user:
+            return redirect('/user-dashboard/')
         data = {
             'object' : post,
             'type'   : type_object,
@@ -163,6 +165,8 @@ def user_dashboard_edit(request, type_object, id):
 
     elif type_object == "question":
         question = Question.objects.get(pk = id)
+        if question.user_of_question != user:
+            return redirect('/user-dashboard/')
         data = {
             'object' : question,
             'type'   : type_object,

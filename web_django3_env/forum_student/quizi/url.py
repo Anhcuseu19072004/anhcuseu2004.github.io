@@ -8,6 +8,7 @@ urlpatterns = [
     path('home/quizi-dashboard/quizi-form/', v_quizi.quizi_form, name = 'quizi-form'),
     path('home/quizi-dashboard/modify-exam/<int:id>', v_quizi.quizi_modify_exam, name = 'modify-exam'),
     path('home/quizi-dashboard/modify-exam/add-questions/<int:id>', v_quizi.quizi_create_questions, name = 'add-questions'),
+    path('home/quizi-dashboard/modify-exam/modify-question/<int:id>', v_quizi.quizi_modify_questions, name = 'modify-question'),
 
     # API
     path('api/add-exam', a_quizi.api_add_exam, name = 'api-add-exam'),

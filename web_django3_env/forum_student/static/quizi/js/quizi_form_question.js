@@ -19,7 +19,7 @@ async function postData(data, url, method, token) {
 function addQuestion(condition) {
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     let exam_id          = document.getElementById('question_title').getAttribute('exam_id')
-    let titleQuestion    = document.getElementById('question_title').innerHTML.trim()
+    let titleQuestion    = document.getElementById('question_title').innerText.trim()
     let answerA          = document.getElementById('answer_A').value
     let answerB          = document.getElementById('answer_B').value
     let answerC          = document.getElementById('answer_C').value

@@ -47,7 +47,7 @@
                     </div>
                     <div class="modify-layout__list-question__item__content__actions">
                         <div onclick="deleteQuestion(this)" question_id = "{{question.pk}}" class="modify-layout__list-question__item__content__actions__btn modify-layout__list-question__item__content__actions__btn--delete">Xóa</div>
-                        <div class="modify-layout__list-question__item__content__actions__btn modify-layout__list-question__item__content__actions__btn--change">Chỉnh Sửa</div>
+                        <div onclick="window.location.href = '/quizi/home/quizi-dashboard/modify-exam/modify-question/{{question.pk}}'" class="modify-layout__list-question__item__content__actions__btn modify-layout__list-question__item__content__actions__btn--change">Chỉnh Sửa</div>
                     </div>
                 </div>
             </li>
