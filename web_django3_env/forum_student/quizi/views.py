@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from form.models  import User
 from quizi.models import Exam, Question, Result
+import random
 # Create your views here.
 # view quizi home
 def quizi_home(request):
@@ -140,4 +141,38 @@ def quizi_modify_questions(request, id):
     return render(request, 'quizi/quizi_modify_question.html', data)
 
     
+
+
+
+# 
+#               START
+#=============  EXAM  =============
+#
+#
+
+#view introduction for exam
+def quizi_intro(request, id):
+    info_user = request.COOKIES.get('user', None)
+    if info_user is None:
+        return redirect('register')
+
+    check_user_exists = User.objects.filter(pk = info_user).exists()
+    if check_user_exists is False:
+        return redirect('rigister')
+    user             = User.objects.get(pk = info_user)
+    check_exam_exits = Exam.objects.filter(pk = int(id)).exists()
+
+    if check_exam_exits is False: 
+        return redirect('/quizi/home/')
+
+    exam           = Exam.objects.get(pk = int(id))
+    total_question = len(list(Question.objects.filter(question_of_exam = exam)))
+
+    data = {
+        'user'           : user,
+        'exam'           : exam,
+        'total_question' : total_question
+    }
+
+    return render(request, 'quizi/quizi_intro.html', data)
 

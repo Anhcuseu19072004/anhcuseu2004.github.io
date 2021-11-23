@@ -1,0 +1,121 @@
+{% extends 'quizi/base_layout_quizi.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{exam.title_exam}} {% endblock %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'quizi/css/quizi_intro.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="intro">
+        <div class="intro__heading">
+            <p class="intro__heading__text">
+                {{exam.title_exam}}
+            </p>
+        </div>
+        <div class="intro__heading__rules">
+            <div class="intro__heading__rules__heading">
+                <h2 class="intro__heading__rules__heading__text">
+                    Vui lòng đọc kỹ hướng dẫn trước khi thực hiện bài thi.
+                </h2>
+            </div>
+            <div class="intro__heading__rules__row">
+                <div class="intro__heading__rules__row__text">
+                    1. Bài thi không tính thời gian.
+                </div>
+            </div>
+
+            <div class="intro__heading__rules__row">
+                <div class="intro__heading__rules__row__text">
+                    2. Bài thi có tổng cộng {{total_question}} câu hỏi.
+                </div>
+            </div>
+
+            <div class="intro__heading__rules__row">
+                <div class="intro__heading__rules__row__text">
+                    3. Hệ thống sẽ không lưu lại lịch sử làm bài thi của bạn.
+                </div>
+            </div>
+
+            <div class="intro__heading__rules__row">
+                <div class="intro__heading__rules__row__text">
+                    4. Trong quá trình làm bài bạn hoàn toàn có thể thoát ra để tìm kiếm câu trả lời.
+                </div>
+            </div>
+
+            <div class="intro__heading__rules__row">
+                <div class="intro__heading__rules__row__text">
+                    5. Trong lúc làm bài thi vui lòng không giải phóng trang web hoặc tải lại trang nếu không bạn sẽ làm lại bài thi từ đầu
+                </div>
+            </div>
+
+            <div class="intro__heading__rules__row">
+                <div class="intro__heading__rules__row__text">
+                    6. Cách thức làm bài rất đơn giản bạn chỉ cần click vào câu trả lời mình cho là đúng sau khi hoàn thành tất cả nhấn "Đồng ý nộp bài"
+                </div>
+            </div>
+        </div>
+
+        <div class="intro__actions">
+            <div class="intro__actions__btn">
+                Bắt đầu
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+
+    {% block overlay %}
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        {{user.account_name}}
+                    </span>
+                </div>
+    
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Quản Lý Bài Viết
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="#" class="overlay_container_tabs_options_list_item_link">
+                                Chỉnh Sửa Thông Tin
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="javascipt: logOut()" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static 'quizi/js/quizi_intro.js' %}"></script>
+    <script src="{% static 'quizi/js/base_navbar.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

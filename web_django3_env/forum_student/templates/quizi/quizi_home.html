@@ -41,7 +41,7 @@
             <div class="quizi--layout__content__list row">
                 {% for exam in list_quizi %}
                 <div class="content__list__item col lg-2 md-3 sm-6 xs-12">
-                    <a href="#" class="content__list__item__link">
+                    <a href="/quizi/home/intro/{{exam.id}}" class="content__list__item__link">
                         <div class="content__list__item__link__background" style="background-image: url('/media/background_item.png');"></div>
                         <div class="content__list__item__link__info">
                             <div class="content__list__item__link__info__title">
@@ -73,7 +73,7 @@
     </div>
     {% endblock %}
     {% block overlay %}
-<div class="overlay grid">
+    <div class="overlay grid">
     <div class="overlay_container row">
         <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
             <div class="overlay_container_tabs_user">
@@ -115,7 +115,7 @@
         </div>
         <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
     </div>
-</div>
+    </div>
     {% endblock %}
     {% block js %}
     <script src="{% static 'quizi/js/base_navbar.js' %}"></script>

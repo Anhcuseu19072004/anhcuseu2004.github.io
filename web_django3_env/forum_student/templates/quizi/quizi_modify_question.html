@@ -18,7 +18,7 @@
             {% csrf_token %}
             <div class="fields__answer fields__answer--title">
                 <label for="question_title" class="fields__answer__label fields__answer__label--title">Câu hỏi</label>
-                <div id="question_title" name = 'question_title' contenteditable="True" onpaste="return false" class="fields__answer__inp">{{question.title_question}}</div>
+                <div question_id = "{{question.pk}}" id="question_title" name = 'question_title' contenteditable="True" onpaste="return false" class="fields__answer__inp">{{question.title_question}}</div>
             </div>
 
             <div class="fields__answer">
@@ -54,12 +54,12 @@
         </div>
         <div class="question-form-layout__actions">
             <div class="actions__item">
-                <div onclick="" class="actions__item__btn">
+                <div onclick="postQuestion('False')" class="actions__item__btn">
                     Lưu và tiếp tục chỉnh sửa
                 </div>
             </div>
             <div class="actions__item">
-                <div onclick="" class="actions__item__btn">
+                <div onclick="postQuestion('True')" class="actions__item__btn">
                     Lưu và trở về
                 </div>
             </div>

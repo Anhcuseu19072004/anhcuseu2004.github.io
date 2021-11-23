@@ -1,5 +1,6 @@
 from form.models  import User
 from quizi.models import Exam, Question, Result
+from quizi.common_quizi import check_correct_answer
 import json
 from django.views.decorators.csrf import csrf_exempt, csrf_protect, requires_csrf_token
 from django.http import HttpResponse, JsonResponse
@@ -126,4 +127,64 @@ def api_delete_question(request):
         return JsonResponse({
             'status'  : 'OK',
             'message' : 'successfully'
+        })
+
+# quizi api modify question
+@requires_csrf_token
+def api_modify_question(request):
+    if request.method == "PUT":
+        body                  = json.loads(request.body)
+        question_id           = body['question_id']
+        check_question_exists = Question.objects.filter(pk = int(question_id)).exists()
+        if check_question_exists is False:
+            return JsonResponse({
+                'status'  : 'BAD',
+                'message' : 'question is not exists'
+            })
+
+        question       = Question.objects.get(pk = int(question_id))
+        new_title      = body['title']
+        answer_A       = body['answer_A']
+        answer_B       = body['answer_B']
+        answer_C       = body['answer_C']
+        answer_D       = body['answer_D']
+        answer_correct = body['answer_correct']
+
+        if answer_correct == "not_modify":
+            question.title_question = new_title
+            if check_correct_answer(question, question.correct_answer) == "A":
+                question.correct_answer = answer_A
+
+            elif check_correct_answer(question, question.correct_answer) == "B":
+                question.correct_answer = answer_B
+
+            elif check_correct_answer(question, question.correct_answer) == "C":
+                question.correct_answer = answer_C
+
+            elif check_correct_answer(question, question.correct_answer) == "D":
+                question.correct_answer = answer_D
+
+            
+            question.answer_a       = answer_A
+            question.answer_b       = answer_B
+            question.answer_c       = answer_C
+            question.answer_d       = answer_D
+
+            question.save()
+            return JsonResponse({
+                'status'  : "OK",
+                'message' : "successfully"
+            })
+            
+        question.title_question = new_title
+        question.answer_a       = answer_A
+        question.answer_b       = answer_B
+        question.answer_c       = answer_C
+        question.answer_d       = answer_D
+        question.correct_answer = answer_correct
+        question.save()
+
+        return JsonResponse({
+            'status'  : "OK",
+            'message' : "successfully"
         })
