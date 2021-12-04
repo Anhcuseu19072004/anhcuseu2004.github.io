@@ -1,0 +1,116 @@
+{% extends 'quizi/base_layout_quizi.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Kết quả {% endblock %}</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'quizi/css/quizi_result.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="result">
+        <div class="result__layout">
+            {% if render_question == 'False' %}
+            <div class="result__layout__heading">
+                Thật tuyệt vời, bạn đã trả lời đúng {{total_answer_is_true}} / {{result.total_answer}} câu hỏi
+            </div>
+            <div class="result__layout__thumbnail">
+                <i class="fas fa-tree"></i>
+            </div>
+            <div class="result__layout__link">
+                <a href="/quizi/home/">Bấm vào đây để trở về</a>
+            </div>
+            {% endif %}
+
+            {% if render_question == "True" %}
+            <div class="result__layout__heading">
+                Bạn đã trả lời đúng {{total_answer_is_true}} / {{result.total_answer}} câu hỏi <br>
+                Hãy rèn luyện nhiều hơn nhé
+            </div>
+
+            <div class="result__layout__thumbnail">
+                <i class="fas fa-tree"></i>
+            </div>
+
+            <div class="result__layout__link">
+                <a href="/quizi/home/">Bấm vào đây để trở về</a>
+            </div>
+            
+            <ol class="result__layout__list">
+                <div class="result__layout__list__heading">
+                    <h3 class="result__layout__list__heading__text">Những câu trả lời sai và đáp án</h3>
+                </div>
+                {% for question in list_question %}
+                <li class="result__layout__list__item">
+                    <div class="item__question">
+                        <div class="item__question__discription">
+                            {{question.title_question}}
+                        </div>
+                        <div class="item__question__discription__answers">
+                            <div class="item__question__discription__answers__A">A. {{question.answer_a}}</div>
+                            <div class="item__question__discription__answers__B">B. {{question.answer_b}}</div>
+                            <div class="item__question__discription__answers__C">C. {{question.answer_c}}</div>
+                            <div class="item__question__discription__answers__D">D. {{question.answer_d}}</div>
+                        </div>
+                        <div class="item__question__discription__correct">Đáp án: {{question.char_answer}}</div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block overlay %}
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        {{user.account_name}}
+                    </span>
+                </div>
+    
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/quizi/home/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Quản Lý Bài Viết
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/quizi/home/quizi-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Trắc nghiệm
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="javascipt: logOut()" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static 'quizi/js/quizi_result.js' %}"></script>
+    <script src="{% static 'quizi/js/base_navbar.js' %}"></script></s>
+    {% endblock %}
+</body>
+</html>

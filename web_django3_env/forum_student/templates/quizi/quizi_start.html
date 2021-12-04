@@ -1,0 +1,111 @@
+{% extends 'quizi/base_layout_quizi.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{exam.title_exam}} {% endblock %} </title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'quizi/css/quizi_start.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div id_exam = "{{exam.pk}}" class="start">
+        <div class="start__heading">
+            <p class="start__heading__text">
+                {{exam.title_exam}}
+            </p>
+        </div>
+        <div class="start__body">
+            <ol class="start__body__list">
+                {% for question in list_question %}
+                <li class="start__body__list__item">
+                    <div id="{{question.pk}}" class="start__body__list__item__question">
+                        <div class="question__discription">
+                            <p class="question__discription__text">
+                                {{question.title_question}}
+                            </p>
+                        </div>
+                        <div class="question__list-answer">
+                            <!-- select: checked -->
+                            <div onclick="changeAnswer(this, '{{question.pk}}')" value_answer="{{question.answer_a}}" class="code-{{question.pk}} question__list-answer__item">
+                                A. {{question.answer_a}}
+                            </div>
+
+                            <div onclick="changeAnswer(this, '{{question.pk}}')" value_answer="{{question.answer_b}}" class="code-{{question.pk}} question__list-answer__item">
+                                B. {{question.answer_b}}
+                            </div>
+
+                            <div onclick="changeAnswer(this, '{{question.pk}}')" value_answer="{{question.answer_c}}" class="code-{{question.pk}} question__list-answer__item">
+                                C. {{question.answer_c}}
+                            </div>
+
+                            <div onclick="changeAnswer(this, '{{question.pk}}')" value_answer="{{question.answer_d}}" class="code-{{question.pk}} question__list-answer__item">
+                                D. {{question.answer_d}}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="start__actions">
+            <div onclick="submit()" class="start__actions__btn">
+                Nộp bài
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block overlay %}
+    <div class="overlay grid">
+        <div class="overlay_container row">
+            <div class="overlay_container_tabs col lg-0 md-0 sm-8 xs-10">
+                <div class="overlay_container_tabs_user">
+                    <img src="{% static 'images/userdefault.png'%}" alt="" class="overlay_container_tabs_user_avatar">
+                    <span class="overlay_container_tabs_user_name">
+                        {{user.account_name}}
+                    </span>
+                </div>
+    
+                <div class="overlay_container_tabs_options">
+                    <ul class="overlay_container_tabs_options_list">
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/quizi/home/" class="overlay_container_tabs_options_list_item_link">
+                                Về Trang Chủ
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/user-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Quản Lý Bài Viết
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="/quizi/home/quizi-dashboard/" class="overlay_container_tabs_options_list_item_link">
+                                Trắc nghiệm
+                            </a>
+                        </li>
+                        <li class="overlay_container_tabs_options_list_item">
+                            <a href="javascipt: logOut()" class="overlay_container_tabs_options_list_item_link">
+                                Đăng Xuất
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div onclick="hidenTabs()" class="overlay_container_background col lg-0 md-0 sm-4 xs-2"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+    {% block js %}
+    <script src="{% static 'quizi/js/base_navbar.js' %}"></script>
+    <script src="{% static 'quizi/js/quizi_start.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

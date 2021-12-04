@@ -1,0 +1,273 @@
+/* ==== PHONE ==== */
+@media (max-width: 767px) {
+    /* p layout */
+    .result {
+        padding: 12px 12px 12px;
+        cursor: pointer;
+        user-select: none;
+        cursor: default;
+    }
+
+    /* p layout */
+    .result__layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* p heading */
+    .result__layout__heading {
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+        text-align: center;
+    }
+
+    /* p thumbnail */
+    .result__layout__thumbnail {
+        font-size: 12rem;
+        color: green;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+    }
+
+    /* p link */
+    .result__layout__link a {
+        text-decoration: none;
+        font-size: 1.8rem;
+    }
+
+    /* p list */
+    .result__layout__list {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 700;
+        padding: 0 12px;
+        border-top: 1px solid #ff4500;
+        margin-top: 12px;
+    }
+
+    /* p list heading */
+    .result__layout__list__heading {
+        text-align: center;
+        margin-bottom: 6px;
+        padding-top: 6px;
+    }
+
+    /* p list item */
+    .result__layout__list__item {
+        margin-bottom: 12px;
+    }
+
+    /* p question correct */
+    .item__question__discription__correct {
+        color: #ff4500;
+    }
+}
+
+/* ==== MT ==== */
+@media (min-width: 768px) {
+    /* mt layout */
+    .result {
+        padding: 12px 12px 12px;
+        cursor: pointer;
+        user-select: none;
+        cursor: default;
+    }
+
+    /* mt layout */
+    .result__layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* mt heading */
+    .result__layout__heading {
+        font-size: 3rem;
+        font-weight: 700;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+        text-align: center;
+    }
+
+    /* mt thumbnail */
+    .result__layout__thumbnail {
+        font-size: 12rem;
+        color: green;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+    }
+
+    /* mt link */
+    .result__layout__link a {
+        text-decoration: none;
+        font-size: 1.8rem;
+    }
+
+    /* mt list */
+    .result__layout__list {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 700;
+        padding: 0;
+        border-top: 1px solid #ff4500;
+        margin-top: 12px;
+    }
+
+    /* mt list heading */
+    .result__layout__list__heading {
+        text-align: center;
+        margin-bottom: 6px;
+        padding-top: 6px;
+    }
+
+    /* mt list item */
+    .result__layout__list__item {
+        margin-bottom: 12px;
+    }
+
+    /* mt question correct */
+    .item__question__discription__correct {
+        color: #ff4500;
+    }
+}
+
+/* ==== LT ==== */
+@media (min-width: 992px) {
+    /* lt layout */
+    .result {
+        padding: 12px 12px 12px;
+        cursor: pointer;
+        user-select: none;
+        cursor: default;
+    }
+
+    /* lt layout */
+    .result__layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* lt heading */
+    .result__layout__heading {
+        font-size: 5rem;
+        font-weight: 700;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+        text-align: center;
+    }
+
+    /* lt thumbnail */
+    .result__layout__thumbnail {
+        font-size: 12rem;
+        color: green;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+    }
+
+    /* lt link */
+    .result__layout__link a {
+        text-decoration: none;
+        font-size: 1.8rem;
+    }
+
+    /* lt list */
+    .result__layout__list {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 700;
+        padding: 0;
+        border-top: 1px solid #ff4500;
+        margin-top: 12px;
+    }
+
+    /* lt list heading */
+    .result__layout__list__heading {
+        text-align: center;
+        margin-bottom: 6px;
+        padding-top: 6px;
+    }
+
+    /* lt list item */
+    .result__layout__list__item {
+        margin-bottom: 12px;
+    }
+
+    /* lt question correct */
+    .item__question__discription__correct {
+        color: #ff4500;
+    }
+}
+
+/* ==== PC ==== */
+@media (min-width: 1200px) {
+    /* pc layout */
+    .result {
+        padding: 12px 24px 12px;
+        cursor: pointer;
+        user-select: none;
+        cursor: default;
+    }
+
+    /* pc layout */
+    .result__layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* pc heading */
+    .result__layout__heading {
+        font-size: 5rem;
+        font-weight: 700;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+        text-align: center;
+    }
+
+    /* pc thumbnail */
+    .result__layout__thumbnail {
+        font-size: 12rem;
+        color: green;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+            0px -4px 10px rgba(255,255,255,0.3);
+    }
+
+    /* pc link */
+    .result__layout__link a {
+        text-decoration: none;
+        font-size: 1.8rem;
+    }
+
+    /* pc list */
+    .result__layout__list {
+        font-size: 1.8rem;
+        color: #1a1a1a;
+        font-weight: 700;
+        padding: 24px 0 0 0;
+        border-top: 1px solid #ff4500;
+    }
+
+    /* pc list heading */
+    .result__layout__list__heading {
+        text-align: center;
+        margin-bottom: 6px;
+    }
+
+    /* pc list item */
+    .result__layout__list__item {
+        margin-bottom: 12px;
+    }
+
+    /* pc question correct */
+    .item__question__discription__correct {
+        color: #ff4500;
+    }
+}

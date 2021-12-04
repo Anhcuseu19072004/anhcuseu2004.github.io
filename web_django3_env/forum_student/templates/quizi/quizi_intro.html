@@ -62,11 +62,21 @@
             </div>
         </div>
 
+        {% if total_question == 0 %}
         <div class="intro__actions">
-            <div class="intro__actions__btn">
+            <div onclick="alert('Bài thì có quá ít câu hỏi')" class="intro__actions__btn">
                 Bắt đầu
             </div>
         </div>
+        {% endif %}
+
+        {% if total_question != 0 %}
+        <div class="intro__actions">
+            <div onclick="window.location.href = '/quizi/home/intro/start/{{exam.pk}}'" class="intro__actions__btn">
+                Bắt đầu
+            </div>
+        </div>
+        {% endif %}
     </div>
     {% endblock %}
 

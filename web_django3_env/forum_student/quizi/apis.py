@@ -3,8 +3,10 @@ from quizi.models import Exam, Question, Result
 from quizi.common_quizi import check_correct_answer
 import json
 from django.views.decorators.csrf import csrf_exempt, csrf_protect, requires_csrf_token
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.core import serializers
+from quizi.core import handles_check_question
+
 
 # quizi api create exam
 @csrf_exempt
@@ -187,4 +189,31 @@ def api_modify_question(request):
         return JsonResponse({
             'status'  : "OK",
             'message' : "successfully"
+        })
+
+# quizi api resolve after final exam
+@csrf_exempt
+def quizi_api_solve_exam(request):
+    try:
+        if request.method == 'POST':
+            body              = json.loads(request.body)
+            check_user_exist  = User.objects.filter(pk = body['user']).exists()
+            check_exam_exists = Exam.objects.filter(pk = int(body['exam_id'])).exists()
+            if check_user_exist is False or check_exam_exists is False:
+                return JsonResponse({
+                    'status'   : 'BAD_404',
+                    'message'  : 'exam or user is not exists'
+                })
+
+            id_result = handles_check_question(body['list_question'], body['user'], body['exam_id'])
+
+            return JsonResponse({
+                'status'   : 'OK',
+                'message'  : 'successfully',
+                'data'     : '{}'.format(id_result)
+            })
+    except Exception as e:
+        return JsonResponse({
+            'status'   : 'BAD',
+            'message'  : '{}'.format(e)
         })
